@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <com.hengxin.mall.view.AutoHightGridView
+        android:id="@id/page_grid_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:cacheColorHint="#00000000"
+        android:columnWidth="80dp"
+        android:gravity="center"
+        android:numColumns="5"
+        android:scrollbars="none"
+        android:stretchMode="spacingWidthUniform" />
+</LinearLayout>

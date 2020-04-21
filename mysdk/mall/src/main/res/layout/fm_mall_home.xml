@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/smart_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/coupon_list_refresh_lv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.hengxin.mall.view.AutoClassicsFooter
+            android:id="@+id/smart_refresh_layout_footer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    <RelativeLayout
+        android:id="@+id/wait_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ProgressBar
+                android:id="@+id/wait_progress_bar"
+                style="@style/round_progress"/>
+
+            <TextView
+                android:id="@+id/wait_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10.0dip"
+                android:gravity="center"
+                android:paddingLeft="10.0dip"
+                android:text="@string/loading_wait"
+                android:textSize="16.0sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+
+    <ImageView
+        android:id="@+id/detail_floating_action_src"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="35dp"
+        android:layout_marginRight="20dp"
+        android:scaleType="center"
+        android:src="@drawable/ic_list_scroll_top_arrow_or"
+        android:visibility="gone" />
+
+    <include layout="@layout/layout_error"/>
+    <TextView
+        android:id="@+id/empty_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10.0dip"
+        android:gravity="center"
+        android:paddingLeft="10.0dip"
+        android:text="@string/loading_date_empty"
+        android:textSize="16.0sp"
+        android:visibility="gone" />
+</FrameLayout>

@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">mall</string>
+    <string name="loading_wait">正在加载…</string>
+    <string name="text_net_error">网络无法连接，请检查您的连接状态</string>
+    <string name="text_reload">点击重新加载</string>
+    <string name="loading_date_empty">小主没有搜索到,试试其他搜索词</string>
+    <string name="net_work_error">网络异常，请检查网络！</string>
+    <string name="along_tian_mao">天猫价 ￥%s</string>
+
+    <string name="along_jd">原价 ￥%s</string>
+    <string name="along_tao_bao">淘宝价 ￥%s</string>
+    <string name="along_pin_duo_duo">拼多多价 ￥%s</string>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="gradient_start">#27C2B4</color>
+    <color name="gradient_end">#27C2B4</color>
+    <color name="greed">#27C2B4</color>
+    <color name="white">#ffffffff</color>
+    <color name="net_error_color">#A7A7A7</color>
+    <color name="cp_text_desc">#000000</color>
+    <color name="fragment_select_home_yes_txt_color">#fff42f19</color>
+    <color name="black">#000000</color>
+    <color name="view_mine_home_head_small_item_title_color">#ff999999</color>
+    <color name="gray_66">#ff666666</color>
+    <color name="red_theme">#fff42f19</color>
+</resources>

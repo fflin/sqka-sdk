@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/view_detail_list_item_bgLl"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/view_detail_list_item_bgRl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/coupon_item_pic"
+            android:layout_width="125.0dip"
+            android:layout_height="125.0dip"
+            android:layout_marginLeft="5.0dip"
+            android:layout_marginTop="10.0dip"
+            android:layout_marginBottom="10.0dip"
+            fresco:actualImageScaleType="centerCrop"
+            fresco:fadeDuration="500"
+            fresco:placeholderImage="@drawable/placeholder_square"
+            fresco:placeholderImageScaleType="centerInside"
+            fresco:roundedCornerRadius="5dp" />
+
+        <TextView
+            android:id="@+id/coupon_item_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginLeft="5.0dip"
+            android:layout_marginTop="10.0dip"
+            android:background="@drawable/bg_list_goods"
+            android:gravity="center_horizontal"
+            android:minWidth="40dp"
+            android:text="1"
+            android:textColor="#fff"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/coupon_video_pic"
+            android:layout_width="125.0dip"
+            android:layout_height="125.0dip"
+            android:layout_marginLeft="5.0dip"
+            android:layout_marginTop="10.0dip"
+            android:layout_marginBottom="10.0dip"
+            android:scaleType="center"
+            android:src="@drawable/video_play"
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:id="@+id/view_detail_list_item_titleRl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/coupon_item_pic"
+            android:layout_marginLeft="10.0dip"
+            android:layout_marginTop="3.0dip"
+            android:layout_marginRight="10.0dip"
+            android:layout_toRightOf="@id/coupon_item_pic">
+
+            <ImageView
+                android:id="@+id/view_detail_list_item_iconTv"
+                android:layout_width="wrap_content"
+                android:layout_height="20.0dip"
+                android:scaleType="centerInside"
+                android:src="@drawable/view_home_guess_like_item_tmall_icon" />
+
+            <TextView
+                android:id="@+id/coupon_item_good_title"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lineSpacingExtra="3.0dip"
+                android:lines="2"
+                android:text="        呢大衣2017秋冬季新款韩系带双排扣收腰显瘦中长款呢子"
+                android:textSize="13.5sp" />
+        </RelativeLayout>
+
+        <!--<TextView-->
+        <!--android:id="@+id/estimate_commi"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="18.0dip"-->
+        <!--android:layout_alignLeft="@id/view_detail_list_item_titleRl"-->
+        <!--android:layout_below="@id/view_detail_list_item_titleRl"-->
+        <!--android:layout_marginTop="5.0dip"-->
+        <!--android:background="@drawable/radius_earn_sum_bg"-->
+        <!--android:gravity="center"-->
+        <!--android:paddingLeft="8.0dip"-->
+        <!--android:paddingRight="8.0dip"-->
+        <!--android:text="分享赚:￥110.99"-->
+        <!--android:textColor="@color/earn_sum_txt_color"-->
+        <!--android:textSize="11.5sp" />-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/commission_rate"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="18.0dip"-->
+        <!--android:layout_below="@id/view_detail_list_item_titleRl"-->
+        <!--android:layout_marginRight="10dp"-->
+        <!--android:layout_marginTop="5.0dip"-->
+        <!--android:layout_toRightOf="@id/estimate_commi"-->
+        <!--android:gravity="center"-->
+        <!--android:paddingLeft="8.0dip"-->
+        <!--android:paddingRight="8.0dip"-->
+        <!--android:text="分享赚:80%"-->
+        <!--android:textColor="#0dd995"-->
+        <!--android:textSize="11.5sp"-->
+        <!--android:visibility="gone" />-->
+
+        <ImageView
+            android:id="@+id/coupon_item_good_price_after"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/coupon_item_good_old_price"
+            android:layout_alignLeft="@id/view_detail_list_item_titleRl"
+            android:layout_marginBottom="5.0dip"
+            android:gravity="center"
+            android:src="@drawable/page_sc_gapprice" />
+
+        <TextView
+            android:id="@+id/coupon_item_good_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/coupon_item_good_old_price"
+            android:layout_marginBottom="1.0dip"
+            android:layout_toRightOf="@id/coupon_item_good_price_after"
+            android:gravity="center"
+            android:text=" ￥233.99"
+            android:textColor="@color/fragment_select_home_yes_txt_color"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/coupon_item_good_old_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/coupon_item_good_price_after"
+            android:layout_alignBottom="@id/coupon_item_pic"
+            android:layout_marginTop="2dp"
+            android:text=" ￥1233.99"
+            android:textColor="@color/view_mine_home_head_small_item_title_color"
+            android:textSize="11.5sp" />
+
+        <TextView
+            android:id="@+id/tvSalesCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/coupon_item_good_price"
+            android:layout_alignRight="@id/coupon_item_coupon_price"
+            android:layout_marginLeft="7.0dip"
+            android:layout_marginRight="5.0dip"
+            android:paddingTop="5dp"
+            android:text="月销9999"
+            android:textColor="@color/view_mine_home_head_small_item_title_color"
+            android:textSize="11.5sp" />
+
+        <TextView
+            android:id="@+id/coupon_item_coupon_price"
+            android:layout_width="95dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvSalesCount"
+            android:layout_alignRight="@id/view_detail_list_item_titleRl"
+            android:layout_marginTop="3.0dip"
+            android:background="@drawable/shape_coupon_bg"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:lines="1"
+            android:padding="5dp"
+            android:text="可抵扣100元"
+            android:textColor="@color/white"
+            android:textSize="13sp" />
+    </RelativeLayout>
+
+
+</LinearLayout>
