@@ -11,4 +11,7 @@
     <color name="view_mine_home_head_small_item_title_color">#ff999999</color>
     <color name="gray_66">#ff666666</color>
     <color name="red_theme">#fff42f19</color>
+    <color name="title_color">#0B0202</color>
+    <color name="bg_gray_color">#F4F1F4</color>
+    <color name="hs_white">#f0ffffff</color>
 </resources>

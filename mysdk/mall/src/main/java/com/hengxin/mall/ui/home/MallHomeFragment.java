@@ -1,7 +1,10 @@
 package com.hengxin.mall.ui.home;
 
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.hengxin.basic.base.BaseResult;
@@ -37,11 +40,10 @@ public class MallHomeFragment extends BaseFragment implements OnCallBackDetail, 
     private RecyclerView recycleListView;
     private CrashBugLinearLayoutManager mLayoutManager;
     private View wait_layout;
-    private TextView empty_textview;
     private AutoClassicsFooter refreshFooter;
     private String cid;
     private View floatingActionButton;
-    private List AllDate = new ArrayList();
+    private List<Object> AllDate = new ArrayList();
     private VLRAdapter vlrAdapter;
     private boolean isFinshRequest = true;
     private boolean isReload;//点击重新加载时，再显示loading
@@ -60,7 +62,7 @@ public class MallHomeFragment extends BaseFragment implements OnCallBackDetail, 
         mPresenter.onAttach(this);
         requestNewFristHome();
 
-        TodaySelectionTypeRBaseItem mItem = new TodaySelectionTypeRBaseItem(mContext);
+        TodaySelectionTypeRBaseItem mItem = new TodaySelectionTypeRBaseItem(mContext, getChildFragmentManager());
         mItem.setCallBackDetail(this);
         vlrAdapter = new VLRAdapter(mItem);
         recycleListView.setAdapter(vlrAdapter);
@@ -69,16 +71,38 @@ public class MallHomeFragment extends BaseFragment implements OnCallBackDetail, 
     @Override
     protected void initView(View rootView) {
         this.rootView = rootView;
-        floatingActionButton = rootView.findViewById(R.id.detail_floating_action_src);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+        rootView.findViewById(R.id.activity_search_back).setOnClickListener(v -> mActivity.finish());
+        EditText etSearch = rootView.findViewById(R.id.et_search);
+        View icClear = rootView.findViewById(R.id.iv_clear);
+        etSearch.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onClick(View v) {
-                mLayoutManager.scrollToPosition(0);
-                floatingActionButton.setVisibility(View.GONE);
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                icClear.setVisibility(s.length() > 0 ? View.VISIBLE : View.INVISIBLE);
             }
         });
+
+        icClear.setOnClickListener(v -> etSearch.setText(""));
+
+        rootView.findViewById(R.id.tv_order).setOnClickListener(v -> ToastUtils.show(mContext, "订单页面，开发中"));
+
+        floatingActionButton = rootView.findViewById(R.id.detail_floating_action_src);
+        floatingActionButton.setOnClickListener(v -> {
+            mLayoutManager.scrollToPosition(0);
+            floatingActionButton.setVisibility(View.GONE);
+        });
+
         wait_layout = rootView.findViewById(R.id.wait_layout);
-        empty_textview = rootView.findViewById(R.id.tv_net_reload);
+        TextView empty_textview = rootView.findViewById(R.id.tv_net_reload);
         empty_textview.setOnClickListener(v -> {
             if (MallHomeFragment.this.reLoadEnable()) {
                 wait_layout.setVisibility(View.VISIBLE);
@@ -245,7 +269,7 @@ public class MallHomeFragment extends BaseFragment implements OnCallBackDetail, 
     public void onDestroy() {
         if (mPresenter != null) {
             mPresenter.onDetach();
-            Log.i("fflin","--------------------- dispose 33 ");
+            Log.i("fflin", "--------------------- dispose 33 ");
         }
         super.onDestroy();
     }

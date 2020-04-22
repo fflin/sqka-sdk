@@ -3,21 +3,100 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
-    <com.scwang.smartrefresh.layout.SmartRefreshLayout
-        android:id="@+id/smart_refresh_layout"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/coupon_list_refresh_lv"
+        <LinearLayout
+            android:id="@+id/search_llContent"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="50.0dip"
+            android:orientation="horizontal">
 
-        <com.hengxin.mall.view.AutoClassicsFooter
-            android:id="@+id/smart_refresh_layout_footer"
+            <ImageView
+                android:id="@+id/activity_search_back"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:scaleType="fitStart"
+                android:src="@drawable/back_black" />
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="32dip"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dip"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1.0"
+                android:background="@drawable/bg_activity_search">
+
+                <EditText
+                    android:id="@+id/et_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="27.0dip"
+                    android:background="@null"
+                    android:drawableLeft="@drawable/ic_title_bar_edit_glass_gray"
+                    android:drawablePadding="6.0dip"
+                    android:ellipsize="end"
+                    android:hint="搜索想要购买的商品"
+                    android:imeOptions="actionSearch"
+                    android:paddingLeft="10.0dip"
+                    android:singleLine="true"
+                    android:textColor="@color/cp_text_desc"
+                    android:textColorHint="#ff999999"
+                    android:textCursorDrawable="@null"
+                    android:textSize="13sp" />
+
+                <ImageView
+                    android:id="@+id/iv_clear"
+                    android:layout_width="27.0dip"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center|right"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/btn_search_delete_click"
+                    android:visibility="invisible" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tv_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="15dp"
+                android:drawableTop="@drawable/dingdan"
+                android:gravity="center"
+                android:text="订单"
+                android:textColor="@color/title_color"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+            android:layout_height="1px"
+            android:background="@color/bg_gray_color" />
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/smart_refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/coupon_list_refresh_lv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <com.hengxin.mall.view.AutoClassicsFooter
+                android:id="@+id/smart_refresh_layout_footer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    </LinearLayout>
+
 
     <RelativeLayout
         android:id="@+id/wait_layout"
@@ -33,7 +112,7 @@
 
             <ProgressBar
                 android:id="@+id/wait_progress_bar"
-                style="@style/round_progress"/>
+                style="@style/round_progress" />
 
             <TextView
                 android:id="@+id/wait_textview"
@@ -53,13 +132,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
-        android:layout_marginBottom="35dp"
         android:layout_marginRight="20dp"
+        android:layout_marginBottom="35dp"
         android:scaleType="center"
         android:src="@drawable/ic_list_scroll_top_arrow_or"
         android:visibility="gone" />
 
-    <include layout="@layout/layout_error"/>
+    <include layout="@layout/layout_error" />
+
     <TextView
         android:id="@+id/empty_textview"
         android:layout_width="wrap_content"

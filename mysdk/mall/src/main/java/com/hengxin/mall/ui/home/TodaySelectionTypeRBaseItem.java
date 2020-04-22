@@ -2,6 +2,7 @@ package com.hengxin.mall.ui.home;
 
 import android.content.Context;
 import android.net.Uri;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -25,6 +26,8 @@ import com.hengxin.mall.model.CouponNewModel;
 import com.hengxin.mall.model.HomeModel;
 import com.hengxin.mall.ui.home.viewholder.ActivityViewHolder;
 import com.hengxin.mall.ui.home.viewholder.AloneCouponListViewHolder;
+import com.hengxin.mall.ui.home.viewholder.ClassifyViewHolder;
+import com.hengxin.mall.ui.home.viewholder.CouponItemViewHolder;
 import com.hengxin.mall.ui.home.viewholder.EmptyHolder;
 import com.hengxin.mall.ui.home.viewholder.GridViewHolder;
 import com.hengxin.mall.utils.FrcosUtils;
@@ -42,7 +45,7 @@ import java.util.List;
 public class TodaySelectionTypeRBaseItem extends RBaseItem {
     private final static int noneType = 100;
     private final static int bannerType = 11000;
-    private final static int cateType = 12501;//中图标5个/行
+    private final static int cateType = 12501;//中图标5个/行 --测试分类
     private final static int topicTpye = 14000;
     private final static int labelType = 19000;
     private final static int couponType = 18000;
@@ -63,11 +66,16 @@ public class TodaySelectionTypeRBaseItem extends RBaseItem {
     private FrscoImageLoader frscoImageLoader;
     private static final int recommendType = 18001;//为您推荐,数据解析coupon_list
 
-    public TodaySelectionTypeRBaseItem(Context context) {
+    private FragmentManager mFragmentManager;
+    //以下类型待接口完成
+    private final static int classifyType = 99999;//分类
+    private final static int verGoodsType = 999998;//竖向排列的商品item
+
+    public TodaySelectionTypeRBaseItem(Context context, FragmentManager fragmentManager) {
         super(context);
         screenWidth = ViewUtil.getScreenWidth(context);
         frscoImageLoader = new FrscoImageLoader();
-//        xtuilsImageLoader = new XtuilsImageLoader(new ImageOptions.Builder().setFadeIn(true).setImageScaleType(ImageView.ScaleType.FIT_CENTER).setLoadingDrawableId(R.drawable.placeholder_rectangle).build());
+        this.mFragmentManager = fragmentManager;
     }
 
     @Override
@@ -144,6 +152,17 @@ public class TodaySelectionTypeRBaseItem extends RBaseItem {
                 ActivityViewHolder activityViewHolder = (ActivityViewHolder) baseHolder;
                 activityViewHolder.bindingData(data);
                 break;
+
+            case classifyType:
+                ClassifyViewHolder classifyViewHolder = (ClassifyViewHolder) baseHolder;
+                classifyViewHolder.bindView(mContext,mFragmentManager,data);
+                break;
+
+            case verGoodsType:
+                CouponItemViewHolder couponItemViewHolder = (CouponItemViewHolder) baseHolder;
+                couponItemViewHolder.setListDate(data);
+                break;
+
             case noneType:
             default:
                 break;
@@ -209,6 +228,12 @@ public class TodaySelectionTypeRBaseItem extends RBaseItem {
             case recommendType:
                 holder = new ActivityViewHolder(mContext, convertView);
                 break;
+            case classifyType:
+                holder = new ClassifyViewHolder(convertView);
+                break;
+            case verGoodsType:
+                holder = new CouponItemViewHolder(convertView,mContext);
+                break;
             case noneType:
             default:
                 holder = new EmptyHolder(convertView);
@@ -250,6 +275,7 @@ public class TodaySelectionTypeRBaseItem extends RBaseItem {
             case lifecouponType:
             case couponType: {
                 layoutid = R.layout.view_alonel_list_item;//券布局
+//                layoutid = R.layout.view_coupon_item;
             }
             break;
             case threeImageType:
@@ -271,6 +297,12 @@ public class TodaySelectionTypeRBaseItem extends RBaseItem {
                 break;
             case recommendType:
                 layoutid = R.layout.page_activity;
+                break;
+            case classifyType:
+                layoutid = R.layout.item_mall_classify;
+                break;
+            case verGoodsType:
+                layoutid = R.layout.view_coupon_item;
                 break;
             case noneType:
             default:
@@ -468,7 +500,8 @@ public class TodaySelectionTypeRBaseItem extends RBaseItem {
                     addSmllType(homePageItem, itemView);
                     break;
                 case twoImageType:
-                    addTwoBigType(homePageItem, itemView);
+//                    addTwoBigType(homePageItem, itemView);
+                    addThreeBigType(homePageItem, itemView);
                     break;
                 case threeImageType:
                     addThreeBigType(homePageItem, itemView);
