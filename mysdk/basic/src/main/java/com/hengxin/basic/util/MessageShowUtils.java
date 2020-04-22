@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.v4.app.FragmentManager;
 
 import com.hengxin.basic.ContextProvider;
-import com.hengxin.basic.model.GotoDate;
+import com.hengxin.basic.base.GotoDate;
 
 /**
  * 

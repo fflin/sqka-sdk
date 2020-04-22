@@ -7,8 +7,8 @@ import android.view.View;
 
 import com.hengxin.mall.R;
 import com.hengxin.mall.inter.OnCallBackDetail;
-import com.hengxin.basic.model.CouponNewModel;
-import com.hengxin.basic.model.HomeModel;
+import com.hengxin.mall.model.CouponNewModel;
+import com.hengxin.mall.model.HomeModel;
 import com.hengxin.mall.ui.home.adapter.ActivityViewAdapter;
 
 import java.util.ArrayList;

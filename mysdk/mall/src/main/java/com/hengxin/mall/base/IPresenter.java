@@ -1,4 +1,4 @@
-package com.hengxin.basic.base;
+package com.hengxin.mall.base;
 
 import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleObserver;

@@ -7,7 +7,6 @@ import com.hengxin.basic.BuildConfig;
 import com.hengxin.basic.ContextProvider;
 import com.hengxin.basic.api.ApiException;
 import com.hengxin.basic.api.ServerCode;
-import com.hengxin.basic.model.GotoDate;
 import com.hengxin.basic.util.MessageShowUtils;
 
 import java.io.InterruptedIOException;

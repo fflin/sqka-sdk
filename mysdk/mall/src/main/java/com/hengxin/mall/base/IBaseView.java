@@ -1,4 +1,4 @@
-package com.hengxin.basic.base;
+package com.hengxin.mall.base;
 
 /**
  * Created by chunyang on 2017/10/30.

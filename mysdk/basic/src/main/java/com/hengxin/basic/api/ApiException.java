@@ -2,7 +2,7 @@ package com.hengxin.basic.api;
 
 
 import com.hengxin.basic.base.BaseResult;
-import com.hengxin.basic.model.GotoDate;
+import com.hengxin.basic.base.GotoDate;
 
 public class ApiException extends RuntimeException {
 

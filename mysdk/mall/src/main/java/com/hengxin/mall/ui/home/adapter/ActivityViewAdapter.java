@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 
 import com.hengxin.mall.R;
 import com.hengxin.mall.inter.OnCallBackDetail;
-import com.hengxin.basic.model.CouponNewModel;
+import com.hengxin.mall.model.CouponNewModel;
 import com.hengxin.mall.ui.home.viewholder.AloneCouponListViewHolder;
 
 import java.util.ArrayList;

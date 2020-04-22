@@ -8,7 +8,7 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.hengxin.mall.R;
 import com.hengxin.mall.base.RBaseItem;
-import com.hengxin.basic.model.CouponNewModel;
+import com.hengxin.mall.model.CouponNewModel;
 import com.hengxin.mall.utils.ViewUtil;
 
 import java.text.DecimalFormat;

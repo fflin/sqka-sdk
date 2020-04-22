@@ -5,15 +5,10 @@ import android.text.TextUtils;
 
 import com.hengxin.basic.BuildConfig;
 import com.hengxin.basic.base.BaseRequest;
-import com.hengxin.basic.base.BaseResult;
-import com.hengxin.basic.model.ConditionListModel;
-import com.hengxin.basic.model.HomeModel;
-import com.hengxin.basic.util.CryptoUtils;
 import com.hengxin.basic.util.FileHelper;
 import com.hengxin.basic.util.Log;
 import com.hengxin.basic.util.MD5Utiils;
 import com.hengxin.basic.util.NetworkUtils;
-import com.hengxin.basic.util.RxUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,7 +17,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import io.reactivex.Observable;
 import io.reactivex.plugins.RxJavaPlugins;
 import okhttp3.Cache;
 import okhttp3.CacheControl;
@@ -39,34 +33,18 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 /**
  * Created by chunyang on 2017/11/2.
  */
-public class ApiHelper implements IApiHelper {
+public class ApiHelper {
 
     private final static String TAG = "ApiHelper";
-    public static String COUPONTOKE;
-//    public static String SERVICES_HOST = BuildConfig.BASE_SERVER_URL;//用户
-//    private static String HOST = BuildConfig.SERVER_LIB_URL;// 商城
-        private static String HOST = "http://test.sqcr.yunyouduobao.com";
+    private static String HOST = "http://test.sqcr.yunyouduobao.com";
     private static String isChange;
-    public IApiService mService;
-    private IOtherApiService mOtherApiService;
     private OkHttpClient mOkhttpClient;
 
     public ApiHelper() {
         buildClient();
-        buildMainService();
-        buildOtherService();
     }
 
-    private void buildOtherService() {
-        Retrofit retrofit = new Retrofit.Builder().client(mOkhttpClient)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .baseUrl(IOtherApiService.HOST)
-                .build();
-        mOtherApiService = retrofit.create(IOtherApiService.class);
-    }
-
-    private void buildMainService() {
+    public <T> T buildMainService(Class<T> tClass) {
         Retrofit retrofit = new Retrofit.Builder().client(mOkhttpClient)
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
@@ -74,7 +52,7 @@ public class ApiHelper implements IApiHelper {
                 .baseUrl(HOST).build();
         RxJavaPlugins.setErrorHandler(throwable -> {
         });
-        mService = retrofit.create(IApiService.class);
+        return retrofit.create(tClass);
     }
 
     private void buildClient() {
@@ -110,10 +88,6 @@ public class ApiHelper implements IApiHelper {
         mOkhttpClient = builder.build();
     }
 
-    public static IApiHelper get() {
-        return Holder.IN;
-    }
-
     public static void setHOST(String HOST) {
         isChange = HOST;
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
@@ -128,17 +102,15 @@ public class ApiHelper implements IApiHelper {
         }
     }*/
 
-    private static Map<String, String> getSignSecurity(Map<String, String> stringStringMap) {
+    public Map<String, String> getSignSecurity(Map<String, String> stringStringMap) {
         String sign = MD5Utiils.getHashMapSign(stringStringMap);
         Log.i("addBaseProperty", sign);
         stringStringMap.put("sign", sign);
         return stringStringMap;
     }
 
-    //app_name=rrh&app_key=hr_rrh&t=1587462230067&app_version=2.6.65%2859%29&device_id=XdeK3NbYQmQDAMuZfbPB4bv%2B
-    // &os=android&user_id=&os_version=HUAWEI_YAL-AL00_10%2829%29&channel=apptest&sign=884226d6414c26c0487676384f05a5d9&version=v3&app_id=1
-    private static Map<String, String> addBaseMap(Map<String, String> security) {
-        security.put("t", System.currentTimeMillis()+ "");
+    public Map<String, String> addBaseMap(Map<String, String> security) {
+        security.put("t", System.currentTimeMillis() + "");
         security.put("app_name", "rrh");
         security.put("app_version", "2.6.65");
         security.put("channel", "apptest");
@@ -174,80 +146,6 @@ public class ApiHelper implements IApiHelper {
         return params;
     }
 
-    @Override
-    public Observable<BaseResult<HomeModel>> getTodaySelection(String path, String version) {
-        HashMap<String, String> map = new HashMap<>();
-        if (!TextUtils.isEmpty(version)) map.put("version", version);
-        return mService.getTodaySelection(path, getSignSecurity(addBaseMap(map))).compose(RxUtils.transformResult());
-    }
-
-    @Override
-    public Observable<BaseResult<ConditionListModel>> loadNewPage(String path, boolean init, String cid, String sort, int page_no) {
-        HashMap<String, String> map = new HashMap<>();
-        map.put("init", init ? "1" : "0");
-        map.put("cid", cid);
-        map.put("sort", sort);
-        map.put("page_no", String.valueOf(page_no));
-        return mService.loadNewPage(path, getSignSecurity(addBaseMap(map))).compose(RxUtils.transformResult());
-    }
-
-    private static class Holder {
-        private static ApiHelper IN = new ApiHelper();
-    }
-
-    /**
-     * 其他类调用的的签名方法
-     */
-    public static class OutMethodUtils {
-        public static Map<String, String> getCommonSignSecurity(HashMap<String, String> securit) {
-            return ApiHelper.getSignSecurity(ApiHelper.addBaseMap(securit));
-        }
-
-        public static void getSignSecurity(Map sign) {
-            ApiHelper.addBaseMap(sign);
-            ApiHelper.getSignSecurity(sign);
-        }
-
-        public static String getSignString(Map sign) {
-            return MD5Utiils.getHashMapSign(sign);
-        }
-
-        //ASE 加密
-        public static String getEncryptPasswordString(String password) {
-            return CryptoUtils.encryptPassword(password);
-        }
-    }
-
-
-    public class LocalInterceptor implements Interceptor {
-
-        @Override
-        public Response intercept(Chain chain) throws IOException {
-            CacheControl cacheControl = new CacheControl.Builder().maxAge(Integer.MAX_VALUE, TimeUnit.SECONDS)
-                    .maxStale(0, TimeUnit.SECONDS).build();
-            Request request = chain.request();
-            Request.Builder builder = request.newBuilder().cacheControl(cacheControl);
-            request = builder.build();
-
-
-            if (NetworkUtils.isNetworkAvailable()) {
-                try {
-                    Response response = chain.proceed(request);
-                    if (response.isSuccessful()) {
-                        return response;
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
-            //if request failed. always load in cache
-            cacheControl = new CacheControl.Builder().maxAge(Integer.MAX_VALUE, TimeUnit.SECONDS).maxStale(Integer.MAX_VALUE, TimeUnit.SECONDS).build();
-            request = builder.cacheControl(cacheControl).build();
-            return chain.proceed(request);
-        }
-    }
-
     public class CacheInterceptor implements Interceptor {
 
         private final String pragma = "pragma";
@@ -281,31 +179,6 @@ public class ApiHelper implements IApiHelper {
                         .build();
             }
             return response;
-        }
-    }
-
-    public class TokenInterceptor implements Interceptor {
-
-        @Override
-        public Response intercept(Chain chain) throws IOException {
-            /*Request request = chain.request();
-            String requestUrl = request.url().toString();
-            String baseUrl = ApiHelper.isChange;
-            if (TextUtils.isEmpty(baseUrl)) baseUrl = HOST;
-            boolean isSqcrRequest = requestUrl.startsWith(baseUrl);
-            boolean isRenRenQuest = requestUrl.startsWith(SERVICES_HOST);
-            if (!isSqcrRequest && !isRenRenQuest) return chain.proceed(request);
-            String login_token = isSqcrRequest ? COUPONTOKE : UserCache.get().getLogin_token();
-            if (!TextUtils.isEmpty(login_token))
-                request = request.newBuilder().header("token", login_token)
-                        .build();
-            String uuid = UserCache.get().getUuid();
-            Log.i("HttpLoggingInterceptor", "did==="+uuid + "token=" + login_token);
-            if (!TextUtils.isEmpty(uuid))
-                request = request.newBuilder().header("did", uuid)
-                        .build();
-            return chain.proceed(request);*/
-            return  null;
         }
     }
 

@@ -3,7 +3,7 @@ package com.hengxin.mall.ui.home;
 import android.content.Context;
 
 import com.hengxin.mall.inter.OnCallBackDetail;
-import com.hengxin.basic.model.HomeModel;
+import com.hengxin.mall.model.HomeModel;
 
 
 /**

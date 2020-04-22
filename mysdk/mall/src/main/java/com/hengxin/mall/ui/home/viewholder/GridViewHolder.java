@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.hengxin.mall.R;
-import com.hengxin.basic.model.HomeModel;
+import com.hengxin.mall.model.HomeModel;
 import com.hengxin.mall.utils.FrcosUtils;
 import com.hengxin.mall.utils.ViewUtil;
 

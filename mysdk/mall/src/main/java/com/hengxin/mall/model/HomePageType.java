@@ -1,4 +1,4 @@
-package com.hengxin.basic.model;
+package com.hengxin.mall.model;
 
 
 import java.io.Serializable;

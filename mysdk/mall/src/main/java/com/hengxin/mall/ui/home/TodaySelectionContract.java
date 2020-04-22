@@ -2,10 +2,10 @@ package com.hengxin.mall.ui.home;
 
 
 import com.hengxin.basic.base.BaseResult;
-import com.hengxin.basic.base.IBaseView;
-import com.hengxin.basic.base.IPresenter;
-import com.hengxin.basic.model.ConditionListModel;
-import com.hengxin.basic.model.HomeModel;
+import com.hengxin.mall.base.IBaseView;
+import com.hengxin.mall.base.IPresenter;
+import com.hengxin.mall.model.ConditionListModel;
+import com.hengxin.mall.model.HomeModel;
 
 public interface TodaySelectionContract {
     interface View extends IBaseView {

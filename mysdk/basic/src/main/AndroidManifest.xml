@@ -5,7 +5,7 @@
     
     <application>
         <provider
-            android:authorities="com.hengxin.basic.ContextProvider"
+            android:authorities=".ContextProvider"
             android:name=".AppContextProvider"
             android:exported="false"/>
     </application>

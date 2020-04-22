@@ -1,9 +1,9 @@
-package com.hengxin.basic.api;
+package com.hengxin.mall.net;
 
 
 import com.hengxin.basic.base.BaseResult;
-import com.hengxin.basic.model.ConditionListModel;
-import com.hengxin.basic.model.HomeModel;
+import com.hengxin.mall.model.ConditionListModel;
+import com.hengxin.mall.model.HomeModel;
 
 import java.util.Map;
 
@@ -13,9 +13,13 @@ import retrofit2.http.Path;
 import retrofit2.http.QueryMap;
 
 /**
- * Created by chunyang on 2017/11/2.
+ * author : fflin
+ * date   : 2020/4/22 11:09
+ * desc   :
+ * version: 1.0
  */
 public interface IApiService {
+
     /**
      * 今日精选
      * ("/api/home/v2")

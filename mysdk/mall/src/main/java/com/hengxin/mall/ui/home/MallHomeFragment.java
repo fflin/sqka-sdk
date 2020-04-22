@@ -5,9 +5,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.hengxin.basic.base.BaseResult;
-import com.hengxin.basic.model.ConditionListModel;
-import com.hengxin.basic.model.CouponModel;
-import com.hengxin.basic.model.HomeModel;
+import com.hengxin.mall.model.ConditionListModel;
+import com.hengxin.mall.model.CouponModel;
+import com.hengxin.mall.model.HomeModel;
 import com.hengxin.basic.util.Log;
 import com.hengxin.basic.util.NetworkUtils;
 import com.hengxin.basic.util.ToastUtils;
