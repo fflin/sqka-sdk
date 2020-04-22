@@ -16,13 +16,13 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.android.flexbox.FlexboxLayout;
+import com.hengxin.basic.model.HomePageType;
 import com.hengxin.mall.R;
 import com.hengxin.mall.base.RBaseItem;
 import com.hengxin.mall.base.VLRAdapter;
 import com.hengxin.mall.manager.FrscoImageLoader;
 import com.hengxin.basic.model.CouponNewModel;
 import com.hengxin.basic.model.HomeModel;
-import com.hengxin.basic.model.HomePageType;
 import com.hengxin.mall.ui.home.viewholder.ActivityViewHolder;
 import com.hengxin.mall.ui.home.viewholder.AloneCouponListViewHolder;
 import com.hengxin.mall.ui.home.viewholder.EmptyHolder;
@@ -154,6 +154,7 @@ public class TodaySelectionTypeRBaseItem extends RBaseItem {
     //
     @Override
     public int getItemViewType(Object data, int position) {
+        // com.hengxin.basic.model.CouponNewModel cannot be cast to com.hengxin.basic.model.HomeModel$HomePageItem
         HomePageType homePageItem = (HomePageType) data;
         return homePageItem.view_type;
     }

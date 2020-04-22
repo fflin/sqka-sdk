@@ -43,9 +43,9 @@ public class ApiHelper implements IApiHelper {
 
     private final static String TAG = "ApiHelper";
     public static String COUPONTOKE;
-    public static String SERVICES_HOST = BuildConfig.BASE_SERVER_URL;//用户
-    private static String HOST = BuildConfig.SERVER_LIB_URL;// 商城
-    //    private static String HOST = "http://192.168.31.94:7001";
+//    public static String SERVICES_HOST = BuildConfig.BASE_SERVER_URL;//用户
+//    private static String HOST = BuildConfig.SERVER_LIB_URL;// 商城
+        private static String HOST = "http://test.sqcr.yunyouduobao.com";
     private static String isChange;
     public IApiService mService;
     private IOtherApiService mOtherApiService;
@@ -106,7 +106,7 @@ public class ApiHelper implements IApiHelper {
             }
         };
         builder.addInterceptor(mInterUrlceptor);
-        builder.addInterceptor(new TokenInterceptor());
+//        builder.addInterceptor(new TokenInterceptor());
         mOkhttpClient = builder.build();
     }
 
@@ -121,12 +121,12 @@ public class ApiHelper implements IApiHelper {
         }
     }
 
-    public static void initialize() {
+    /*public static void initialize() {
         HOST = BuildConfig.SERVER_LIB_URL;
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             HOST = HOST.replaceFirst("https", "http");
         }
-    }
+    }*/
 
     private static Map<String, String> getSignSecurity(Map<String, String> stringStringMap) {
         String sign = MD5Utiils.getHashMapSign(stringStringMap);
@@ -135,17 +135,19 @@ public class ApiHelper implements IApiHelper {
         return stringStringMap;
     }
 
+    //app_name=rrh&app_key=hr_rrh&t=1587462230067&app_version=2.6.65%2859%29&device_id=XdeK3NbYQmQDAMuZfbPB4bv%2B
+    // &os=android&user_id=&os_version=HUAWEI_YAL-AL00_10%2829%29&channel=apptest&sign=884226d6414c26c0487676384f05a5d9&version=v3&app_id=1
     private static Map<String, String> addBaseMap(Map<String, String> security) {
-        /*security.put("t", AppCache.get().getServiceDelyTime() + "");
-        security.put("app_name", AppCache.get().getApp_name());
-        security.put("app_version", AppCache.get().getApp_version());
-        security.put("channel", AppCache.get().getChannel());
-        security.put("device_id", AppCache.get().getDevice_id());
-        security.put("os", AppCache.get().getOs());
-        security.put("os_version", AppCache.get().getOs_version());
-        security.put("user_id", UserCache.get().getUser_id());
+        security.put("t", System.currentTimeMillis()+ "");
+        security.put("app_name", "rrh");
+        security.put("app_version", "2.6.65");
+        security.put("channel", "apptest");
+        security.put("device_id", "XdeK3NbYQmQDAMuZfbPB4bv%2B");
+        security.put("os", "android");
+        security.put("os_version", "HUAWEI_YAL-AL00_10%2829%29");
+        security.put("user_id", "");
         security.put("app_key", "hr_rrh");
-        security.put("app_id", checkAppByPackageName());*/
+        security.put("app_id", "1");
         return security;
     }
 
@@ -158,25 +160,6 @@ public class ApiHelper implements IApiHelper {
         return newBuilder.url(replace).build();
     }
 
-    /**
-    /**
-     * 增加基础属性
-     *
-     * @param baseRequest
-     * @return
-     */
-    private BaseRequest addBaseProperty(BaseRequest baseRequest) {
-        /*baseRequest.setT(AppCache.get().getServiceDelyTime() + "");
-        baseRequest.setApp_name(AppCache.get().getApp_name());
-        baseRequest.setApp_version(AppCache.get().getApp_version());
-        baseRequest.setChannel(AppCache.get().getChannel());
-        baseRequest.setDevice_id(AppCache.get().getDevice_id());
-        baseRequest.setOs(AppCache.get().getOs());
-        baseRequest.setOs_version(AppCache.get().getOs_version());
-        baseRequest.setUser_id(UserCache.get().getUser_id() + "");
-        baseRequest.setLogin_token(UserCache.get().getLogin_token());*/
-        return baseRequest;
-    }
 
     /**
      * 加密

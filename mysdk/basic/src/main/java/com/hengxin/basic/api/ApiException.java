@@ -2,6 +2,7 @@ package com.hengxin.basic.api;
 
 
 import com.hengxin.basic.base.BaseResult;
+import com.hengxin.basic.model.GotoDate;
 
 public class ApiException extends RuntimeException {
 
@@ -9,7 +10,7 @@ public class ApiException extends RuntimeException {
 
     public String serverMessage;
     public int error;
-    /*public GotoDate gotoDate;*/
+    public GotoDate gotoDate;
 
     public ApiException(String mess) {
         super(mess);
@@ -19,7 +20,7 @@ public class ApiException extends RuntimeException {
         super(base.message);
         this.error = base.error;
         this.serverMessage = base.message;
-        /*this.gotoDate = base.err_data;*/
+        this.gotoDate = base.err_data;
     }
 
 

@@ -1,5 +1,7 @@
 package com.hengxin.basic.base;
 
+import com.hengxin.basic.model.GotoDate;
+
 /**
  * Created by chunyang on 2017/11/2.
  */
@@ -9,7 +11,7 @@ public class BaseResult<T> {
     public int error;
     public String message;
     public T data;
-//    public GotoDate err_data;
+    public GotoDate err_data;
 
     public int getError() {
         return error;
@@ -35,13 +37,13 @@ public class BaseResult<T> {
         this.data = data;
     }
 
-//    public GotoDate getErr_data() {
-//        return err_data;
-//    }
-//
-//    public void setErr_data(GotoDate err_data) {
-//        this.err_data = err_data;
-//    }
+    public GotoDate getErr_data() {
+        return err_data;
+    }
+
+    public void setErr_data(GotoDate err_data) {
+        this.err_data = err_data;
+    }
 
     @Override
     public String toString() {
@@ -49,7 +51,7 @@ public class BaseResult<T> {
                 "error=" + error +
                 ", message='" + message + '\'' +
                 ", data=" + data +
-//                ", err_data=" + err_data +
+                ", err_data=" + err_data +
                 '}';
     }
 }

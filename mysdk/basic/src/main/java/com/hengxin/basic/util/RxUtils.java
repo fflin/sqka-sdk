@@ -1,7 +1,6 @@
 package com.hengxin.basic.util;
 
 
-
 import com.google.gson.Gson;
 import com.hengxin.basic.api.ApiException;
 import com.hengxin.basic.base.BaseResult;
@@ -88,12 +87,20 @@ public final class RxUtils {
     }
 
     public static <T extends BaseResult> ObservableTransformer<T, T> transformResult() {
-        return new ObservableTransformer<T, T>() {
+        ObservableTransformer<T, T> observableTransformer = new ObservableTransformer<T, T>() {
             @Override
             public ObservableSource<T> apply(Observable<T> upstream) {
-                return upstream.map(new GsonFactoryFuncResult<T>()).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).unsubscribeOn(Schedulers.io());
+                try {
+                    Log.i("fflin","-------------- upstream "+upstream.toString());
+                    return upstream.map(new GsonFactoryFuncResult<T>()).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).unsubscribeOn(Schedulers.io());
+                } catch (Exception e) {
+                    Log.i("fflin","-------------- upstream exc"+e.getMessage());
+                    e.printStackTrace();
+                    return null;
+                }
             }
         };
+        return observableTransformer;
     }
 
 
@@ -154,7 +161,7 @@ public final class RxUtils {
         @Override
         public T apply(T tBaseResult) {
             int state = tBaseResult.error;
-            Log.i("log_response", "response: " + tBaseResult.toString());
+            Log.i("log_response", "response: " + tBaseResult.toString() +"; error = "+state);
             if (state != 0)
                 throw new ApiException(tBaseResult);
             return tBaseResult;

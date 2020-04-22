@@ -5,6 +5,8 @@ import android.arch.lifecycle.LifecycleOwner;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 
+import com.hengxin.basic.util.Log;
+
 import io.reactivex.disposables.CompositeDisposable;
 
 /**
@@ -44,15 +46,19 @@ public abstract class BasePresenter<T extends IBaseView> implements IPresenter<T
 
     @Override
     public void onDetach() {
-        if (!mDisposable.isDisposed())
+        if (!mDisposable.isDisposed()) {
             mDisposable.dispose();
+            Log.i("fflin","--------------------- dispose 11 ");
+        }
         mView = null;
     }
 
     @Override
     public void onDestroy(LifecycleOwner owner) {
-        if (mDisposable != null && !mDisposable.isDisposed())
+        if (mDisposable != null && !mDisposable.isDisposed()) {
             mDisposable.dispose();
+            Log.i("fflin","--------------------- dispose 22 ");
+        }
         mView = null;
     }
 }

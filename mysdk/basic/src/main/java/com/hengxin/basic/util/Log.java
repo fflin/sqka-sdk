@@ -11,7 +11,7 @@ public class Log {
     public static void i(String tag, String msg) {
         StackTraceElement caller = getCallerStackTraceElement();
         String methodTag = generateTag(caller);
-        if (BuildConfig.DEBUG) android.util.Log.i(tag, msg+"--调用位置：["+methodTag+"]");
+        if (BuildConfig.DEBUG) android.util.Log.i(tag, msg+" --调用位置：["+methodTag+"]");
     }
 
     private static String generateTag(StackTraceElement caller) {

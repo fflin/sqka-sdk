@@ -10,14 +10,21 @@ public class TodaySelectionPresenter extends BasePresenter<TodaySelectionContrac
         mView.showLoading();
         mDisposable.add(ApiHelper.get().getTodaySelection("tb/home", "v3").subscribe(result -> {
             if (isViewAttached()) {
-                if (result.error == 0) mView.success(result);
-                else mView.onError(result.message);
+                if (result.error == 0) {
+                    mView.success(result);
+                }
+                else {
+                    mView.onError(result.message);
+                }
             }
             mView.hideLoading();
         }, new ApiErrorConsumer() {
             @Override
             public void onFail(int code, String message) {
-                if (isViewAttached()) mView.onError(message);
+
+                if (isViewAttached()) {
+                    mView.onError(message);
+                }
                 mView.hideLoading();
             }
         }));

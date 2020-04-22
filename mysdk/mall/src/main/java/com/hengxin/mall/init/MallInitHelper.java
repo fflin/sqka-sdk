@@ -2,9 +2,11 @@ package com.hengxin.mall.init;
 
 import android.content.Context;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.hengxin.basic.BasicData;
 import com.hengxin.basic.ContextProvider;
 import com.hengxin.basic.util.Log;
+import com.hengxin.mall.factory.ImagePipelineConfigFactory;
 
 
 /**
@@ -31,6 +33,8 @@ public class MallInitHelper {
     public void initMall(String appId, String appSecret) {
         // 整个sdk的init入口
         BasicData.getData().setBasicData(appId, appSecret);
+        Context context = ContextProvider.get().getContext();
+        Fresco.initialize(context, ImagePipelineConfigFactory.getImagePipelineConfig(context));
     }
 
     public void toMallPage(int index) {

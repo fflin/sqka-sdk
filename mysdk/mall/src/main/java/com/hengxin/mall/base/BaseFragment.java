@@ -92,4 +92,19 @@ public abstract class BaseFragment extends Fragment {
         }
         return enable;
     }
+
+    //显示加载出错的布局
+    public void showLoadError(View view) {
+        if (view != null) {
+            view.findViewById(R.id.rl_net_error).setVisibility(View.VISIBLE);
+            view.findViewById(R.id.rl_net_error).requestFocus();
+        }
+    }
+
+    //隐藏加载失败的布局
+    public void hideLoadError(View view) {
+        if (view != null) {
+            view.findViewById(R.id.rl_net_error).setVisibility(View.GONE);
+        }
+    }
 }
