@@ -14,4 +14,13 @@
     <color name="title_color">#0B0202</color>
     <color name="bg_gray_color">#F4F1F4</color>
     <color name="hs_white">#f0ffffff</color>
+    <color name="second_title_bg">#f9f9f9</color>
+    <color name="second_title_text">#303030</color>
+    <color name="second_title_line">#C7C7C7</color>
+    <color name="goods_detail_bg">#F1EFF2</color>
+    <color name="goods_detail_title">#3D3D3D</color>
+    <color name="goods_detail_price_current">#FF0000</color>
+    <color name="goods_detail_price_original">#979797</color>
+    <color name="hor_line">#E8E8E8</color>
+    <color name="detail_slogan">#4E4E4E</color>
 </resources>

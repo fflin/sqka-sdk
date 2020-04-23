@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+   <RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+       android:paddingBottom="30dp"
+       android:paddingTop="30dp"
+       android:gravity="center"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+
+
+       <ImageView
+           android:id="@+id/iv_slogan"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:src="@drawable/slogan"
+
+           />
+       <TextView
+           android:layout_toEndOf="@+id/iv_slogan"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="18sp"
+           android:text="优惠盒子，能省会赚"
+           android:paddingStart="15dp"
+           android:textColor="@color/detail_slogan"/>
+
+   </RelativeLayout>
