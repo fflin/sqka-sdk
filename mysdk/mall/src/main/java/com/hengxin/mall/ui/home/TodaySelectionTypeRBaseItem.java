@@ -17,6 +17,7 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.android.flexbox.FlexboxLayout;
+import com.hengxin.basic.util.Log;
 import com.hengxin.mall.model.HomePageType;
 import com.hengxin.mall.R;
 import com.hengxin.mall.base.RBaseItem;
@@ -27,9 +28,9 @@ import com.hengxin.mall.model.HomeModel;
 import com.hengxin.mall.ui.home.viewholder.ActivityViewHolder;
 import com.hengxin.mall.ui.home.viewholder.AloneCouponListViewHolder;
 import com.hengxin.mall.ui.home.viewholder.ClassifyViewHolder;
-import com.hengxin.mall.ui.home.viewholder.CouponItemViewHolder;
 import com.hengxin.mall.ui.home.viewholder.EmptyHolder;
 import com.hengxin.mall.ui.home.viewholder.GridViewHolder;
+import com.hengxin.mall.ui.home.viewholder.TwoColumnViewHolder;
 import com.hengxin.mall.utils.FrcosUtils;
 import com.hengxin.mall.utils.ViewUtil;
 import com.youth.banner.Banner;
@@ -69,7 +70,7 @@ public class TodaySelectionTypeRBaseItem extends RBaseItem {
     private FragmentManager mFragmentManager;
     //以下类型待接口完成
     private final static int classifyType = 99999;//分类
-    private final static int verGoodsType = 999998;//竖向排列的商品item
+    private final static int twoColumnGoodsType = 999998;//竖向排列的商品item
 
     public TodaySelectionTypeRBaseItem(Context context, FragmentManager fragmentManager) {
         super(context);
@@ -158,9 +159,10 @@ public class TodaySelectionTypeRBaseItem extends RBaseItem {
                 classifyViewHolder.bindView(mContext,mFragmentManager,data);
                 break;
 
-            case verGoodsType:
-                CouponItemViewHolder couponItemViewHolder = (CouponItemViewHolder) baseHolder;
-                couponItemViewHolder.setListDate(data);
+            case twoColumnGoodsType:
+                TwoColumnViewHolder twoColumnViewHolder = (TwoColumnViewHolder) baseHolder;
+                twoColumnViewHolder.setListDate(data);
+                Log.i("fflin","data = "+data.getClass().getSimpleName());
                 break;
 
             case noneType:
@@ -231,8 +233,8 @@ public class TodaySelectionTypeRBaseItem extends RBaseItem {
             case classifyType:
                 holder = new ClassifyViewHolder(convertView);
                 break;
-            case verGoodsType:
-                holder = new CouponItemViewHolder(convertView,mContext);
+            case twoColumnGoodsType:
+                holder = new TwoColumnViewHolder(convertView,mContext);
                 break;
             case noneType:
             default:
@@ -301,8 +303,8 @@ public class TodaySelectionTypeRBaseItem extends RBaseItem {
             case classifyType:
                 layoutid = R.layout.item_mall_classify;
                 break;
-            case verGoodsType:
-                layoutid = R.layout.view_coupon_item;
+            case twoColumnGoodsType:
+                layoutid = R.layout.page_home_two_column;
                 break;
             case noneType:
             default:
@@ -523,25 +525,6 @@ public class TodaySelectionTypeRBaseItem extends RBaseItem {
                     //UMAnalyticUtils.onEvent2Param(getContext(), "Mall_category", item.title);
                 });
                 rootView.setImageURI(item.pic);
-                flexboxLayout.addView(rootView);
-            }
-        }
-
-        private void addTwoBigType(HomeModel.HomePageItem homePageItem, View itemView) {
-            FlexboxLayout flexboxLayout = (FlexboxLayout) itemView;
-            if (flexboxLayout.getChildCount() != 0) {
-                flexboxLayout.removeAllViews();
-            }
-            flexboxLayout.setShowDivider(FlexboxLayout.SHOW_DIVIDER_MIDDLE);
-            flexboxLayout.setDividerDrawable(ContextCompat.getDrawable(mContext, R.drawable.line_bg));
-            for (HomeModel.HomePageItem item : homePageItem.list) {
-                SimpleDraweeView rootView = (SimpleDraweeView) LayoutInflater.from(getContext()).inflate(R.layout.page_flexbox_two_image_item, flexboxLayout, false);
-                rootView.setOnClickListener(v -> {
-                    RouteUtils.isNewNative(item.open_type, mContext, item, callBackDetail);
-                    //UMAnalyticUtils.onEvent(getContext(), item.event_key);
-                });
-
-                setGifDraweeView(item.pic, rootView);
                 flexboxLayout.addView(rootView);
             }
         }
