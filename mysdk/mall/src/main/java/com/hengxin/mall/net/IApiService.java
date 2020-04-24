@@ -36,4 +36,8 @@ public interface IApiService {
     @GET("/api/open/{path}/coupon_list")
     Observable<BaseResult<ConditionListModel>> loadNewPage(@Path(value = "path", encoded = true) String path, @QueryMap Map<String, String> map);
 
+    // 商品详情 -测试接口
+    @GET("{path}/api/mine/index")
+    Observable<BaseResult<HomeModel>> getGoodsDetail(@Path(value = "path", encoded = true) String path, @QueryMap Map<String, String> map);
+
 }

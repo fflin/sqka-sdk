@@ -23,7 +23,7 @@ public class ScrollListRBaseItem extends RBaseItem {
 
     public ScrollListRBaseItem(Context context) {
         super(context);
-        screenWidth = ViewUtil.getScreenWidth(context);
+        screenWidth = ViewUtil.getScreenWidth();
     }
 
     @Override

@@ -1,124 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/goods_detail_bg">
 
     <include layout="@layout/layout_title" />
 
-    <com.youth.banner.view.BannerViewPager
-        android:id="@+id/detail_banner"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/detail_recycler"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintDimensionRatio="w,1:1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="48dp"
+        android:layout_marginBottom="60dp" />
 
     <LinearLayout
-        android:id="@+id/detail_title"
+        android:id="@+id/detail_bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:background="@color/white"
-        android:orientation="vertical"
-        android:paddingLeft="15dp"
-        android:paddingTop="10dp"
-        android:paddingRight="15dp"
-        android:paddingBottom="10dp"
-        android:visibility="visible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detail_banner">
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="￥"
-                android:textColor="@color/goods_detail_price_current"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/detail_cur_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1000"
-                android:textColor="@color/goods_detail_price_current"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/detail_ori_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:text="￥1500"
-                android:textColor="@color/goods_detail_price_original"
-                android:textSize="15sp" />
-
-        </LinearLayout>
+        android:gravity="center">
 
         <TextView
-            android:id="@+id/detail_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:lines="2"
-            android:text="碧生源牙刷电动牙刷电动牙刷电动牙刷s碧生源牙刷电动牙刷电动牙刷电动牙刷s碧生源牙刷电动牙刷电动牙刷电动牙刷s"
-            android:textColor="@color/goods_detail_title"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/detail_specify"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:background="@color/white"
-        android:orientation="vertical"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detail_title">
-
-        <!--代码里循环添加-->
-        <!--<include layout="@layout/detail_specify"/>
-        <include layout="@layout/detail_hor_line"/>-->
-    </LinearLayout>
-
-    <WebView
-        android:id="@+id/detail_webview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detail_specify" />
-
-    <RelativeLayout
-        android:id="@+id/detail_slogan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detail_webview">
-
-        <include layout="@layout/layout_slogan" />
-    </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <TextView
+            android:id="@+id/detail_bot_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/detail_back_arrow"
@@ -129,6 +33,7 @@
             android:text="返回" />
 
         <TextView
+            android:id="@+id/detail_bot_car"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/detail_car_icon"
@@ -139,6 +44,7 @@
             android:text="购物车" />
 
         <TextView
+            android:id="@+id/detail_bot_car_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
@@ -152,6 +58,7 @@
             android:textSize="14sp" />
 
         <TextView
+            android:id="@+id/detail_bot_buy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -163,9 +70,7 @@
             android:text="立即购买"
             android:textColor="@color/white"
             android:textSize="14sp" />
-
-
     </LinearLayout>
 
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

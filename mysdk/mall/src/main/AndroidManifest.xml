@@ -1,4 +1,2 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.hengxin.mall" >
-    <uses-permission android:name="android.permission.INTERNET"/>
-</manifest>
+    package="com.hengxin.mall" />

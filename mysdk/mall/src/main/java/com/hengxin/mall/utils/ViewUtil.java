@@ -96,15 +96,9 @@ public class ViewUtil {
         return height;
     }
 
-    public static int getScreenWidth(Activity activity) {
+    public static int getScreenWidth() {
         DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-        ((WindowManager) activity.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(localDisplayMetrics);
-        return localDisplayMetrics.widthPixels;
-    }
-
-    public static int getScreenWidth(Context activity) {
-        DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-        ((WindowManager) activity.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(localDisplayMetrics);
+        ((WindowManager) ContextProvider.get().getContext().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(localDisplayMetrics);
         return localDisplayMetrics.widthPixels;
     }
 

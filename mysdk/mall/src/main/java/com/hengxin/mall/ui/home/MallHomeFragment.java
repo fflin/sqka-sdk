@@ -19,6 +19,7 @@ import com.hengxin.mall.base.BaseFragment;
 import com.hengxin.mall.base.VLRAdapter;
 import com.hengxin.mall.inter.OnCallBackDetail;
 import com.hengxin.mall.manager.CrashBugLinearLayoutManager;
+import com.hengxin.mall.ui.detail.GoodsDetailActivity;
 import com.hengxin.mall.view.AutoClassicsFooter;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.constant.RefreshState;
@@ -167,7 +168,7 @@ public class MallHomeFragment extends BaseFragment implements OnCallBackDetail, 
 
     @Override
     public void onClickJumpChaoRenDetail(Object date) {
-
+        GoodsDetailActivity.startDetailActivity(mContext, "2");
     }
 
     @Override

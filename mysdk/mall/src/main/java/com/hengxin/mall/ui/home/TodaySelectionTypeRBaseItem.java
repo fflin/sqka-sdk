@@ -74,7 +74,7 @@ public class TodaySelectionTypeRBaseItem extends RBaseItem {
 
     public TodaySelectionTypeRBaseItem(Context context, FragmentManager fragmentManager) {
         super(context);
-        screenWidth = ViewUtil.getScreenWidth(context);
+        screenWidth = ViewUtil.getScreenWidth();
         frscoImageLoader = new FrscoImageLoader();
         this.mFragmentManager = fragmentManager;
     }
