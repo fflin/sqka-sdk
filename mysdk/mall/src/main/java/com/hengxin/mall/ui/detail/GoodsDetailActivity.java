@@ -2,7 +2,15 @@ package com.hengxin.mall.ui.detail;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.widget.RecyclerView;
+import android.util.TypedValue;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.hengxin.basic.base.BaseResult;
@@ -63,7 +71,30 @@ public class GoodsDetailActivity extends BaseActivity implements GoodsDetailCont
         findViewById(R.id.detail_bot_back).setOnClickListener(v -> finish());
         findViewById(R.id.detail_bot_car).setOnClickListener(v -> ToastUtils.show(GoodsDetailActivity.this, "跳购物车页面"));
         findViewById(R.id.detail_bot_car_add).setOnClickListener(v -> ToastUtils.show(GoodsDetailActivity.this, "加入购物车"));
-        findViewById(R.id.detail_bot_buy).setOnClickListener(v -> ToastUtils.show(GoodsDetailActivity.this, "买买买"));
+        findViewById(R.id.detail_bot_buy).setOnClickListener(v -> {
+            ToastUtils.show(GoodsDetailActivity.this, "买买买");
+            PopupWindow window = new PopupWindow();
+            window.setContentView(LayoutInflater.from(GoodsDetailActivity.this).inflate(R.layout.pop_goods_specify, null));
+            window.showAtLocation(findViewById(R.id.detail_bot_buy), Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL, 0, 0);
+
+            View popView = LayoutInflater.from(GoodsDetailActivity.this).inflate(R.layout.pop_goods_specify, null);
+            PopupWindow mPopupWindow = new PopupWindow(popView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
+            mPopupWindow.setOutsideTouchable(true);
+            mPopupWindow.showAtLocation(findViewById(R.id.detail_bot_buy), Gravity.BOTTOM,0, 0);
+
+            WindowManager.LayoutParams lp = getWindow().getAttributes();
+            lp.alpha = 0.4f;
+            getWindow().setAttributes(lp);
+
+            mPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+                @Override
+                public void onDismiss() {
+                    WindowManager.LayoutParams lp = getWindow().getAttributes();
+                    lp.alpha = 1f;
+                    getWindow().setAttributes(lp);
+                }
+            });
+        });
     }
 
     @Override

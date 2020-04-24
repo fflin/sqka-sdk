@@ -23,4 +23,7 @@
     <color name="goods_detail_price_original">#979797</color>
     <color name="hor_line">#E8E8E8</color>
     <color name="detail_slogan">#4E4E4E</color>
+    <color name="detail_pop_88">#888888</color>
+    <color name="detail_pop_33">#333333</color>
+    <color name="detail_pop_e7">#e7e7e7</color>
 </resources>
