@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/pop_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:background="@color/white"
+    android:orientation="vertical"
     android:paddingLeft="20dp"
     android:paddingRight="20dp">
 
     <RelativeLayout
+        android:id="@+id/pop_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp">
@@ -68,41 +69,23 @@
 
 
     <android.support.v4.widget.NestedScrollView
+        android:layout_below="@+id/pop_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="90dp">
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="颜色"
-                android:textColor="@color/detail_pop_33"
-                android:textSize="15sp" />
-
-            <com.google.android.flexbox.FlexboxLayout
+            <LinearLayout
+                android:id="@+id/pop_specify_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp" />
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="版型"
-                android:textColor="@color/detail_pop_33"
-                android:textSize="15sp" />
-
-            <com.google.android.flexbox.FlexboxLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp" />
-
+                android:orientation="vertical" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -126,53 +109,57 @@
 
 
                     <Button
+                        android:id="@+id/pop_subtract"
                         android:layout_width="15dp"
                         android:layout_height="15dp"
-                        android:padding="10dp"
-                        android:background="@drawable/pop_plus_selector" />
+                        android:background="@drawable/pop_subtract_selector"
+                        android:padding="10dp" />
 
                     <TextView
-                        android:id="@+id/goodsRule_numTv"
+                        android:id="@+id/pop_sel_count"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
                         android:background="@color/detail_pop_e7"
                         android:paddingLeft="22dp"
                         android:paddingTop="8dp"
                         android:paddingRight="22dp"
                         android:paddingBottom="8dp"
                         android:text="10"
-                        android:textSize="14sp"
-                        android:layout_marginLeft="10dp"/>
+                        android:textSize="14sp" />
 
 
                     <Button
+                        android:id="@+id/pop_plus"
                         android:layout_width="15dp"
                         android:layout_height="15dp"
                         android:layout_marginLeft="10dp"
-                        android:background="@drawable/pop_add_selector"/>
+                        android:background="@drawable/pop_plus_selector" />
 
                 </LinearLayout>
 
             </RelativeLayout>
+
+
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 
 
     <TextView
+        android:id="@+id/pop_confirm"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/bg_detail_add_car"
         android:paddingLeft="130dp"
-        android:paddingTop="12dp"
+        android:paddingTop="10dp"
         android:paddingRight="130dp"
-        android:paddingBottom="12dp"
+        android:paddingBottom="10dp"
         android:text="确定"
         android:textColor="@color/white"
         android:textSize="16sp" />
-
-
-</LinearLayout>
+</RelativeLayout>
