@@ -3,6 +3,9 @@ package com.hengxin.mall.base;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+
+import com.hengxin.mall.R;
 
 
 /**
@@ -20,6 +23,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         initArgs(getIntent());
         setContentView(setLayout());
         initView();
+        View titleBack = findViewById(R.id.title_bar_back);
+        if (titleBack != null) {
+            titleBack.setOnClickListener(v -> finish());
+        }
         initData();
     }
 

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/pay_item_parent">
+
+    <ImageView
+        android:id="@+id/pay_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:src="@drawable/pay_alipay"/>
+
+    <TextView
+        android:id="@+id/pay_channel"
+        android:paddingTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="支付宝"
+        android:textColor="@color/settle_text_black"
+        android:textSize="16sp"
+        android:layout_toEndOf="@+id/pay_icon"/>
+
+    <TextView
+        android:id="@+id/pay_channel_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="123333"
+        android:layout_toRightOf="@+id/pay_icon"
+        android:layout_below="@+id/pay_channel"
+        />
+
+    <ImageView
+        android:id="@+id/pay_right_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/weixuanzhong_btn"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="15dp"
+        android:layout_alignParentRight="true"/>
+
+</RelativeLayout>

@@ -29,4 +29,6 @@
     <color name="detail_specify_text_bg">#FCE6E6</color>
     <color name="detail_specify_text_stoke">#F10303</color>
     <color name="detail_specify_text_1F">#1F1F1F</color>
+    <color name="settle_text_black">#161616</color>
+    <color name="settle_text_gray">#6A6A6A</color>
 </resources>

@@ -2,8 +2,10 @@ package com.hengxin.mall.net;
 
 
 import com.hengxin.basic.base.BaseResult;
+import com.hengxin.mall.model.AliSignModel;
 import com.hengxin.mall.model.ConditionListModel;
 import com.hengxin.mall.model.HomeModel;
+import com.hengxin.mall.model.PayChannelModel;
 
 import java.util.Map;
 
@@ -39,5 +41,12 @@ public interface IApiService {
     // 商品详情 -测试接口
     @GET("{path}/api/mine/index")
     Observable<BaseResult<HomeModel>> getGoodsDetail(@Path(value = "path", encoded = true) String path, @QueryMap Map<String, String> map);
+
+    //获取支付渠道列表
+    @GET("{path}/api/order/pay/channel/list")
+    Observable<BaseResult<PayChannelModel>> getPayChannel(@Path(value = "path", encoded = true) String path, @QueryMap Map<String, String> map);
+
+    @GET("{path}/api/order/pay/sign")
+    Observable<BaseResult<AliSignModel>> getAliSign(@Path(value = "path", encoded = true) String servicesHost, @QueryMap Map<String, String> map);
 
 }

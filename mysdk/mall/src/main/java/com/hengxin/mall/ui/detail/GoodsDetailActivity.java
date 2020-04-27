@@ -25,6 +25,7 @@ import com.hengxin.mall.model.HomeModel;
 import com.hengxin.mall.ui.detail.adapter.GoodsDetailItem;
 import com.hengxin.mall.ui.detail.pop.PopClickListener;
 import com.hengxin.mall.ui.detail.pop.PopDataHelper;
+import com.hengxin.mall.ui.settlement.SettleListActivity;
 import com.hengxin.mall.utils.ViewUtil;
 
 import java.util.ArrayList;
@@ -66,7 +67,6 @@ public class GoodsDetailActivity extends BaseActivity implements GoodsDetailCont
 
     @Override
     protected void initView() {
-        findViewById(R.id.title_bar_back).setOnClickListener(v -> finish());
         ((TextView) findViewById(R.id.title_bar_title)).setText("商品详情");
 
         goodsRecylerView = findViewById(R.id.detail_recycler);
@@ -76,7 +76,6 @@ public class GoodsDetailActivity extends BaseActivity implements GoodsDetailCont
         findViewById(R.id.detail_bot_car_add).setOnClickListener(v -> ToastUtils.show(GoodsDetailActivity.this, "加入购物车"));
         initSpecifyPop();
         findViewById(R.id.detail_bot_buy).setOnClickListener(v -> {
-            ToastUtils.show(GoodsDetailActivity.this, "买买买");
             specifyPopWindow.showAtLocation(findViewById(R.id.detail_bot_buy), Gravity.BOTTOM,0, 0);
             setWindowBg(0.4f);
 
@@ -179,6 +178,7 @@ public class GoodsDetailActivity extends BaseActivity implements GoodsDetailCont
     public void onPopClick(Object obj) {
         if (specifyPopWindow != null && specifyPopWindow.isShowing()) {
             specifyPopWindow.dismiss();
+            startActivity(new Intent(this, SettleListActivity.class));
         }
     }
 }
