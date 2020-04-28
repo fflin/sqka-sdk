@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/layout_title" />
+
+    <ScrollView
+        android:layout_below="@+id/title_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/goods_detail_price_current"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/detail_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:text="待收货"
+                    android:textColor="@color/white"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/detail_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="15dp"
+                    android:paddingBottom="15dp"
+                    android:text="剩余n天23小时自动确认收货"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/detail_transport"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/location_icon" />
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/trans_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="已离开  深圳福田区；发往北京"
+                        android:textColor="@color/settle_text_black"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/trans_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/trans_info"
+                        android:text="2020-04-08  08：34：12" />
+
+
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="15dp"
+                    android:src="@drawable/black_right_arrow" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@color/bg_gray_color" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/location_icon" />
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/trans_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2020-04-08  08：34：12" />
+
+                    <TextView
+                        android:id="@+id/trans_add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/trans_name"
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:text="已离开  深圳福田区；发往北京已离开  深圳福田区；发往北京已离开  深圳福田区；发往北京已离开  深圳福田区；发往北京"
+                        android:textColor="@color/settle_text_black"
+                        android:textSize="15sp" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5sp"
+                android:background="@color/bg_gray_color" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <include layout="@layout/item_order_layout_goods" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="end">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/bg_settle_btn"
+                        android:paddingStart="12dp"
+                        android:paddingTop="5dp"
+                        android:paddingEnd="12dp"
+                        android:paddingBottom="5dp"
+                        android:text="查看订单"
+                        android:textColor="@color/white" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5sp"
+                android:background="@color/bg_gray_color" />
+
+            <LinearLayout
+                android:id="@+id/order_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingLeft="15dp">
+
+                <LinearLayout style="@style/order_info_parent">
+
+                    <TextView
+                        style="@style/order_info_left"
+                        android:text="订单编号:" />
+
+                    <TextView
+                        android:id="@+id/detail_order_id"
+                        style="@style/order_info_right"
+                        android:text="672377784384823848" />
+
+                    <TextView
+                        android:id="@+id/detail_copy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:background="@drawable/bg_activity_search"
+                        android:paddingStart="5dp"
+                        android:paddingTop="2dp"
+                        android:paddingEnd="5dp"
+                        android:paddingBottom="2dp"
+                        android:text="复制"
+                        android:textColor="#606060" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/order_info_parent">
+
+                    <TextView
+                        style="@style/order_info_left"
+                        android:text="支付方式:" />
+
+                    <TextView
+                        android:id="@+id/detail_order_pay"
+                        style="@style/order_info_right"
+                        android:text="672377784384823848" />
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/order_info_parent">
+
+                    <TextView
+                        style="@style/order_info_left"
+                        android:text="发货时间:" />
+
+                    <TextView
+                        android:id="@+id/detail_trans_time"
+                        style="@style/order_info_right"
+                        android:text="672377784384823848" />
+
+                </LinearLayout>
+
+
+                <LinearLayout style="@style/order_info_parent">
+
+                    <TextView
+                        style="@style/order_info_left"
+                        android:text="下单时间:" />
+
+                    <TextView
+                        android:id="@+id/detail_pay_time"
+                        style="@style/order_info_right"
+                        android:text="672377784384823848" />
+
+                </LinearLayout>
+
+
+                <LinearLayout style="@style/order_info_parent">
+
+                    <TextView
+                        style="@style/order_info_left"
+                        android:text="运费:" />
+
+                    <TextView
+                        android:id="@+id/detail_trans_pay"
+                        style="@style/order_info_right"
+                        android:text="672377784384823848" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1sp"
+                    android:paddingTop="7dp"
+                    android:background="@color/bg_gray_color" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="实付款"
+                        android:textSize="17sp"
+                        android:textColor="@color/settle_text_black"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:text="￥6999.00"
+                        android:textSize="17sp"
+                        android:textColor="@color/goods_detail_price_current"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5sp"
+                android:background="@color/bg_gray_color" />
+        </LinearLayout>
+
+    </ScrollView>
+
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="15dp">
+
+        <TextView
+            style="@style/order_info_btn"
+            android:text="删除订单"
+            android:background="@drawable/bg_settle_btn"/>
+
+        <TextView
+            style="@style/order_info_btn"
+            android:text="删除订单"
+            android:background="@drawable/bg_settle_btn"/>
+
+        <TextView
+            style="@style/order_info_btn"
+            android:text="删除订单"
+            android:background="@drawable/bg_settle_btn"/>
+
+        <TextView
+            style="@style/order_info_btn"
+            android:text="删除订单"
+            android:background="@drawable/bg_settle_btn"/>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>
