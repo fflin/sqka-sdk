@@ -48,7 +48,7 @@ public class IndicatorHelper {
     public void initIndicator(Context context, FragmentManager fragmentManager, MagicIndicator magicIndicator, List<String> list, ViewPager viewPager, int orderTag) {
         CommonNavigator commonNavigator = new CommonNavigator(context);
         commonNavigator.setScrollPivotX(0.65f);
-        commonNavigator.setAdjustMode(false);
+        commonNavigator.setAdjustMode(orderTag == OrderConstant.SALE_ORDER_TAG);
         commonNavigator.setAdapter(new CommonNavigatorAdapter() {
             @Override
             public int getCount() {
@@ -81,16 +81,16 @@ public class IndicatorHelper {
         });
         magicIndicator.setNavigator(commonNavigator);
         ViewPagerHelper.bind(magicIndicator, viewPager);
-        initViewPager(fragmentManager,viewPager, orderTag);
+        initViewPager(fragmentManager,viewPager, orderTag, list);
     }
 
-    private void initViewPager(FragmentManager fragmentManager, ViewPager viewPager, int orderTag) {
-        viewPager.setAdapter(new OrderFragmentAdapter(fragmentManager, getFragments(orderTag)));
+    private void initViewPager(FragmentManager fragmentManager, ViewPager viewPager, int orderTag, List<String> list) {
+        viewPager.setAdapter(new OrderFragmentAdapter(fragmentManager, getFragments(orderTag,list)));
     }
 
-    private List<Fragment> getFragments(int orderTag) {
+    private List<Fragment> getFragments(int orderTag, List<String> list) {
         List<Fragment> fragmentList = new ArrayList<>();
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < list.size(); i++) {
             fragmentList.add(MallOrderFragment.newInstance(i, orderTag));
         }
         return fragmentList;

@@ -8,6 +8,7 @@ import com.hengxin.basic.util.ToastUtils;
 import com.hengxin.mall.R;
 import com.hengxin.mall.base.BaseActivity;
 import com.hengxin.mall.base.VLRAdapter;
+import com.hengxin.mall.test.TestUtil;
 import com.hengxin.mall.ui.pay.PayChannelActivity;
 import com.hengxin.mall.ui.settlement.adapter.SettleListItem;
 
@@ -36,21 +37,8 @@ public class SettleListActivity extends BaseActivity {
         VLRAdapter adapter = new VLRAdapter(new SettleListItem(this));
         settleRv.setLayoutManager(new LinearLayoutManager(this));
         settleRv.setAdapter(adapter);
-        List list = new ArrayList();
-        list.add("1");
-        list.add("1");
-        list.add("1");
-        list.add("1");
-        list.add("1");
-        list.add("1");
-        list.add("1");
-        list.add("1");
-        list.add("1");
-        list.add("1");
-        list.add("1");
-        list.add("1");
-        list.add("1");
-        adapter.reLoadData(list);
+
+        adapter.reLoadData(new TestUtil().getTestList());
     }
 
     @Override

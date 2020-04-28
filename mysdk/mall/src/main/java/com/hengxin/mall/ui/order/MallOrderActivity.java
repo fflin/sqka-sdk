@@ -13,8 +13,6 @@ import com.hengxin.basic.util.Log;
 import com.hengxin.mall.R;
 import com.hengxin.mall.base.BaseActivity;
 
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * author : fflin

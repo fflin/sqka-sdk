@@ -20,6 +20,7 @@ import com.hengxin.mall.base.BaseFragment;
 import com.hengxin.mall.base.VLRAdapter;
 import com.hengxin.mall.inter.OnCallBackDetail;
 import com.hengxin.mall.manager.CrashBugLinearLayoutManager;
+import com.hengxin.mall.test.TestActivity;
 import com.hengxin.mall.ui.detail.GoodsDetailActivity;
 import com.hengxin.mall.ui.order.MallOrderActivity;
 import com.hengxin.mall.view.AutoClassicsFooter;

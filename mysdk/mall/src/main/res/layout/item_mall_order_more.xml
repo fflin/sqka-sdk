@@ -24,6 +24,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
         android:layout_marginTop="20dp">
 
         <TextView
@@ -37,12 +38,31 @@
 
     </RelativeLayout>
 
-    <!--多个按钮合并在这个view里-->
-    <RelativeLayout
-        android:id="@+id/order_btn_container"
+    <!--售后订单才有的提示-->
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/salt_order_notice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="right"/>
+        android:gravity="center"
+        android:background="@drawable/salt_info_bg"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:text="退款成功￥99999.00-- 售后才有"/>
+
+    <!--多个按钮合并在这个view里-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:gravity="right">
+        <LinearLayout
+            android:id="@+id/order_btn_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"/>
+    </RelativeLayout>
 
 
 

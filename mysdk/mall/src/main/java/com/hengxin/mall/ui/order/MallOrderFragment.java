@@ -11,6 +11,7 @@ import com.hengxin.mall.R;
 import com.hengxin.mall.base.BaseFragment;
 import com.hengxin.mall.base.VLRAdapter;
 import com.hengxin.mall.manager.CrashBugLinearLayoutManager;
+import com.hengxin.mall.test.TestUtil;
 import com.hengxin.mall.ui.order.adapter.MallOrderItem;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -64,6 +65,8 @@ public class MallOrderFragment extends BaseFragment {
         VLRAdapter adapter = new VLRAdapter(item);
         orderRv.setLayoutManager(new CrashBugLinearLayoutManager(mContext));
         orderRv.setAdapter(adapter);
+
+        adapter.reLoadData(new TestUtil().getTestList());
 
         refreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
