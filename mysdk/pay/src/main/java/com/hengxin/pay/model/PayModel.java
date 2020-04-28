@@ -1,4 +1,4 @@
-package com.hengxin.mall.ui.pay;
+package com.hengxin.pay.model;
 
 /**
  * author : fflin

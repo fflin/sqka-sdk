@@ -23,6 +23,7 @@
         <activity android:name="com.hengxin.mall.ui.detail.GoodsDetailActivity"/>
         <activity android:name="com.hengxin.mall.ui.settlement.SettleListActivity"/>
         <activity android:name="com.hengxin.mall.ui.pay.PayChannelActivity"/>
+        <activity android:name="com.hengxin.mall.ui.order.MallOrderActivity"/>
 
     </application>
 

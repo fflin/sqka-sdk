@@ -5,7 +5,7 @@ import com.hengxin.basic.base.ApiErrorConsumer;
 import com.hengxin.basic.base.BaseResult;
 import com.hengxin.basic.util.RxUtils;
 import com.hengxin.mall.base.BasePresenter;
-import com.hengxin.mall.model.AliSignModel;
+import com.hengxin.pay.model.AliSignModel;
 
 import java.util.HashMap;
 import java.util.Map;

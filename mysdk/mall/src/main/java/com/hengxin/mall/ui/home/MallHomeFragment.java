@@ -1,5 +1,6 @@
 package com.hengxin.mall.ui.home;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -20,6 +21,7 @@ import com.hengxin.mall.base.VLRAdapter;
 import com.hengxin.mall.inter.OnCallBackDetail;
 import com.hengxin.mall.manager.CrashBugLinearLayoutManager;
 import com.hengxin.mall.ui.detail.GoodsDetailActivity;
+import com.hengxin.mall.ui.order.MallOrderActivity;
 import com.hengxin.mall.view.AutoClassicsFooter;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.constant.RefreshState;
@@ -94,7 +96,7 @@ public class MallHomeFragment extends BaseFragment implements OnCallBackDetail, 
 
         icClear.setOnClickListener(v -> etSearch.setText(""));
 
-        rootView.findViewById(R.id.tv_order).setOnClickListener(v -> ToastUtils.show(mContext, "订单页面，开发中"));
+        rootView.findViewById(R.id.tv_order).setOnClickListener(v -> mContext.startActivity(new Intent(mContext, MallOrderActivity.class)));
 
         floatingActionButton = rootView.findViewById(R.id.detail_floating_action_src);
         floatingActionButton.setOnClickListener(v -> {

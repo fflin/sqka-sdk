@@ -6,16 +6,10 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
 
-
-import com.alipay.sdk.app.PayTask;
-import com.google.gson.Gson;
-import com.hengxin.basic.util.CommonToastUtils;
 import com.hengxin.basic.util.Log;
 import com.hengxin.basic.util.ToastUtils;
-import com.hengxin.mall.model.AliSignModel;
-import com.hengxin.mall.model.PayResult;
-import com.hengxin.mall.model.PaySign;
-import com.tencent.mm.opensdk.modelpay.PayReq;
+import com.hengxin.pay.model.AliSignModel;
+import com.hengxin.pay.model.PayResult;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -119,14 +113,15 @@ public class PayHelper implements PayContract.PayView {
                 this.payNo = data.pay_no;
                 Log.i("fflin", "debug data = " + data.pay_sign.toString()+";pay_no = "+data.pay_no);
                 final Runnable payRunnable = () -> {
-                    PayTask alipay = new PayTask(mActivity);
+                    // todo 支付调试
+                    /*PayTask alipay = new PayTask(mActivity);
                     Map<String, String> result = alipay.payV2(data.pay_sign.toString(), true);
                     Log.i("msp", result.toString());
 
                     Message msg = new Message();
                     msg.what = SDK_PAY_FLAG;
                     msg.obj = result;
-                    mHandler.sendMessage(msg);
+                    mHandler.sendMessage(msg);*/
                 };
 
                 // 必须异步调用
@@ -134,8 +129,8 @@ public class PayHelper implements PayContract.PayView {
                 payThread.start();
             } else if (payType.equals(TYPE_WX)) {
                 // 微信的pay_no需要单独保存
-//                SharedPrefUtils.setApplyString(SharedPrefUtils.WX_PAY_ORDER_NO,data.pay_no);
-                PayReq request = new PayReq();
+                // todo 支付调试
+                /*PayReq request = new PayReq();
                 Gson gson = new Gson();
                 //这里换成了新的包装类
                 Log.i("fflin","data.pay_sign.toString() = "+data.pay_sign.toString()+";pay_no = "+data.pay_no);
@@ -147,7 +142,7 @@ public class PayHelper implements PayContract.PayView {
                 request.packageValue = "Sign=WXPay";//固定值
                 request.nonceStr= s.noncestr;//随机字符串
                 request.timeStamp= s.timestamp;//时间戳
-                request.sign= s.sign;//签名,不是应用的sign
+                request.sign= s.sign;//签名,不是应用的sign*/
 //                CouponApp.api.sendReq(request);
             }
         }

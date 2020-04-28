@@ -3,7 +3,7 @@ package com.hengxin.mall.ui.pay;
 
 import com.hengxin.mall.base.IBaseView;
 import com.hengxin.mall.base.IPresenter;
-import com.hengxin.mall.model.AliSignModel;
+import com.hengxin.pay.model.AliSignModel;
 
 /**
  * date: 2018/11/2

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--合并订单的item-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_settle_list_item"
+    android:layout_marginBottom="5dp"
+    android:paddingEnd="10dp"
+    android:paddingStart="10dp"
+    android:orientation="vertical">
+
+
+    <include layout="@layout/item_order_layout_shop"/>
+
+    <!--多个订单合并在这个view里  item_order_layout_goods -->
+    <LinearLayout
+        android:id="@+id/order_more_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:id="@+id/order_total_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="10dp"
+            android:textColor="@color/settle_text_black"
+            android:text="应付金额:￥99999.00(含运费:10.00)"/>
+
+    </RelativeLayout>
+
+    <!--多个按钮合并在这个view里-->
+    <RelativeLayout
+        android:id="@+id/order_btn_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"/>
+
+
+
+</LinearLayout>

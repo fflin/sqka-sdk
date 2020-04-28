@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--全部订单，单条 不合并-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_settle_list_item"
+    android:layout_marginBottom="5dp"
+    android:paddingEnd="10dp"
+    android:paddingStart="10dp"
+    android:orientation="vertical">
+
+    <include layout="@layout/item_order_layout_shop"/>
+
+    <include layout="@layout/item_order_layout_goods"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:id="@+id/order_total_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="10dp"
+            android:textColor="@color/settle_text_black"
+            android:text="应付金额:￥99999.00(含运费:10.00)"/>
+
+    </RelativeLayout>
+
+    <!--售后订单才有的提示-->
+    <TextView
+        android:id="@+id/salt_order_notice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/salt_info_bg"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:text="退款成功￥99999.00-- 售后才有"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="15dp"
+        android:gravity="end">
+
+        <TextView
+            android:text="查看订单"
+            android:layout_centerVertical="true"
+            android:paddingEnd="12dp"
+            android:paddingStart="12dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:textColor="@color/white"
+            android:background="@drawable/bg_settle_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

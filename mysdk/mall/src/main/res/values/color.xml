@@ -31,4 +31,5 @@
     <color name="detail_specify_text_1F">#1F1F1F</color>
     <color name="settle_text_black">#161616</color>
     <color name="settle_text_gray">#6A6A6A</color>
+    <color name="order_text_red">#FF0101</color>
 </resources>

@@ -2,7 +2,7 @@ package com.hengxin.mall.net;
 
 
 import com.hengxin.basic.base.BaseResult;
-import com.hengxin.mall.model.AliSignModel;
+import com.hengxin.pay.model.AliSignModel;
 import com.hengxin.mall.model.ConditionListModel;
 import com.hengxin.mall.model.HomeModel;
 import com.hengxin.mall.model.PayChannelModel;

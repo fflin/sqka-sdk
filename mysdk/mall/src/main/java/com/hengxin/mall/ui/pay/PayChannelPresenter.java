@@ -1,11 +1,9 @@
 package com.hengxin.mall.ui.pay;
 
-import com.hengxin.basic.api.ApiHelper;
 import com.hengxin.basic.base.ApiErrorConsumer;
 import com.hengxin.basic.base.BaseResult;
 import com.hengxin.basic.util.RxUtils;
 import com.hengxin.mall.base.BasePresenter;
-import com.hengxin.mall.model.AliSignModel;
 import com.hengxin.mall.model.PayChannelModel;
 
 import java.util.HashMap;
