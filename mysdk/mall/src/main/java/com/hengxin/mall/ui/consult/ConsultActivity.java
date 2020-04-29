@@ -1,7 +1,6 @@
-package com.hengxin.mall.ui.order.consult;
+package com.hengxin.mall.ui.consult;
 
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.widget.TextView;
 
 import com.hengxin.mall.R;
@@ -9,7 +8,7 @@ import com.hengxin.mall.base.BaseActivity;
 import com.hengxin.mall.base.VLRAdapter;
 import com.hengxin.mall.manager.CrashBugLinearLayoutManager;
 import com.hengxin.mall.test.TestUtil;
-import com.hengxin.mall.ui.order.transport.TransportItem;
+import com.hengxin.mall.ui.transport.TransportItem;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
 import java.util.List;

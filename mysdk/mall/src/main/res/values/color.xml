@@ -36,4 +36,6 @@
     <color name="text_black_333">#333333</color>
     <color name="text_black_7C">#7C7C7C</color>
     <color name="trans_line">#F3F3F3</color>
+    <color name="text_black_444">#444444</color>
+    <color name="text_black_78">#787878</color>
 </resources>

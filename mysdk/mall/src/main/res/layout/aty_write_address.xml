@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/goods_detail_bg"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_title" />
+
+    <LinearLayout style="@style/write_trans_parent">
+
+        <TextView
+            style="@style/write_address_left"
+            android:text="收货人：" />
+
+        <EditText
+            android:id="@+id/add_name"
+            style="@style/write_address_right"
+            android:hint="请输入收货人姓名（2-10字）" />
+    </LinearLayout>
+
+    <include layout="@layout/layout_line_1sp" />
+
+    <LinearLayout style="@style/write_trans_parent">
+
+        <TextView
+            style="@style/write_address_left"
+            android:text="手机号码：" />
+
+        <EditText
+            android:id="@+id/write_order"
+            style="@style/write_address_right"
+            android:hint="请输入手机号码" />
+    </LinearLayout>
+
+    <include layout="@layout/layout_line_1sp" />
+
+    <LinearLayout style="@style/write_trans_parent">
+
+        <TextView
+            style="@style/write_address_left"
+            android:text="地址:" />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="7"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/write_address"
+                android:layout_width="wrap_content"
+                style="@style/write_address_right"
+                android:hint="请选择" />
+
+            <ImageView
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/black_right_arrow" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <include layout="@layout/layout_line_1sp" />
+
+    <LinearLayout style="@style/write_trans_parent">
+
+        <TextView
+            style="@style/write_address_left"
+            android:text="详细地址:" />
+
+        <EditText
+            android:id="@+id/write_address_all"
+            style="@style/write_address_right"
+            android:hint="请输入详细地址" />
+    </LinearLayout>
+
+    <include layout="@layout/layout_line_1sp" />
+
+    <LinearLayout style="@style/write_trans_parent">
+
+        <TextView
+            style="@style/write_address_left"
+            android:text="标签：" />
+
+        <LinearLayout
+            android:id="@+id/write_address_tags"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="7">
+
+            <TextView
+                android:id="@+id/write_tag_company"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="公司" />
+
+            <TextView
+                android:id="@+id/write_tag_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="家" />
+
+            <TextView
+                android:id="@+id/write_tag_school"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="学校" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <include layout="@layout/layout_line_1sp" />
+
+    <LinearLayout style="@style/write_trans_parent">
+
+        <TextView
+            style="@style/write_address_left"
+            android:text="设为默认" />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="7">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/write_add_open" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/add_commit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/bg_ask_sale_btn"
+        android:paddingLeft="130dp"
+        android:paddingTop="10dp"
+        android:paddingRight="130dp"
+        android:paddingBottom="10dp"
+        android:text="保存"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+</LinearLayout>

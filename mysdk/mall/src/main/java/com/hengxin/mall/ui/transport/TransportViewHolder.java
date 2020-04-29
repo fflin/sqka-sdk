@@ -1,4 +1,4 @@
-package com.hengxin.mall.ui.order.transport;
+package com.hengxin.mall.ui.transport;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -48,9 +48,9 @@ public class TransportViewHolder extends RecyclerView.ViewHolder {
         }
 
         if (fromTransform) {
-            consultRes.setVisibility(View.VISIBLE);
-        } else {
             consultRes.setVisibility(View.GONE);
+        } else {
+            consultRes.setVisibility(View.VISIBLE);
         }
     }
 }

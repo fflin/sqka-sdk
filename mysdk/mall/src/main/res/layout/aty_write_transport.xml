@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/goods_detail_bg"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_title" />
+
+    <LinearLayout style="@style/write_trans_parent">
+
+        <TextView
+            style="@style/write_trans_left"
+            android:text="物流公司:" />
+
+        <EditText
+            android:id="@+id/write_company"
+            style="@style/write_trans_right"
+            android:hint="输入物流公司名称" />
+    </LinearLayout>
+
+    <include layout="@layout/layout_line_1sp" />
+
+    <LinearLayout style="@style/write_trans_parent">
+
+        <TextView
+            style="@style/write_trans_left"
+            android:text="快递单号:" />
+
+        <EditText
+            android:id="@+id/write_order"
+            style="@style/write_trans_right"
+            android:hint="请输入快递单号" />
+    </LinearLayout>
+
+    <include layout="@layout/layout_line_1sp" />
+
+    <LinearLayout style="@style/write_trans_parent">
+
+        <TextView
+            style="@style/write_trans_left"
+            android:text="联系电话:" />
+
+        <EditText
+            android:id="@+id/write_phone"
+            style="@style/write_trans_right"
+            android:hint="请输入联系电话" />
+    </LinearLayout>
+
+    <include layout="@layout/layout_line_1sp" />
+
+    <LinearLayout
+        style="@style/write_trans_parent"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/write_trans_left"
+            android:text="备注" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bg_edit_text">
+
+            <EditText
+                android:id="@+id/write_edit"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:gravity="left"
+                android:hint="必填，请您详细填写申请说明"
+                android:maxLength="100"
+                android:padding="5dp"
+                android:textColor="@color/detail_pop_88"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/write_notice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:text="0/100" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <include layout="@layout/layout_line_1sp" />
+
+    <LinearLayout
+        style="@style/write_trans_parent"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/write_trans_left"
+            android:text="上传快递凭证图片" />
+
+        <ImageView
+            android:id="@+id/write_upload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/upload_img" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/write_commit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/bg_ask_sale_btn"
+        android:paddingLeft="130dp"
+        android:paddingTop="10dp"
+        android:paddingRight="130dp"
+        android:paddingBottom="10dp"
+        android:text="提交申请"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+</LinearLayout>

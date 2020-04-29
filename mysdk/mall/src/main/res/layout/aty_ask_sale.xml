@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray_color"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_title" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                style="@style/order_info_parent"
+                android:background="@color/white">
+
+                <TextView
+                    style="@style/order_info_left"
+                    android:padding="15dp"
+                    android:text="申请类型:"
+                    android:textColor="@color/text_black_444"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/ask_type"
+                    style="@style/order_info_right"
+                    android:text="点击选择类型"
+                    android:textColor="@color/detail_pop_88"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <include layout="@layout/layout_line_1sp" />
+
+            <LinearLayout
+                style="@style/order_info_parent"
+                android:background="@color/white">
+
+                <TextView
+                    style="@style/order_info_left"
+                    android:padding="15dp"
+                    android:text="申请原因:"
+                    android:textColor="@color/text_black_444"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/ask_reason"
+                    style="@style/order_info_right"
+                    android:text="点击选择原因"
+                    android:textColor="@color/detail_pop_88"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <include layout="@layout/layout_line_5sp" />
+
+            <LinearLayout
+                style="@style/order_info_parent"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingTop="5dp"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    style="@style/order_info_left"
+                    android:padding="15dp"
+                    android:text="问题描述"
+                    android:textColor="@color/text_black_444"
+                    android:textSize="15sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="75dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/bg_edit_text">
+
+                    <EditText
+                        android:id="@+id/ask_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:gravity="left"
+                        android:hint="必填，请您详细填写申请说明"
+                        android:maxLength="100"
+                        android:padding="5dp"
+                        android:textColor="@color/detail_pop_88"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/ask_edit_notice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="true"
+                        android:text="0/100" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <include layout="@layout/layout_line_5sp" />
+
+            <LinearLayout
+                style="@style/order_info_parent"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingTop="5dp"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:id="@+id/ask_photo_num"
+                    style="@style/order_info_left"
+                    android:padding="15dp"
+                    android:text="上传凭证(0/5)"
+                    android:textColor="@color/text_black_444"
+                    android:textSize="15sp" />
+
+                <GridView
+                    android:id="@+id/ask_photo_grid"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:numColumns="4"
+                    android:padding="15dp" />
+            </LinearLayout>
+
+            <include layout="@layout/layout_line_5sp" />
+
+
+            <LinearLayout
+                style="@style/order_info_parent"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingTop="5dp"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    style="@style/order_info_left"
+                    android:padding="15dp"
+                    android:text="联系方式"
+                    android:textColor="@color/text_black_444"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/ask_user_name"
+                    style="@style/order_info_left"
+                    android:paddingStart="15dp"
+                    android:text="联系方式"
+                    android:textColor="@color/text_black_444"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/ask_mobile"
+                    style="@style/order_info_left"
+                    android:paddingStart="15dp"
+                    android:text="联系电话：16789765432"
+                    android:textColor="@color/text_black_444"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/ask_commit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginBottom="40dp"
+                    android:background="@drawable/bg_ask_sale_btn"
+                    android:paddingLeft="130dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="130dp"
+                    android:paddingBottom="10dp"
+                    android:text="提交申请"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

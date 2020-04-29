@@ -50,5 +50,57 @@
         <item name="android:layout_marginStart">10dp</item>
     </style>
 
+    <style name="ask_sale_succ_btn">
+        <item name="android:textSize">15sp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">6dp</item>
+        <item name="android:paddingBottom">6dp</item>
+        <item name="android:paddingStart">20dp</item>
+        <item name="android:paddingEnd">20dp</item>
+        <item name="android:background">@drawable/bg_ask_sale_succ</item>
+        <item name="android:textColor">@color/gradient_start</item>
+    </style>
+
+
+    <style name="write_trans_parent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">15dp</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="write_trans_left">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/text_black_444</item>
+    </style>
+
+    <style name="write_trans_right">
+        <item name="android:background">@null</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+    </style>
+
+    <style name="write_address_left">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">3</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/text_black_444</item>
+    </style>
+
+    <style name="write_address_right">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">7</item>
+        <item name="android:background">@null</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+    </style>
+
 
 </resources>

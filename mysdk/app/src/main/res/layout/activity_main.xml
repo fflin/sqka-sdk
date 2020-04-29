@@ -24,4 +24,22 @@
         android:text="商城购物车"
         android:onClick="toMallCar"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="售后页面"
+        android:onClick="toSaleOut"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="添加收货地址"
+        android:onClick="toWriteAddress"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="收货地址列表"
+        android:onClick="toAddressList"/>
+
 </LinearLayout>

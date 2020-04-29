@@ -10,4 +10,5 @@
     <string name="along_jd">原价 ￥%s</string>
     <string name="along_tao_bao">淘宝价 ￥%s</string>
     <string name="along_pin_duo_duo">拼多多价 ￥%s</string>
+    <string name="ask_sale_info">1.商品寄回地址将在审核通过后以短信形式告知，或在申请记录中查询。\n  2.提交服务单后，售货专员可能与您电话沟通，请保持手机通畅。\n  3.退货处理成功后退款金额将原路返回到您的支付账户中。</string>
 </resources>

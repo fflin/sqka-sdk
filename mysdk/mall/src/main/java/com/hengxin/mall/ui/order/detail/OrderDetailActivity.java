@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.hengxin.mall.R;
 import com.hengxin.mall.base.BaseActivity;
-import com.hengxin.mall.ui.order.transport.TransportActivity;
+import com.hengxin.mall.ui.transport.TransportActivity;
 
 
 /**

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <include layout="@layout/layout_title" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/title_parent"
+        android:layout_marginBottom="50dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/saleout_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/goods_detail_price_current"
+                android:padding="15dp"
+                android:text="退款中"
+                android:textColor="@color/white"
+                android:textSize="17sp" />
+
+
+            <TextView
+                android:id="@+id/saleout_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:text="详情详情详情"
+                android:textColor="@color/settle_text_black"
+                android:textSize="15sp" />
+
+            <include layout="@layout/layout_line_1sp" />
+            <!--俩按钮-->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:padding="15dp">
+
+                <TextView
+                    android:id="@+id/saleout_btn_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_ask_sale_gray"
+                    android:paddingLeft="12dp"
+                    android:paddingTop="4dp"
+                    android:paddingRight="12dp"
+                    android:paddingBottom="4dp"
+                    android:text="按钮一"
+                    android:textColor="@color/settle_text_gray" />
+
+                <TextView
+                    android:id="@+id/saleout_btn_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@+id/saleout_btn_1"
+                    android:background="@drawable/bg_ask_sale_red"
+                    android:paddingLeft="12dp"
+                    android:paddingTop="4dp"
+                    android:paddingRight="12dp"
+                    android:paddingBottom="4dp"
+                    android:text="按钮二"
+                    android:textColor="@color/red_theme" />
+
+            </RelativeLayout>
+
+
+            <include layout="@layout/layout_line_5sp" />
+
+            <RelativeLayout
+                android:id="@+id/consult_parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="协商详情"
+                    android:textColor="@color/settle_text_black"
+                    android:textSize="15sp" />
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="15dp"
+                    android:src="@drawable/black_right_arrow" />
+            </RelativeLayout>
+
+            <include layout="@layout/layout_line_5sp" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5sp"
+                android:background="@color/bg_gray_color" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="20dp"
+                    android:text="退款信息"
+                    android:textColor="@color/settle_text_black"
+                    android:textSize="15sp" />
+
+                <include layout="@layout/item_order_layout_goods" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5sp"
+                android:background="@color/bg_gray_color" />
+
+            <LinearLayout
+                android:id="@+id/order_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingLeft="15dp">
+
+                <LinearLayout style="@style/order_info_parent">
+
+                    <TextView
+                        style="@style/order_info_left"
+                        android:text="售后类型:" />
+
+                    <TextView
+                        android:id="@+id/detail_order_id"
+                        style="@style/order_info_right"
+                        android:text="672377784384823848" />
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/order_info_parent">
+
+                    <TextView
+                        style="@style/order_info_left"
+                        android:text="退款原因：" />
+
+                    <TextView
+                        android:id="@+id/detail_order_pay"
+                        style="@style/order_info_right"
+                        android:text="672377784384823848" />
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/order_info_parent">
+
+                    <TextView
+                        style="@style/order_info_left"
+                        android:text="退款金额:" />
+
+                    <TextView
+                        android:id="@+id/detail_trans_time"
+                        style="@style/order_info_right"
+                        android:text="672377784384823848" />
+
+                </LinearLayout>
+
+
+                <LinearLayout style="@style/order_info_parent">
+
+                    <TextView
+                        style="@style/order_info_left"
+                        android:text="下单时间:" />
+
+                    <TextView
+                        android:id="@+id/detail_pay_time"
+                        style="@style/order_info_right"
+                        android:text="672377784384823848" />
+
+                </LinearLayout>
+
+
+                <LinearLayout style="@style/order_info_parent">
+
+                    <TextView
+                        style="@style/order_info_left"
+                        android:text="退款编号:" />
+
+                    <TextView
+                        android:id="@+id/detail_trans_pay"
+                        style="@style/order_info_right"
+                        android:text="672377784384823848" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
