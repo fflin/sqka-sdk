@@ -25,6 +25,8 @@
         <activity android:name="com.hengxin.mall.ui.pay.PayChannelActivity"/>
         <activity android:name="com.hengxin.mall.ui.order.MallOrderActivity"/>
         <activity android:name="com.hengxin.mall.test.TestActivity"/>
+        <activity android:name="com.hengxin.mall.ui.order.detail.OrderDetailActivity"/>
+        <activity android:name="com.hengxin.mall.ui.order.transport.TransportActivity"/>
 
     </application>
 

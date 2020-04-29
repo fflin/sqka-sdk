@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.hengxin.mall.ui.home.MallHomeActivity;
+import com.hengxin.mall.ui.order.detail.OrderDetailActivity;
 
 /**
  * author : fflin
@@ -25,6 +26,10 @@ public class MallInitRouter {
                 break;
 
             case 2:
+                break;
+
+            case 4:
+                OrderDetailActivity.startOrderDetailAty(mContext,"123");
                 break;
         }
     }

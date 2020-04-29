@@ -32,4 +32,8 @@
     <color name="settle_text_black">#161616</color>
     <color name="settle_text_gray">#6A6A6A</color>
     <color name="order_text_red">#FF0101</color>
+    <color name="transport_bg">#F4F4F4</color>
+    <color name="text_black_333">#333333</color>
+    <color name="text_black_7C">#7C7C7C</color>
+    <color name="trans_line">#F3F3F3</color>
 </resources>

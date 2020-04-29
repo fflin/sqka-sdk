@@ -11,5 +11,6 @@ public class MallPageIndex {
     public static int MallMainPage = 1;
     public static int MallOrderPage = 2;
     public static int MallCarPage = 3;
+    public static int MallOrderDetail = 4;
 
 }

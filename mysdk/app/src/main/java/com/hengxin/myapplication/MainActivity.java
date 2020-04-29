@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void toMallOrderList(View view) {
-        MallInitHelper.getHelper().toMallPage(MallPageIndex.MallOrderPage);
+        MallInitHelper.getHelper().toMallPage(MallPageIndex.MallOrderDetail);
     }
 
     public void toMallCar(View view) {

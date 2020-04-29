@@ -15,7 +15,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="商城订单"
+        android:text="订单详情"
         android:onClick="toMallOrderList"/>
 
     <Button

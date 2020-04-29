@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_margin="15dp">
+
+    <com.hengxin.mall.view.RoundImageView
+        android:id="@+id/goods_img"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/slogan"
+        app:cornerRadius="4dp"
+        app:type="round" />
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="10dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/transport_company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="华为P40全网通至w尊版通至尊版通至尊版华为P40全网通至w尊版通至尊版通至尊版华为P40全网通至w尊版通至尊版通至尊版"
+            android:textColor="@color/settle_text_black"
+            android:textSize="14sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/transport_company">
+            <TextView
+                android:id="@+id/transport_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:layout_centerVertical="true"
+                android:text="8+128g，五彩斑斓"
+                android:textColor="@color/settle_text_gray"
+                android:textSize="12sp"/>
+
+            <ImageView
+                android:id="@+id/copy"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/transport_order"
+                android:src="@drawable/copy"/>
+
+        </RelativeLayout>
+
+
+
+
+    </RelativeLayout>
+</LinearLayout>
