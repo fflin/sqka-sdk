@@ -32,32 +32,18 @@
                 android:layout_weight="1.0"
                 android:background="@drawable/bg_activity_search">
 
-                <EditText
+                <TextView
                     android:id="@+id/et_search"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="27.0dip"
-                    android:background="@null"
                     android:drawableLeft="@drawable/ic_title_bar_edit_glass_gray"
                     android:drawablePadding="6.0dip"
-                    android:ellipsize="end"
-                    android:hint="搜索想要购买的商品"
-                    android:imeOptions="actionSearch"
+                    android:text="搜索想要购买的商品"
                     android:paddingLeft="10.0dip"
-                    android:singleLine="true"
-                    android:textColor="@color/cp_text_desc"
-                    android:textColorHint="#ff999999"
-                    android:textCursorDrawable="@null"
+                    android:textColor="@color/text_black_444"
+                    android:gravity="center|left"
                     android:textSize="13sp" />
 
-                <ImageView
-                    android:id="@+id/iv_clear"
-                    android:layout_width="27.0dip"
-                    android:layout_height="fill_parent"
-                    android:layout_gravity="center|right"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/btn_search_delete_click"
-                    android:visibility="invisible" />
             </FrameLayout>
 
             <TextView

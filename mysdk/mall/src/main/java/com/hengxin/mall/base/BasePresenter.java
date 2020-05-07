@@ -54,7 +54,6 @@ public abstract class BasePresenter<T extends IBaseView> implements IPresenter<T
     public void onDetach() {
         if (!mDisposable.isDisposed()) {
             mDisposable.dispose();
-            Log.i("fflin","--------------------- dispose 11 ");
         }
         mView = null;
     }
@@ -63,7 +62,6 @@ public abstract class BasePresenter<T extends IBaseView> implements IPresenter<T
     public void onDestroy(LifecycleOwner owner) {
         if (mDisposable != null && !mDisposable.isDisposed()) {
             mDisposable.dispose();
-            Log.i("fflin","--------------------- dispose 22 ");
         }
         mView = null;
     }

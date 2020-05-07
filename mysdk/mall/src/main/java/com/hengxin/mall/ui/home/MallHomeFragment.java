@@ -23,6 +23,7 @@ import com.hengxin.mall.manager.CrashBugLinearLayoutManager;
 import com.hengxin.mall.test.TestActivity;
 import com.hengxin.mall.ui.detail.GoodsDetailActivity;
 import com.hengxin.mall.ui.order.MallOrderActivity;
+import com.hengxin.mall.ui.search.SearchActivity;
 import com.hengxin.mall.view.AutoClassicsFooter;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.constant.RefreshState;
@@ -76,26 +77,12 @@ public class MallHomeFragment extends BaseFragment implements OnCallBackDetail, 
     protected void initView(View rootView) {
         this.rootView = rootView;
         rootView.findViewById(R.id.activity_search_back).setOnClickListener(v -> mActivity.finish());
-        EditText etSearch = rootView.findViewById(R.id.et_search);
-        View icClear = rootView.findViewById(R.id.iv_clear);
-        etSearch.addTextChangedListener(new TextWatcher() {
+        rootView.findViewById(R.id.et_search).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                icClear.setVisibility(s.length() > 0 ? View.VISIBLE : View.INVISIBLE);
+            public void onClick(View v) {
+                mContext.startActivity(new Intent(mContext, SearchActivity.class));
             }
         });
-
-        icClear.setOnClickListener(v -> etSearch.setText(""));
 
         rootView.findViewById(R.id.tv_order).setOnClickListener(v -> mContext.startActivity(new Intent(mContext, MallOrderActivity.class)));
 

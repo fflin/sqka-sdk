@@ -91,10 +91,8 @@ public final class RxUtils {
             @Override
             public ObservableSource<T> apply(Observable<T> upstream) {
                 try {
-                    Log.i("fflin","-------------- upstream "+upstream.toString());
                     return upstream.map(new GsonFactoryFuncResult<T>()).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).unsubscribeOn(Schedulers.io());
                 } catch (Exception e) {
-                    Log.i("fflin","-------------- upstream exc"+e.getMessage());
                     e.printStackTrace();
                     return null;
                 }

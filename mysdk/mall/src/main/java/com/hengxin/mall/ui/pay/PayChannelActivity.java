@@ -77,7 +77,7 @@ public class PayChannelActivity extends BaseActivity implements PayChannelConstr
 
     @Override
     protected int setLayout() {
-        return R.layout.activity_pay_page;
+        return R.layout.aty_pay_page;
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.hengxin.mall.net;
 
 
 import com.hengxin.basic.base.BaseResult;
+import com.hengxin.mall.model.TagModel;
 import com.hengxin.pay.model.AliSignModel;
 import com.hengxin.mall.model.ConditionListModel;
 import com.hengxin.mall.model.HomeModel;
@@ -48,5 +49,8 @@ public interface IApiService {
 
     @GET("{path}/api/order/pay/sign")
     Observable<BaseResult<AliSignModel>> getAliSign(@Path(value = "path", encoded = true) String servicesHost, @QueryMap Map<String, String> map);
+
+    @GET("/api/search/hotwords")
+    Observable<BaseResult<TagModel>> requestHotSearch(@QueryMap Map<String, String> map);
 
 }
