@@ -8,17 +8,13 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import com.google.gson.Gson;
 import com.hengxin.basic.RxBus;
 import com.hengxin.basic.util.ToastUtils;
 import com.hengxin.mall.R;
 import com.hengxin.mall.base.BaseActivity;
 import com.hengxin.mall.event.SearchEventModel;
-import com.hengxin.mall.ui.order.MallOrderAllFragment;
-import com.hengxin.mall.ui.order.MallOrderSaleFragment;
 
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;

@@ -112,20 +112,21 @@ public class PayChannelActivity extends BaseActivity implements PayChannelConstr
         PayChannel channel = new PayChannel();
         channel.channel = "支付宝";
         channel.channel_type = "ali";
-        channel.status = 0;
+        channel.status = 1;
         channel.isChecked = true;
         list.add(channel);
 
         PayChannel wxchannel = new PayChannel();
         wxchannel.channel = "微信";
         wxchannel.channel_type = "wx";
-        wxchannel.status = 0;
+        wxchannel.status = 1;
         channel.isChecked = true;
         list.add(wxchannel);
 
         for (int i = 0; i < list.size(); i++) {
             PayChannel c = list.get(i);
-            if (c.status == 0) {
+            // status 1表示显示
+            if (c.status == 1) {
                 View view = LayoutInflater.from(PayChannelActivity.this).inflate(R.layout.item_pay_channel, null);
                 ImageView imgIcon = view.findViewById(R.id.pay_icon);
                 ImageView imgRightIcon = view.findViewById(R.id.pay_right_img);

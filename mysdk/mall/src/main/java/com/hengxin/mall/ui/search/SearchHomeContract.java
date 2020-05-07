@@ -7,20 +7,16 @@ import com.hengxin.mall.model.TagModel;
 /**
  * author : fflin
  * date   : 2020/5/6 16:03
- * desc   :
+ * desc   : 搜索主页接口，展示热搜词
  * version: 1.0
  */
-public interface SearchContract {
+public interface SearchHomeContract {
 
     interface View extends IBaseView {
         void getHotWordsSucc(TagModel data);
-        void getSearchResultSucc();
-
     }
 
     interface Presenter extends IPresenter<View> {
         void getHotWords();
-
-        void startToSearch(String words);
     }
 }

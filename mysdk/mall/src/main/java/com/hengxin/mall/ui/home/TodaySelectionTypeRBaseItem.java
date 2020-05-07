@@ -276,8 +276,8 @@ public class TodaySelectionTypeRBaseItem extends RBaseItem {
                 break;
             case lifecouponType:
             case couponType: {
-                layoutid = R.layout.view_alonel_list_item;//券布局
-//                layoutid = R.layout.view_coupon_item;
+                layoutid = R.layout.mall_alone_list_item;//券布局
+//                layoutid = R.layout.mall_column_item;
             }
             break;
             case threeImageType:

@@ -53,7 +53,7 @@ public class TwoColumnAdapter extends BaseAdapter {
         final ItemViewHolder holder;
         if (convertView == null) {
             LayoutInflater inflater = ((Activity) mContext).getLayoutInflater();
-            convertView = inflater.inflate(R.layout.view_coupon_item, parent, false);
+            convertView = inflater.inflate(R.layout.mall_column_item, parent, false);
             holder = new ItemViewHolder(convertView);
             convertView.setTag(holder);
         } else {

@@ -54,11 +54,36 @@
             android:textSize="14.5sp" />
 
         <TextView
-            android:id="@+id/coupon_item_good_old_price"
+            android:visibility="invisible"
+            android:id="@+id/coupon_after"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/coupon_item_good_title"
+            android:layout_alignLeft="@id/coupon_item_good_old_price"
+            android:layout_marginTop="6dp"
+            android:gravity="center"
+            android:textColor="@color/fragment_select_home_yes_txt_color"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/coupon_item_good_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/coupon_after"
+            android:layout_marginBottom="5dp"
+            android:layout_toRightOf="@id/coupon_after"
+            android:gravity="center"
+            android:text="1233.99"
+            android:layout_below="@id/coupon_item_good_title"
+            android:textColor="@color/fragment_select_home_yes_txt_color"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/coupon_item_good_old_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="2.0dip"
+            android:layout_below="@+id/coupon_item_good_price"
             android:text="¥ 1233.99"
             android:textColor="@color/view_mine_home_head_small_item_title_color"
             android:textSize="11.5sp" />
@@ -85,31 +110,10 @@
             android:layout_alignParentRight="true"
             android:text="月销9999"
             android:textColor="@color/view_mine_home_head_small_item_title_color"
-            android:textSize="11.5sp" />
+            android:textSize="11.5sp"
+            android:visibility="gone" />
 
-        <TextView
-            android:id="@+id/coupon_after"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/coupon_item_good_old_price"
-            android:layout_alignLeft="@id/coupon_item_good_old_price"
-            android:layout_marginTop="6dp"
-            android:gravity="center"
-            android:text="券后¥ "
-            android:textColor="@color/fragment_select_home_yes_txt_color"
-            android:textSize="10sp" />
 
-        <TextView
-            android:id="@+id/coupon_item_good_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@id/coupon_after"
-            android:layout_marginBottom="5dp"
-            android:layout_toRightOf="@id/coupon_after"
-            android:gravity="center"
-            android:text="1233.99"
-            android:textColor="@color/fragment_select_home_yes_txt_color"
-            android:textSize="15sp" />
 
     </RelativeLayout>
 
@@ -127,11 +131,6 @@
         android:paddingBottom="4dp"
         android:text="可抵扣0元"
         android:textColor="@color/white"
-        android:textSize="15sp" />
-    <!--<View-->
-    <!--android:id="@+id/view_home_guess_like_item_belowLineV"-->
-    <!--android:layout_width="fill_parent"-->
-    <!--android:layout_height="5.0dip"-->
-    <!--android:visibility="gone"-->
-    <!--android:background="@color/view_mine_home_head_line_color" />-->
+        android:textSize="15sp"
+        android:visibility="gone" />
 </LinearLayout>

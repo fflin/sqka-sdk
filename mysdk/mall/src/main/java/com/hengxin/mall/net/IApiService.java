@@ -53,4 +53,10 @@ public interface IApiService {
     @GET("/api/search/hotwords")
     Observable<BaseResult<TagModel>> requestHotSearch(@QueryMap Map<String, String> map);
 
+    /**
+     * 搜索
+     */
+    @GET("/api/search/coupon")
+    Observable<BaseResult<ConditionListModel>> search(@QueryMap Map<String, String> map);
+
 }

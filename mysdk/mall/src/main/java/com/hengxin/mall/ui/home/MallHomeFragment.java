@@ -2,16 +2,10 @@ package com.hengxin.mall.ui.home;
 
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.hengxin.basic.base.BaseResult;
-import com.hengxin.mall.model.ConditionListModel;
-import com.hengxin.mall.model.CouponModel;
-import com.hengxin.mall.model.HomeModel;
 import com.hengxin.basic.util.Log;
 import com.hengxin.basic.util.NetworkUtils;
 import com.hengxin.basic.util.ToastUtils;
@@ -20,7 +14,9 @@ import com.hengxin.mall.base.BaseFragment;
 import com.hengxin.mall.base.VLRAdapter;
 import com.hengxin.mall.inter.OnCallBackDetail;
 import com.hengxin.mall.manager.CrashBugLinearLayoutManager;
-import com.hengxin.mall.test.TestActivity;
+import com.hengxin.mall.model.ConditionListModel;
+import com.hengxin.mall.model.CouponModel;
+import com.hengxin.mall.model.HomeModel;
 import com.hengxin.mall.ui.detail.GoodsDetailActivity;
 import com.hengxin.mall.ui.order.MallOrderActivity;
 import com.hengxin.mall.ui.search.SearchActivity;

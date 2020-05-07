@@ -79,37 +79,6 @@
                 android:textSize="13.5sp" />
         </RelativeLayout>
 
-        <!--<TextView-->
-        <!--android:id="@+id/estimate_commi"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="18.0dip"-->
-        <!--android:layout_alignLeft="@id/view_detail_list_item_titleRl"-->
-        <!--android:layout_below="@id/view_detail_list_item_titleRl"-->
-        <!--android:layout_marginTop="5.0dip"-->
-        <!--android:background="@drawable/radius_earn_sum_bg"-->
-        <!--android:gravity="center"-->
-        <!--android:paddingLeft="8.0dip"-->
-        <!--android:paddingRight="8.0dip"-->
-        <!--android:text="分享赚:￥110.99"-->
-        <!--android:textColor="@color/earn_sum_txt_color"-->
-        <!--android:textSize="11.5sp" />-->
-
-        <!--<TextView-->
-        <!--android:id="@+id/commission_rate"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="18.0dip"-->
-        <!--android:layout_below="@id/view_detail_list_item_titleRl"-->
-        <!--android:layout_marginRight="10dp"-->
-        <!--android:layout_marginTop="5.0dip"-->
-        <!--android:layout_toRightOf="@id/estimate_commi"-->
-        <!--android:gravity="center"-->
-        <!--android:paddingLeft="8.0dip"-->
-        <!--android:paddingRight="8.0dip"-->
-        <!--android:text="分享赚:80%"-->
-        <!--android:textColor="#0dd995"-->
-        <!--android:textSize="11.5sp"-->
-        <!--android:visibility="gone" />-->
-
         <ImageView
             android:id="@+id/coupon_item_good_price_after"
             android:layout_width="wrap_content"
@@ -118,19 +87,8 @@
             android:layout_alignLeft="@id/view_detail_list_item_titleRl"
             android:layout_marginBottom="5.0dip"
             android:gravity="center"
+            android:visibility="gone"
             android:src="@drawable/page_sc_gapprice" />
-
-        <TextView
-            android:id="@+id/coupon_item_good_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@id/coupon_item_good_old_price"
-            android:layout_marginBottom="1.0dip"
-            android:layout_toRightOf="@id/coupon_item_good_price_after"
-            android:gravity="center"
-            android:text=" ￥233.99"
-            android:textColor="@color/fragment_select_home_yes_txt_color"
-            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/coupon_item_good_old_price"
@@ -143,18 +101,33 @@
             android:textColor="@color/view_mine_home_head_small_item_title_color"
             android:textSize="11.5sp" />
 
+
+        <TextView
+            android:id="@+id/coupon_item_good_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/coupon_item_good_old_price"
+            android:layout_marginBottom="1.0dip"
+            android:layout_alignLeft="@id/view_detail_list_item_titleRl"
+            android:gravity="center"
+            android:text=" ￥233.99"
+            android:textColor="@color/fragment_select_home_yes_txt_color"
+            android:textSize="18sp" />
+
+
         <TextView
             android:id="@+id/tvSalesCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@id/coupon_item_good_price"
+            android:layout_alignTop="@id/coupon_item_good_old_price"
             android:layout_alignRight="@id/coupon_item_coupon_price"
             android:layout_marginLeft="7.0dip"
             android:layout_marginRight="5.0dip"
             android:paddingTop="5dp"
             android:text="月销9999"
             android:textColor="@color/view_mine_home_head_small_item_title_color"
-            android:textSize="11.5sp" />
+            android:textSize="11.5sp"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/coupon_item_coupon_price"
@@ -170,7 +143,8 @@
             android:padding="5dp"
             android:text="可抵扣100元"
             android:textColor="@color/white"
-            android:textSize="13sp" />
+            android:textSize="13sp"
+            android:visibility="gone"/>
     </RelativeLayout>
 
 

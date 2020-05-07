@@ -28,7 +28,7 @@ import java.util.List;
  * desc   : 搜索历史和推荐
  * version: 1.0
  */
-public class SearchHomeFragment extends BaseFragment implements SearchContract.View {
+public class SearchHomeFragment extends BaseFragment implements SearchHomeContract.View {
 
 
     private LinearLayout hisParent, hotParent;//历史
@@ -45,7 +45,7 @@ public class SearchHomeFragment extends BaseFragment implements SearchContract.V
         searchSpHelper = new SearchSpHelper();
         setHistoryView();
         // 网络请求获取热搜
-        SearchPresenter presenter = new SearchPresenter();
+        SearchHomePresenter presenter = new SearchHomePresenter();
         presenter.onAttach(this);
         presenter.getHotWords();
 
@@ -127,11 +127,6 @@ public class SearchHomeFragment extends BaseFragment implements SearchContract.V
             hotList.add(tag.title);
         }
         setFlexBoxViewData(hotFlex, hotParent, hotList);
-    }
-
-    @Override
-    public void getSearchResultSucc() {
-
     }
 
     @Override

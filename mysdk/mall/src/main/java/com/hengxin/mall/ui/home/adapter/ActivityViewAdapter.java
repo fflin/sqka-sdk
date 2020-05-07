@@ -35,7 +35,7 @@ public class ActivityViewAdapter extends RecyclerView.Adapter<AloneCouponListVie
     @NonNull
     @Override
     public AloneCouponListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.view_alonel_list_item,parent,false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.mall_alone_list_item,parent,false);
         AloneCouponListViewHolder holder = new AloneCouponListViewHolder(view, mContext);
         holder.setOnCallBackDetail(mLister);
         return holder;
