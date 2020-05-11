@@ -1,7 +1,10 @@
 package com.hengxin.mall.ui.search;
 
+import android.support.v4.app.Fragment;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -15,6 +18,7 @@ import com.hengxin.mall.model.TagModel;
 import com.hengxin.mall.ui.search.adapter.SearchResultAdapter;
 import com.hengxin.mall.ui.search.adapter.SearchResultHotAdapter;
 import com.hengxin.mall.ui.search.helper.ResultDataHelper;
+import com.hengxin.mall.ui.search.inter.OnFilterClickListener;
 import com.hengxin.mall.ui.search.inter.OnHotWordsClick;
 import com.hengxin.mall.ui.search.inter.OnResultTopClick;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -27,7 +31,7 @@ import java.util.List;
  * desc   : 搜索结果页面 顶部加一块区域 一行存放销量等 一行展示热搜(横向rv)  https://suggest.taobao.com/sug?code=utf-8&q=%E8%BF%90%E5%8A%A8%E6%9C%8D%E9%A5%B0
  * version: 1.0
  */
-public class SearchResultFragment extends BaseFragment implements SearchResultContract.View, OnHotWordsClick, OnResultTopClick {
+public class SearchResultFragment extends BaseFragment implements SearchResultContract.View, OnHotWordsClick, OnResultTopClick, OnFilterClickListener {
 
     private SmartRefreshLayout smartRefreshLayout;
     private RecyclerView topRv, resultRv;
@@ -39,6 +43,8 @@ public class SearchResultFragment extends BaseFragment implements SearchResultCo
     private SearchResultAdapter resultAdapter;
     private CrashBugGridLayoutManager resultLinearManager;
     private String mKeyWords;
+    private DrawerLayout drawerLayout;
+    private SearchFilterFragment filterFragment;
 
     @Override
     protected int setLayout() {
@@ -54,6 +60,9 @@ public class SearchResultFragment extends BaseFragment implements SearchResultCo
         if (dataHelper == null) {
             dataHelper = new ResultDataHelper();
         }
+
+        filterFragment = (SearchFilterFragment) getChildFragmentManager().findFragmentById(R.id.filter_layout);
+        if (filterFragment != null) filterFragment.setOnFilterClick(this);
     }
 
     @Override
@@ -63,6 +72,7 @@ public class SearchResultFragment extends BaseFragment implements SearchResultCo
         smartRefreshLayout = mRootView.findViewById(R.id.smart_refresh_layout);
         resultRv = mRootView.findViewById(R.id.result_recycler_view);
         topLine = mRootView.findViewById(R.id.top_line);
+        drawerLayout = mRootView.findViewById(R.id.search_drawer_layout);
 
         CrashBugLinearLayoutManager manager = new CrashBugLinearLayoutManager(mContext);
         manager.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -170,6 +180,20 @@ public class SearchResultFragment extends BaseFragment implements SearchResultCo
 
     @Override
     public void onFilterClick(View view) {
+        // 筛选点击
+        if (drawerLayout.isDrawerOpen(Gravity.END)) {
+            drawerLayout.closeDrawer(Gravity.END);
+        } else {
+            drawerLayout.openDrawer(Gravity.END);
+        }
 
+    }
+
+    @Override
+    public void onFilterClick(String price, String brand) {
+        if (drawerLayout.isDrawerOpen(Gravity.END)) {
+            drawerLayout.closeDrawer(Gravity.END);
+        }
+        ToastUtils.show(mContext,"brand = "+brand);
     }
 }

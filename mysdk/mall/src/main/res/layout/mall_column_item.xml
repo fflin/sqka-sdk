@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/hs_white"
     android:orientation="vertical">
 
@@ -9,12 +10,13 @@
         android:layout_width="wrap_content"
         android:layout_height="180.0dip">
 
-        <ImageView
+        <com.hengxin.mall.view.RoundImageView
             android:id="@+id/coupon_item_pic"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:adjustViewBounds="true"
             android:scaleType="fitXY"
+            app:type="round"
             android:src="@drawable/image_cover" />
 
         <ImageView

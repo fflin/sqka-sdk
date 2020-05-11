@@ -1,17 +1,20 @@
 package com.hengxin.mall.ui.home.viewholder;
 
 import android.content.Context;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.hengxin.mall.R;
 import com.hengxin.mall.inter.OnCallBackDetail;
 import com.hengxin.mall.model.CouponNewModel;
 import com.hengxin.mall.utils.ConstantUtil;
+import com.hengxin.mall.view.RoundImageView;
 
 import java.text.DecimalFormat;
 
@@ -21,7 +24,7 @@ import java.text.DecimalFormat;
 
 public class AloneCouponListViewHolder extends RecyclerView.ViewHolder {
     private static final DecimalFormat decimalFormat = new DecimalFormat("#.#");
-    SimpleDraweeView coupon_item_pic;
+    RoundImageView coupon_item_pic;
     TextView coupon_item_good_title;
     TextView coupon_item_coupon_price;
     TextView coupon_item_good_price, itemList;
@@ -109,7 +112,8 @@ public class AloneCouponListViewHolder extends RecyclerView.ViewHolder {
     private void updateView(CouponNewModel item1) {
         if (item1 == null) return;
         if (item1.coupon_mall_type == ConstantUtil.TAOBAOTYPE) {
-            coupon_item_pic.setImageURI(item1.pict_url + "_400x400");
+//            coupon_item_pic.setImageURI(Uri.parse(item1.pict_url + "_400x400"));
+            Glide.with(mContext).load(item1.pict_url + "_400x400").into(coupon_item_pic);
             if (item1.is_tmall) {
                 iconTv.setImageResource(R.drawable.view_home_guess_like_item_tmall_icon);
                 coupon_item_good_old_price.setText(String.format(mContext.getString(R.string.along_tian_mao), item1.old_price));
@@ -119,12 +123,14 @@ public class AloneCouponListViewHolder extends RecyclerView.ViewHolder {
             }
             couponAfterIv.setImageResource(item1.has_coupon ? R.drawable.page_sc_gapprice : R.drawable.page_sc_gapprice_zk);
         } else if (item1.coupon_mall_type == ConstantUtil.PINDUODUOTYPE) {
-            coupon_item_pic.setImageURI(item1.pict_url);
+//            coupon_item_pic.setImageURI(Uri.parse(item1.pict_url));
+            Glide.with(mContext).load(item1.pict_url).into(coupon_item_pic);
             iconTv.setImageResource(R.drawable.icon_t_pin);
             coupon_item_good_old_price.setText(String.format(mContext.getString(R.string.along_pin_duo_duo), item1.old_price));
             couponAfterIv.setImageResource(R.drawable.pin_duo_gapprice);
         } else {
-            coupon_item_pic.setImageURI(item1.pict_url);
+//            coupon_item_pic.setImageURI(Uri.parse(item1.pict_url));
+            Glide.with(mContext).load(item1.pict_url).into(coupon_item_pic);
             iconTv.setImageResource(R.drawable.jd_icon);
             coupon_item_good_old_price.setText(String.format(mContext.getString(R.string.along_jd), item1.old_price));
             couponAfterIv.setImageResource(item1.has_coupon ? R.drawable.page_sc_gapprice : R.drawable.page_sc_gapprice_zk);

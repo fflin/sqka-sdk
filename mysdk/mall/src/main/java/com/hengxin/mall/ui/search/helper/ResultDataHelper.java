@@ -1,6 +1,7 @@
 package com.hengxin.mall.ui.search.helper;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -59,6 +60,18 @@ public class ResultDataHelper {
                     public void onClick(View v) {
                         v.setTag(bean);
                         onClick.onSortClick(v);
+                        updateView(outLinear);
+                    }
+
+                    private void updateView(LinearLayout outLinear) {
+                        int childCount = outLinear.getChildCount();
+                        if (childCount == 2) {
+                            TextView textView = (TextView) outLinear.getChildAt(0);
+                            textView.setSelected(true);
+                            ImageView imageView1 = (ImageView) outLinear.getChildAt(1);
+                            imageView1.setImageResource(R.drawable.ic_sort_price_asc);
+//                            imageView1.setImageResource(R.drawable.ic_sort_price_desc);
+                        }
                     }
                 });
             } else {
@@ -112,7 +125,8 @@ public class ResultDataHelper {
         textView.setText(text);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
         textView.setGravity(Gravity.CENTER);
-        textView.setTextColor(context.getResources().getColor(R.color.title_color));
+        ColorStateList csl = context.getResources().getColorStateList(R.color.selector_color_sort);
+        textView.setTextColor(csl);
         return textView;
     }
 
