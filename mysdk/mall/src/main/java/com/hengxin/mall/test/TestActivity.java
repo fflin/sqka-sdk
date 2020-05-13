@@ -1,7 +1,9 @@
 package com.hengxin.mall.test;
 
+import android.os.SystemClock;
 import android.support.v7.widget.RecyclerView;
 
+import com.hengxin.basic.util.Log;
 import com.hengxin.mall.R;
 import com.hengxin.mall.base.BaseActivity;
 import com.hengxin.mall.base.VLRAdapter;

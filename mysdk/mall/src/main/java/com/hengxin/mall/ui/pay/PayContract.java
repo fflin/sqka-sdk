@@ -16,6 +16,6 @@ public interface PayContract {
 
     interface IPayPresenter extends IPresenter<PayView> {
 
-        void getAliSign(String subject, String totalAmount);
+        void getPaySign(String subject, String totalAmount);
     }
 }

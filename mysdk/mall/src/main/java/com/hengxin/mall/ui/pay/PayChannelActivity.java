@@ -18,6 +18,7 @@ import com.hengxin.mall.R;
 import com.hengxin.mall.base.BaseActivity;
 import com.hengxin.mall.model.PayChannel;
 import com.hengxin.mall.model.PayChannelModel;
+import com.hengxin.pay.model.IPayResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,9 +69,12 @@ public class PayChannelActivity extends BaseActivity implements PayChannelConstr
             public void onClick(View v) {
                 // 拉起微信 支付宝支付
                 ToastUtils.show(PayChannelActivity.this,checkedChannel);
-
-
-
+                new PayHelper(PayChannelActivity.this).payOrder("{\"title\":\"\",\"price\":100,\"pay_types\":\"ali\",\"order_id\":\"13202005121049411620021\"}", new IPayResult() {
+                    @Override
+                    public void onPayResult(String payResult, String payNo, String errorCode) {
+                        Log.i("fflin","payResult = "+payResult+"; "+payNo+"; "+errorCode);
+                    }
+                });
             }
         });
     }
@@ -108,6 +112,9 @@ public class PayChannelActivity extends BaseActivity implements PayChannelConstr
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void setTextData() {
+        if (payChannelParent.getChildCount() > 0) {
+            payChannelParent.removeAllViews();
+        }
         List<PayChannel> list = new ArrayList<>();
         PayChannel channel = new PayChannel();
         channel.channel = "支付宝";
@@ -136,6 +143,7 @@ public class PayChannelActivity extends BaseActivity implements PayChannelConstr
                 view.findViewById(R.id.pay_item_parent).setOnClickListener(v -> {
                     c.isChecked = true;
                     checkedChannel = c.channel_type;
+                    setTextData();
                     }
                 );
                 if (c.isChecked) {

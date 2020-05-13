@@ -15,12 +15,12 @@ import io.reactivex.functions.Consumer;
 /**
  * author : fflin
  * date   : 2019/9/30 15:31
- * desc   : 获取支付宝签名
+ * desc   : 通过订单id获取支付签名
  * version: 1.0
  */
 public class PayPresenter extends BasePresenter<PayContract.PayView> implements PayContract.IPayPresenter {
     @Override
-    public void getAliSign(String type, String orderId) {
+    public void getPaySign(String type, String orderId) {
         Map<String, String> map = new HashMap<>();
         map.put("type",type);
         map.put("order_id",orderId);
