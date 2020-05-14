@@ -1,9 +1,10 @@
 package com.hengxin.mall.ui.search;
 
-import android.support.v4.app.Fragment;
+import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -14,6 +15,7 @@ import com.hengxin.mall.base.BaseFragment;
 import com.hengxin.mall.manager.CrashBugGridLayoutManager;
 import com.hengxin.mall.manager.CrashBugLinearLayoutManager;
 import com.hengxin.mall.model.ConditionListModel;
+import com.hengxin.mall.model.CouponNewModel;
 import com.hengxin.mall.model.TagModel;
 import com.hengxin.mall.ui.search.adapter.SearchResultAdapter;
 import com.hengxin.mall.ui.search.adapter.SearchResultHotAdapter;
@@ -21,8 +23,11 @@ import com.hengxin.mall.ui.search.helper.ResultDataHelper;
 import com.hengxin.mall.ui.search.inter.OnFilterClickListener;
 import com.hengxin.mall.ui.search.inter.OnHotWordsClick;
 import com.hengxin.mall.ui.search.inter.OnResultTopClick;
+import com.hengxin.mall.utils.ViewUtil;
+import com.hengxin.mall.view.SpaceItemDecoration;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -45,6 +50,18 @@ public class SearchResultFragment extends BaseFragment implements SearchResultCo
     private String mKeyWords;
     private DrawerLayout drawerLayout;
     private SearchFilterFragment filterFragment;
+    private static final String searchArg = "searchKey";
+    private int pageNo = 1;
+    private String initParam = "0";
+    private List<ConditionListModel.SortList> sortList;
+
+    public static SearchResultFragment instantiate(String keyword) {
+        SearchResultFragment fragment = new SearchResultFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(searchArg,keyword);
+        fragment.setArguments(bundle);
+        return fragment;
+    }
 
     @Override
     protected int setLayout() {
@@ -63,6 +80,23 @@ public class SearchResultFragment extends BaseFragment implements SearchResultCo
 
         filterFragment = (SearchFilterFragment) getChildFragmentManager().findFragmentById(R.id.filter_layout);
         if (filterFragment != null) filterFragment.setOnFilterClick(this);
+
+        Bundle bundle = getArguments();
+        String searchKey = bundle.getString(searchArg);
+        if (!TextUtils.isEmpty(searchKey)) {
+            pageNo = 1;
+            startToSearch(searchKey);
+        }
+
+        smartRefreshLayout.setOnRefreshListener(refreshLayout -> {
+            pageNo = 1;
+            startToSearch(mKeyWords);
+        });
+
+        smartRefreshLayout.setOnLoadMoreListener(refreshLayout -> {
+            pageNo++;
+            startToSearch(mKeyWords);
+        });
     }
 
     @Override
@@ -81,17 +115,16 @@ public class SearchResultFragment extends BaseFragment implements SearchResultCo
         topRv.setAdapter(hotAdapter);
 
         resultLinearManager = new CrashBugGridLayoutManager(mContext, SearchResultConstant.alone);
+        resultRv.addItemDecoration(new SpaceItemDecoration(ViewUtil.dp2px(5)));
         resultRv.setLayoutManager(resultLinearManager);
         resultAdapter = new SearchResultAdapter(mContext);
         resultRv.setAdapter(resultAdapter);
     }
 
     public void startToSearch(String inputText) {
-        ToastUtils.show(mContext, "开始搜索-"+inputText);
-        initData();
         presenter.getHotWords(inputText);
         this.mKeyWords = inputText;
-        presenter.startToSearch(inputText, 1, "1", "");
+        presenter.startToSearch(inputText, pageNo, "1", "");
     }
 
     @Override
@@ -116,26 +149,37 @@ public class SearchResultFragment extends BaseFragment implements SearchResultCo
         String title = (String) view.getTag();
         ToastUtils.show(mContext, title);
         this.mKeyWords = title;
-        presenter.startToSearch(title, 1, "0" ,"");
+        pageNo = 1;
+        presenter.startToSearch(title, pageNo, "0" ,"");
     }
+
+    private List<CouponNewModel> resultList = new ArrayList<>();
 
     @Override
     public void searchResultSucc(ConditionListModel data) {
+        resetSmartRefreshStatu(smartRefreshLayout);
         if (data != null) {
 //            data.condition.sortList size > 0 显示
-            // 顶部销量 todo init=0时不返回，需要本地保存
-            ConditionListModel.Condition condition = data.condition;
-            if (condition == null || condition.sortList == null || condition.sortList.size() == 0) {
+            // 顶部销量 init=0 时不返回，需要本地保存
+            if (pageNo == 1) {
+                ConditionListModel.Condition condition = data.condition;
+                if (condition != null && condition.sortList != null && condition.sortList.size() > 0) {
+                    sortList = condition.sortList;
+                }
+                resultList.clear();
+            }
+            if (sortList == null || sortList.size() == 0) {
                 topLinearParent.setVisibility(View.GONE);
                 topLine.setVisibility(View.GONE);
             } else {
-
                 topLinearParent.setVisibility(View.VISIBLE);
                 topLine.setVisibility(View.VISIBLE);
-                dataHelper.bindTopData(mContext, topLinearParent, condition.sortList, this);
+                dataHelper.bindTopData(mContext, topLinearParent, sortList, this);
             }
-            // recyclerView
-            resultAdapter.setData(data.coupon_list);
+
+            // 保存数据
+            resultList.addAll(data.coupon_list);
+            resultAdapter.setData(resultList);
         }
     }
 
@@ -151,7 +195,7 @@ public class SearchResultFragment extends BaseFragment implements SearchResultCo
 
     @Override
     public void onError(String message) {
-
+        resetSmartRefreshStatu(smartRefreshLayout);
     }
 
 
@@ -162,11 +206,9 @@ public class SearchResultFragment extends BaseFragment implements SearchResultCo
         ConditionListModel.SortList bean = (ConditionListModel.SortList) view.getTag();
         if (bean != null) {
             if (bean.has_switch) {
-                // todo 记录一下 <name,desc>
 
             } else {
-                //todo page_no
-                presenter.startToSearch(mKeyWords,1,"0",bean.desc);
+                presenter.startToSearch(mKeyWords,pageNo,"0",bean.desc);
             }
         }
     }
@@ -188,6 +230,7 @@ public class SearchResultFragment extends BaseFragment implements SearchResultCo
         }
 
     }
+
 
     @Override
     public void onFilterClick(String price, String brand) {

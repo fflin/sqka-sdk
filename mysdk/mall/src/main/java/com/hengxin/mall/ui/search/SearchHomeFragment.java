@@ -35,6 +35,10 @@ public class SearchHomeFragment extends BaseFragment implements SearchHomeContra
     private FlexboxLayout hisFlex, hotFlex;
     private SearchSpHelper searchSpHelper;
 
+    public static SearchHomeFragment instantiate() {
+        return new SearchHomeFragment();
+    }
+
     @Override
     protected int setLayout() {
         return R.layout.fm_search;

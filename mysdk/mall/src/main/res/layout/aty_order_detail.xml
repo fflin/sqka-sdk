@@ -117,7 +117,7 @@
                         android:id="@+id/trans_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="2020-04-08  08：34：12" />
+                        android:text="收件人信息  电话" />
 
                     <TextView
                         android:id="@+id/trans_add"
@@ -126,7 +126,7 @@
                         android:layout_below="@+id/trans_name"
                         android:ellipsize="end"
                         android:maxLines="2"
-                        android:text="已离开  深圳福田区；发往北京已离开  深圳福田区；发往北京已离开  深圳福田区；发往北京已离开  深圳福田区；发往北京"
+                        android:text="收件人地址"
                         android:textColor="@color/settle_text_black"
                         android:textSize="15sp" />
                 </RelativeLayout>

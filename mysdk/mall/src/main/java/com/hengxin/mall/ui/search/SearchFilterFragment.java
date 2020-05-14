@@ -30,6 +30,6 @@ public class SearchFilterFragment extends BaseFragment {
 
 
     public void setOnFilterClick(OnFilterClickListener listener) {
-        listener.onFilterClick("","橙子🍊");
+        /*listener.onFilterClick("","橙子🍊");*/
     }
 }

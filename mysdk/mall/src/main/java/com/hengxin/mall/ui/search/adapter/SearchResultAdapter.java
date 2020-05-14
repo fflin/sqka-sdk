@@ -72,6 +72,7 @@ public class SearchResultAdapter extends RecyclerView.Adapter<Holder>{
 
     public void setData(List<CouponNewModel> couponList) {
         this.mList = couponList;
+        notifyDataSetChanged();
     }
 }
 

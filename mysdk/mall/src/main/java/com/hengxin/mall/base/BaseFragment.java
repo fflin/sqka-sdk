@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import com.hengxin.basic.util.NetworkUtils;
 import com.hengxin.basic.util.ToastUtils;
 import com.hengxin.mall.R;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.constant.RefreshState;
 
 
 /**
@@ -105,6 +107,18 @@ public abstract class BaseFragment extends Fragment {
     public void hideLoadError(View view) {
         if (view != null) {
             view.findViewById(R.id.rl_net_error).setVisibility(View.GONE);
+        }
+    }
+
+    public void resetSmartRefreshStatu(SmartRefreshLayout smartRefreshLayout) {
+        if (smartRefreshLayout == null) return;
+
+        if (smartRefreshLayout.getState() == RefreshState.Refreshing) {
+            smartRefreshLayout.finishRefresh();
+        }
+
+        if (smartRefreshLayout.getState() == RefreshState.Loading) {
+            smartRefreshLayout.finishLoadMore();
         }
     }
 }

@@ -2,7 +2,6 @@ package com.hengxin.mall.ui.search;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -11,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.hengxin.basic.RxBus;
+import com.hengxin.basic.util.Log;
 import com.hengxin.basic.util.ToastUtils;
 import com.hengxin.mall.R;
 import com.hengxin.mall.base.BaseActivity;
@@ -30,37 +30,56 @@ public class SearchActivity extends BaseActivity {
     private String inputText;
     private SearchResultFragment resultFragment;
     private SearchHomeFragment homeFragment;
-    private FragmentManager fragmentManager;
     private Fragment curFragment;
     private CompositeDisposable disposable = new CompositeDisposable();
+    private String resultTag = "result_fragment";
+    private String homeTag = "home_fragment";
 
     @Override
     protected void initData() {
-        homeFragment = new SearchHomeFragment();
-        resultFragment = new SearchResultFragment();
-        fragmentManager = getSupportFragmentManager();
-        switchFragment(homeFragment);
+        showHomeFragment();
         disposable.add(RxBus.getInstance().register(SearchEventModel.class).subscribe(new Consumer<SearchEventModel>() {
             @Override
             public void accept(SearchEventModel searchEventModel) throws Exception {
-                switchFragment(resultFragment);
-                resultFragment.startToSearch(searchEventModel.inputText);
+                showResultFragment(searchEventModel.inputText);
             }
         }));
+    }
 
+    private void showResultFragment(String keyword) {
+        resultFragment = (SearchResultFragment) getSupportFragmentManager().findFragmentByTag(resultTag);
+        if (resultFragment == null || !resultFragment.isAdded()) {
+            resultFragment = SearchResultFragment.instantiate(keyword);
+            getSupportFragmentManager().beginTransaction().add(R.id.search_fragment, resultFragment, resultTag).commitAllowingStateLoss();
+        } else {
+            resultFragment.startToSearch(keyword);
+        }
+        switchFragment(resultFragment);
+    }
+
+    private void showHomeFragment() {
+        homeFragment = (SearchHomeFragment) getSupportFragmentManager().findFragmentByTag(homeTag);
+        if (homeFragment == null) {
+            homeFragment = SearchHomeFragment.instantiate();
+            getSupportFragmentManager().beginTransaction().add(R.id.search_fragment, homeFragment, homeTag).commitAllowingStateLoss();
+        }
+        switchFragment(homeFragment);
     }
 
     private void switchFragment(Fragment toFragment) {
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.search_fragment, toFragment);
-        curFragment = toFragment;
-        transaction.commit();
+        if (curFragment != toFragment) {
+            if (curFragment != null) {
+                getSupportFragmentManager().beginTransaction().hide(curFragment).commitAllowingStateLoss();
+            }
+            curFragment = toFragment;
+            getSupportFragmentManager().beginTransaction().show(toFragment).commitAllowingStateLoss();
+        }
     }
 
     @Override
     public void onBackPressed() {
         if (curFragment != homeFragment) {
-            switchFragment(homeFragment);
+            showHomeFragment();
         } else {
             super.onBackPressed();
         }
@@ -70,7 +89,7 @@ public class SearchActivity extends BaseActivity {
     protected void initView() {
         findViewById(R.id.search_back).setOnClickListener(v -> {
             if (curFragment != homeFragment) {
-                switchFragment(homeFragment);
+                showHomeFragment();
             } else {
                 finish();
             }
@@ -114,8 +133,7 @@ public class SearchActivity extends BaseActivity {
 
             //2 通知Fragment刷新数据
             if (!TextUtils.isEmpty(inputText)) {
-                switchFragment(resultFragment);
-                resultFragment.startToSearch(inputText);
+                showResultFragment(inputText);
             } else {
                 ToastUtils.show(SearchActivity.this, "请输入想要搜索的商品名称");
             }

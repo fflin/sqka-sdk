@@ -144,5 +144,6 @@
             android:visibility="gone"/>
     </RelativeLayout>
 
+    <include layout="@layout/layout_line_5sp"/>
 
 </LinearLayout>
