@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--列表+底部单btn对话框-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/dialog_background">
+
+    <TextView
+        android:id="@+id/dialog_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:gravity="center"
+        android:maxLines="3"
+        android:text="请选择"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <include layout="@layout/layout_line_1sp"/>
+
+    <ListView
+        android:id="@+id/dialog_content"
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textColor="@color/black"
+        android:visibility="visible" />
+
+    <include layout="@layout/layout_line_1sp"/>
+
+    <Button
+        android:id="@+id/dialog_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="确定"
+        android:background="@android:color/transparent"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/gradient_start" />
+
+
+</LinearLayout>

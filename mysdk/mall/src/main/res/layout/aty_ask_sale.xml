@@ -120,11 +120,10 @@
                     android:textColor="@color/text_black_444"
                     android:textSize="15sp" />
 
-                <GridView
-                    android:id="@+id/ask_photo_grid"
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/ask_photo_rv"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:numColumns="4"
+                    android:layout_height="wrap_content"
                     android:padding="15dp" />
             </LinearLayout>
 

@@ -153,6 +153,7 @@
                     android:gravity="end">
 
                     <TextView
+                        android:id="@+id/order_btn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -215,7 +216,7 @@
                     <TextView
                         android:id="@+id/detail_order_pay"
                         style="@style/order_info_right"
-                        android:text="672377784384823848" />
+                        android:text="支付宝" />
 
                 </LinearLayout>
 
@@ -228,7 +229,7 @@
                     <TextView
                         android:id="@+id/detail_trans_time"
                         style="@style/order_info_right"
-                        android:text="672377784384823848" />
+                        android:text="2020.5.20 11：00：00" />
 
                 </LinearLayout>
 
@@ -242,7 +243,7 @@
                     <TextView
                         android:id="@+id/detail_pay_time"
                         style="@style/order_info_right"
-                        android:text="672377784384823848" />
+                        android:text="2020.5.20 10：30：00" />
 
                 </LinearLayout>
 
@@ -256,7 +257,7 @@
                     <TextView
                         android:id="@+id/detail_trans_pay"
                         style="@style/order_info_right"
-                        android:text="672377784384823848" />
+                        android:text="0" />
 
                 </LinearLayout>
 
@@ -282,6 +283,7 @@
                         android:layout_height="wrap_content"/>
 
                     <TextView
+                        android:id="@+id/detail_pay_money"
                         android:layout_width="wrap_content"
                         android:layout_marginRight="15dp"
                         android:text="￥6999.00"

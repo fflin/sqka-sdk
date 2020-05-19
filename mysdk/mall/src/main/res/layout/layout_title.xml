@@ -29,7 +29,8 @@
         android:lines="1"
         android:maxLines="1"
         android:textColor="@color/second_title_text"
-        android:textSize="17sp"/>
+        android:textSize="17sp"
+        android:text="标题"/>
 
     <ImageView
         android:id="@+id/title_bar_right"
