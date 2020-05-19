@@ -14,8 +14,6 @@ import com.hengxin.mall.R;
 import com.hengxin.mall.base.BaseFragment;
 import com.hengxin.mall.model.HomeModel;
 
-import java.io.Serializable;
-
 /**
  * author : fflin
  * date   : 2020/4/22 16:26

@@ -14,7 +14,7 @@ import com.facebook.drawee.drawable.ScalingUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.facebook.imagepipeline.image.ImageInfo;
 import com.hengxin.mall.R;
-import com.hengxin.mall.utils.ViewUtil;
+import com.hengxin.basic.util.ViewUtil;
 import com.youth.banner.Banner;
 
 public class WrapContentDraweeView extends SimpleDraweeView {

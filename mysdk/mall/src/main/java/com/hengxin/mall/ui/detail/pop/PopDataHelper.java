@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.google.android.flexbox.FlexboxLayout;
 import com.hengxin.basic.util.ToastUtils;
 import com.hengxin.mall.R;
-import com.hengxin.mall.utils.ViewUtil;
+import com.hengxin.basic.util.ViewUtil;
 
 import java.util.ArrayList;
 import java.util.List;

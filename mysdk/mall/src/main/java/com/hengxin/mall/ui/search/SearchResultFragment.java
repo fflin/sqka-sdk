@@ -23,7 +23,7 @@ import com.hengxin.mall.ui.search.helper.ResultDataHelper;
 import com.hengxin.mall.ui.search.inter.OnFilterClickListener;
 import com.hengxin.mall.ui.search.inter.OnHotWordsClick;
 import com.hengxin.mall.ui.search.inter.OnResultTopClick;
-import com.hengxin.mall.utils.ViewUtil;
+import com.hengxin.basic.util.ViewUtil;
 import com.hengxin.mall.view.SpaceItemDecoration;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 

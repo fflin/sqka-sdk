@@ -15,7 +15,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.hengxin.mall.R;
 import com.hengxin.mall.model.HomeModel;
 import com.hengxin.mall.utils.FrcosUtils;
-import com.hengxin.mall.utils.ViewUtil;
+import com.hengxin.basic.util.ViewUtil;
 
 import java.util.ArrayList;
 import java.util.List;

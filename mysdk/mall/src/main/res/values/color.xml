@@ -39,4 +39,6 @@
     <color name="trans_line">#F3F3F3</color>
     <color name="text_black_444">#444444</color>
     <color name="text_black_78">#787878</color>
+    <color name="select_photo_dialog">#1774dd</color>
+    <color name="select_photo_line">#e6e6e6</color>
 </resources>

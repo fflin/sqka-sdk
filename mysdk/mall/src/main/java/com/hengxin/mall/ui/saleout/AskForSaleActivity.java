@@ -1,12 +1,18 @@
 package com.hengxin.mall.ui.saleout;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
+import com.hengxin.basic.util.Log;
+import com.hengxin.basic.util.ToastUtils;
 import com.hengxin.mall.R;
 import com.hengxin.mall.base.BaseActivity;
 import com.hengxin.mall.manager.CrashBugGridLayoutManager;
@@ -15,8 +21,15 @@ import com.hengxin.mall.model.SelectPicModel;
 import com.hengxin.mall.ui.saleout.adapter.OnAdapterClick;
 import com.hengxin.mall.ui.saleout.adapter.SelectPicAdapter;
 import com.hengxin.mall.ui.saleout.dialog.OnListDialogClick;
+import com.hengxin.mall.ui.saleout.dialog.OnPickImageClick;
+import com.hengxin.mall.ui.saleout.dialog.PickImageHelper;
 import com.hengxin.mall.ui.saleout.dialog.SaleOutDialogHelper;
+import com.hengxin.mall.utils.EasyPermissions;
+import com.hengxin.pickimg.PickerAlbumActivity;
+import com.hengxin.pickimg.constant.Extras;
+import com.hengxin.pickimg.constant.RequestCode;
 
+import java.security.Permission;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -137,10 +150,56 @@ public class AskForSaleActivity extends BaseActivity implements OnAdapterClick {
     @Override
     public void onUploadClick(View view) {
         // 上传照片  更新list
+        // 弹出dialog  权限在dialog点击时判断
+//        EasyPermissions.requestNomalPermissions(this,123,  Manifest.permission.CAMERA);
+        new PickImageHelper().pickImage(this, true, new OnPickImageClick() {
+            @Override
+            public void onGalleryClick() {
+                EasyPermissions.requestNomalPermissions(AskForSaleActivity.this, 123, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+            }
+
+            @Override
+            public void onCameraClick() {
+                EasyPermissions.requestNomalPermissions(AskForSaleActivity.this, 111,  Manifest.permission.CAMERA);
+            }
+        });
     }
 
     @Override
     public void onDeleteClick(View view) {
 
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        Log.i("fflin","requestCode = "+requestCode+"; "+grantResults);
+        if (permissions[0].equals(Manifest.permission.CAMERA)) {
+            if (grantResults.length > 0 && grantResults[0]== PackageManager.PERMISSION_GRANTED){
+                // 允许拍照
+                PickerAlbumActivity.startActivity(this, 0, RequestCode.PickTakePhoteCode, null, RequestCode.PickCallBackRequest, false);
+            } else {
+                ToastUtils.show(AskForSaleActivity.this,"请打开相机权限拍照上传图片");
+            }
+        } else if (permissions[0].equals(Manifest.permission.WRITE_EXTERNAL_STORAGE)){
+
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                PickerAlbumActivity.startActivity(this, 0, RequestCode.PickPhoteCode, null, RequestCode.PickCallBackRequest,false);
+            } else {
+                ToastUtils.show(AskForSaleActivity.this,"请打开存储空间权限以获取设备内照片");
+            }
+        } else {
+            Log.i("fflin","权限申请出错");
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.i("fflin", "onActivityResult   ; requestCode = " + requestCode + "; resultCode = " + resultCode);
+        if (requestCode == RequestCode.PickCallBackRequest && data != null) {
+            String filePath =  data.getStringExtra(Extras.intputPath);//裁剪目录
+            // 上传接口
+        }
     }
 }

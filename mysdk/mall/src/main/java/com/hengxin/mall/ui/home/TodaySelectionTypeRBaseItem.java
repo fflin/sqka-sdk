@@ -32,7 +32,7 @@ import com.hengxin.mall.ui.home.viewholder.EmptyHolder;
 import com.hengxin.mall.ui.home.viewholder.GridViewHolder;
 import com.hengxin.mall.ui.home.viewholder.TwoColumnViewHolder;
 import com.hengxin.mall.utils.FrcosUtils;
-import com.hengxin.mall.utils.ViewUtil;
+import com.hengxin.basic.util.ViewUtil;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 

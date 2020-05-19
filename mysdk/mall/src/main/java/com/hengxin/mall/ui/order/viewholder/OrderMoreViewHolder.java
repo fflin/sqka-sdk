@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.hengxin.mall.R;
 import com.hengxin.mall.ui.order.OrderConstant;
-import com.hengxin.mall.utils.ViewUtil;
+import com.hengxin.basic.util.ViewUtil;
 
 /**
  * author : fflin

@@ -26,7 +26,7 @@ import com.hengxin.mall.ui.detail.adapter.GoodsDetailItem;
 import com.hengxin.mall.ui.detail.pop.PopClickListener;
 import com.hengxin.mall.ui.detail.pop.PopDataHelper;
 import com.hengxin.mall.ui.settlement.SettleListActivity;
-import com.hengxin.mall.utils.ViewUtil;
+import com.hengxin.basic.util.ViewUtil;
 
 import java.util.ArrayList;
 import java.util.List;

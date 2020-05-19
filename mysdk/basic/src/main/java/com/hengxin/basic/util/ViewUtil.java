@@ -1,4 +1,4 @@
-package com.hengxin.mall.utils;
+package com.hengxin.basic.util;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -102,9 +102,10 @@ public class ViewUtil {
         return localDisplayMetrics.widthPixels;
     }
 
-
-    public static int getSceenHeight(Activity activity) {
-        return activity.getWindowManager().getDefaultDisplay().getHeight() + getNavigationBarHeight(activity);
+    public static int getScreenHeight() {
+        DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+        ((WindowManager) ContextProvider.get().getContext().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(localDisplayMetrics);
+        return localDisplayMetrics.heightPixels;
     }
 
     public static int getWindowHeight(Activity activity) {
@@ -113,12 +114,6 @@ public class ViewUtil {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) display.getSize(point);
         else display.getRealSize(point);
         return point.y;
-    }
-
-    public static int getSceenHeight(Context activity) {
-        DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-        ((WindowManager) activity.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(localDisplayMetrics);
-        return localDisplayMetrics.heightPixels;
     }
 
     /**

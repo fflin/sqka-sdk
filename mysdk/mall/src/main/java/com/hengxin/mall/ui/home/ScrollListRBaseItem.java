@@ -9,7 +9,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.hengxin.mall.R;
 import com.hengxin.mall.base.RBaseItem;
 import com.hengxin.mall.model.CouponNewModel;
-import com.hengxin.mall.utils.ViewUtil;
+import com.hengxin.basic.util.ViewUtil;
 
 import java.text.DecimalFormat;
 

@@ -14,7 +14,7 @@ import com.hengxin.mall.R;
 import com.hengxin.mall.model.ConditionListModel;
 import com.hengxin.mall.ui.search.SearchResultConstant;
 import com.hengxin.mall.ui.search.inter.OnResultTopClick;
-import com.hengxin.mall.utils.ViewUtil;
+import com.hengxin.basic.util.ViewUtil;
 
 import java.util.List;
 
