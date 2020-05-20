@@ -25,12 +25,14 @@
 
         <TextView
             style="@style/write_address_left"
-            android:text="手机号码：" />
+            android:text="手机号码："
+            />
 
         <EditText
             android:id="@+id/write_order"
             style="@style/write_address_right"
-            android:hint="请输入手机号码" />
+            android:hint="请输入手机号码"
+            android:inputType="phone"/>
     </LinearLayout>
 
     <include layout="@layout/layout_line_1sp" />
@@ -42,6 +44,7 @@
             android:text="地址:" />
 
         <RelativeLayout
+            android:id="@+id/write_address_parent"
             android:layout_width="0dp"
             android:layout_weight="7"
             android:layout_height="wrap_content">
