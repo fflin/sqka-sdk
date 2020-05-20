@@ -3,6 +3,7 @@ package com.hengxin.mall.net;
 
 import com.hengxin.basic.base.BaseResult;
 import com.hengxin.mall.model.TagModel;
+import com.hengxin.mall.model.UpLoadFileModel;
 import com.hengxin.pay.model.AliSignModel;
 import com.hengxin.mall.model.ConditionListModel;
 import com.hengxin.mall.model.HomeModel;
@@ -11,7 +12,11 @@ import com.hengxin.mall.model.PayChannelModel;
 import java.util.Map;
 
 import io.reactivex.Observable;
+import okhttp3.MultipartBody;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
+import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.QueryMap;
 
@@ -58,5 +63,12 @@ public interface IApiService {
      */
     @GET("/api/search/coupon")
     Observable<BaseResult<ConditionListModel>> search(@QueryMap Map<String, String> map);
+
+    /**
+     * 上传图片
+     */
+    @Multipart
+    @POST("{path}/upload/file")
+    Observable<BaseResult<UpLoadFileModel>> uploadFile(@Path(value = "path", encoded = true) String servicesHost, @Part MultipartBody.Part file);
 
 }

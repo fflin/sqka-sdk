@@ -13,23 +13,25 @@ import android.widget.TextView;
 
 import com.hengxin.basic.util.Log;
 import com.hengxin.basic.util.ToastUtils;
+import com.hengxin.basic.util.ViewUtil;
 import com.hengxin.mall.R;
 import com.hengxin.mall.base.BaseActivity;
 import com.hengxin.mall.manager.CrashBugGridLayoutManager;
 import com.hengxin.mall.model.SaleOutDialogModel;
-import com.hengxin.mall.model.SelectPicModel;
+import com.hengxin.mall.model.UpLoadFileModel;
 import com.hengxin.mall.ui.saleout.adapter.OnAdapterClick;
 import com.hengxin.mall.ui.saleout.adapter.SelectPicAdapter;
 import com.hengxin.mall.ui.saleout.dialog.OnListDialogClick;
 import com.hengxin.mall.ui.saleout.dialog.OnPickImageClick;
 import com.hengxin.mall.ui.saleout.dialog.PickImageHelper;
 import com.hengxin.mall.ui.saleout.dialog.SaleOutDialogHelper;
+import com.hengxin.mall.ui.saleout.dialog.UploadDialog;
 import com.hengxin.mall.utils.EasyPermissions;
+import com.hengxin.mall.view.SpaceItemDecoration;
 import com.hengxin.pickimg.PickerAlbumActivity;
 import com.hengxin.pickimg.constant.Extras;
 import com.hengxin.pickimg.constant.RequestCode;
 
-import java.security.Permission;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,14 +41,19 @@ import java.util.List;
  * desc   : 申请售后页面
  * version: 1.0
  */
-public class AskForSaleActivity extends BaseActivity implements OnAdapterClick {
+public class AskForSaleActivity extends BaseActivity implements OnAdapterClick, UploadImgContract.View {
 
     private TextView askType;
     private TextView askReason;
     private List<SaleOutDialogModel> askTypeList = new ArrayList<>();
     private List<SaleOutDialogModel> askReasonList = new ArrayList<>();
     private RecyclerView recyclerView;
-    private List<SelectPicModel> picModels = new ArrayList<>();
+    private List<UpLoadFileModel.FilesBean> picModels = new ArrayList<>();
+    private UploadPresenter presenter;
+    private SelectPicAdapter adapter;
+    private final int picMaxCount = 5;
+    private TextView textPicCount;
+    private UploadDialog uploadDialog;
 
     public static void startAskForSaleAty(Context context) {
         Intent intent = new Intent(context, AskForSaleActivity.class);
@@ -54,15 +61,28 @@ public class AskForSaleActivity extends BaseActivity implements OnAdapterClick {
         context.startActivity(intent);
     }
 
+    private void addPlaceImg() {
+        UpLoadFileModel.FilesBean model = new UpLoadFileModel.FilesBean();
+        model.fileName = Constant.SELECT_PIC_NAME;
+        model.fileUrl = "";
+        picModels.add(model);
+    }
+
+    private void removePlaceImg() {
+        UpLoadFileModel.FilesBean removeBean = null;
+        for (int i = 0; i < picModels.size(); i++) {
+            if (picModels.get(i).fileName.equals(Constant.SELECT_PIC_NAME)) {
+                removeBean = picModels.get(i);
+            }
+        }
+        if (removeBean != null) picModels.remove(removeBean);
+    }
+
     @Override
     protected void initData() {
-        for (int i = 0; i < 6; i++) {
-            SelectPicModel model = new SelectPicModel();
-            model.fileName = Constant.SELECT_PIC_NAME;
-            picModels.add(model);
-        }
+        addPlaceImg();
 
-        SelectPicAdapter adapter = new SelectPicAdapter(this, picModels, this);
+        adapter = new SelectPicAdapter(this, picModels, this);
         recyclerView.setAdapter(adapter);
 
         SaleOutDialogModel model1 = new SaleOutDialogModel("换货", "(更换收到的商品)", true);
@@ -83,15 +103,17 @@ public class AskForSaleActivity extends BaseActivity implements OnAdapterClick {
         askReasonList.add(model6);
         askReasonList.add(model7);
 
+        presenter = new UploadPresenter();
+        presenter.onAttach(this);
     }
 
     @Override
     protected void initView() {
         ((TextView) findViewById(R.id.title_bar_title)).setText("申请售后");
         recyclerView = findViewById(R.id.ask_photo_rv);
-
-        recyclerView.setLayoutManager(new CrashBugGridLayoutManager(this,3));
-
+        recyclerView.addItemDecoration(new SpaceItemDecoration(ViewUtil.dp2px(5)));
+        recyclerView.setLayoutManager(new CrashBugGridLayoutManager(this, 3));
+        textPicCount = findViewById(R.id.ask_photo_num);
         findViewById(R.id.ask_commit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -139,6 +161,7 @@ public class AskForSaleActivity extends BaseActivity implements OnAdapterClick {
                 });
             }
         });
+        uploadDialog = new UploadDialog();
     }
 
     @Override
@@ -147,11 +170,12 @@ public class AskForSaleActivity extends BaseActivity implements OnAdapterClick {
     }
 
 
+    private UpLoadFileModel.FilesBean updateBean;
+
     @Override
     public void onUploadClick(View view) {
+        this.updateBean = (UpLoadFileModel.FilesBean) view.getTag();
         // 上传照片  更新list
-        // 弹出dialog  权限在dialog点击时判断
-//        EasyPermissions.requestNomalPermissions(this,123,  Manifest.permission.CAMERA);
         new PickImageHelper().pickImage(this, true, new OnPickImageClick() {
             @Override
             public void onGalleryClick() {
@@ -160,36 +184,41 @@ public class AskForSaleActivity extends BaseActivity implements OnAdapterClick {
 
             @Override
             public void onCameraClick() {
-                EasyPermissions.requestNomalPermissions(AskForSaleActivity.this, 111,  Manifest.permission.CAMERA);
+                EasyPermissions.requestNomalPermissions(AskForSaleActivity.this, 111, Manifest.permission.CAMERA);
             }
         });
     }
 
     @Override
     public void onDeleteClick(View view) {
-
+        int position = (int) view.getTag();
+        picModels.remove(position);
+        if (picModels.size() < picMaxCount && !picModels.get(picModels.size() - 1).fileName.equals(Constant.SELECT_PIC_NAME)) {
+            addPlaceImg();
+        }
+        textPicCount.setText("上传凭证("+(picModels.size()-1)+"/"+picMaxCount+")");
+        adapter.notifyDataSetChanged();
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        Log.i("fflin","requestCode = "+requestCode+"; "+grantResults);
         if (permissions[0].equals(Manifest.permission.CAMERA)) {
-            if (grantResults.length > 0 && grantResults[0]== PackageManager.PERMISSION_GRANTED){
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 // 允许拍照
                 PickerAlbumActivity.startActivity(this, 0, RequestCode.PickTakePhoteCode, null, RequestCode.PickCallBackRequest, false);
             } else {
-                ToastUtils.show(AskForSaleActivity.this,"请打开相机权限拍照上传图片");
+                ToastUtils.show(AskForSaleActivity.this, "请打开相机权限拍照上传图片");
             }
-        } else if (permissions[0].equals(Manifest.permission.WRITE_EXTERNAL_STORAGE)){
+        } else if (permissions[0].equals(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
 
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                PickerAlbumActivity.startActivity(this, 0, RequestCode.PickPhoteCode, null, RequestCode.PickCallBackRequest,false);
+                PickerAlbumActivity.startActivity(this, 0, RequestCode.PickPhoteCode, null, RequestCode.PickCallBackRequest, false);
             } else {
-                ToastUtils.show(AskForSaleActivity.this,"请打开存储空间权限以获取设备内照片");
+                ToastUtils.show(AskForSaleActivity.this, "请打开存储空间权限以获取设备内照片");
             }
         } else {
-            Log.i("fflin","权限申请出错");
+            Log.i("fflin", "权限申请出错");
         }
     }
 
@@ -198,8 +227,75 @@ public class AskForSaleActivity extends BaseActivity implements OnAdapterClick {
         super.onActivityResult(requestCode, resultCode, data);
         Log.i("fflin", "onActivityResult   ; requestCode = " + requestCode + "; resultCode = " + resultCode);
         if (requestCode == RequestCode.PickCallBackRequest && data != null) {
-            String filePath =  data.getStringExtra(Extras.intputPath);//裁剪目录
+            String filePath = data.getStringExtra(Extras.intputPath);//裁剪目录
             // 上传接口
+            presenter.uploadImg(filePath);
         }
+    }
+
+    @Override
+    public void uploadSuccess(UpLoadFileModel upLoadFileModel) {
+        if (upLoadFileModel != null) {
+            List<UpLoadFileModel.FilesBean> files = upLoadFileModel.files;
+            if (files != null && files.size() > 0) {
+                // 处理数据
+                UpLoadFileModel.FilesBean filesBean = files.get(0);
+                removePlaceImg();
+                if (!TextUtils.isEmpty(updateBean.fileUrl)) {
+                    upDataPicList(updateBean.fileUrl, filesBean);
+                    updateBean.fileUrl = null;
+                } else {
+                    picModels.add(filesBean);
+                }
+
+                if (picModels.size() < picMaxCount) {
+                    addPlaceImg();
+                }
+                // 判断不包含空url。
+                int count = 0;
+                if (!TextUtils.isEmpty(picModels.get(picModels.size()-1).fileUrl)) {
+                    count = picModels.size();
+                } else {
+                    count = picModels.size() - 1;
+                }
+                textPicCount.setText("上传凭证("+count+"/"+picMaxCount+")");
+                adapter.notifyDataSetChanged();
+            }
+        }
+    }
+
+    private void upDataPicList(String fileUrl, UpLoadFileModel.FilesBean filesBean) {
+        int oldBeanPosition = -1;
+        for (int i = 0; i < picModels.size(); i++) {
+            UpLoadFileModel.FilesBean filesBean1 = picModels.get(i);
+            if (filesBean1.fileUrl.equals(fileUrl)) {
+                oldBeanPosition = i;
+            }
+        }
+        if (oldBeanPosition != -1) {
+            picModels.remove(oldBeanPosition);
+            picModels.add(oldBeanPosition, filesBean);
+        }
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void uploadFailed(String messageStr) {
+
+    }
+
+    @Override
+    public void showLoading() {
+        uploadDialog.showDialog(this);
+    }
+
+    @Override
+    public void hideLoading() {
+        uploadDialog.hideDialog();
+    }
+
+    @Override
+    public void onError(String message) {
+
     }
 }

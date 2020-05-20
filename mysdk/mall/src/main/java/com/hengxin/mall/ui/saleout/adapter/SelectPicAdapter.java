@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.hengxin.mall.R;
 import com.hengxin.mall.model.SelectPicModel;
+import com.hengxin.mall.model.UpLoadFileModel;
 import com.hengxin.mall.ui.saleout.Constant;
 
 import java.util.List;
@@ -25,9 +26,9 @@ import java.util.List;
 public class SelectPicAdapter extends RecyclerView.Adapter<SelectPicViewHolder> {
 
     private Context mContext;
-    private List<SelectPicModel> mList;
+    private List<UpLoadFileModel.FilesBean> mList;
     private OnAdapterClick mClick;
-    public SelectPicAdapter(Context context, List<SelectPicModel> picModels, OnAdapterClick onAdapterClick) {
+    public SelectPicAdapter(Context context, List<UpLoadFileModel.FilesBean> picModels, OnAdapterClick onAdapterClick) {
         this.mContext = context;
         this.mList = picModels;
         this.mClick = onAdapterClick;
@@ -41,7 +42,7 @@ public class SelectPicAdapter extends RecyclerView.Adapter<SelectPicViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull SelectPicViewHolder holder, int i) {
-        final SelectPicModel data = mList.get(i);
+        final UpLoadFileModel.FilesBean data = mList.get(i);
         String fileName = data.fileName;
         if (!TextUtils.isEmpty(fileName)) {
             if (fileName.equals(Constant.SELECT_PIC_NAME)) {
@@ -53,7 +54,7 @@ public class SelectPicAdapter extends RecyclerView.Adapter<SelectPicViewHolder> 
             }
         }
 
-        holder.showImg.setOnClickListener(new View.OnClickListener() {
+        holder.imgParent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 v.setTag(data);
@@ -64,7 +65,7 @@ public class SelectPicAdapter extends RecyclerView.Adapter<SelectPicViewHolder> 
         holder.closeImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                v.setTag(data);
+                v.setTag(i);
                 mClick.onDeleteClick(v);
             }
         });
@@ -80,10 +81,12 @@ class SelectPicViewHolder extends RecyclerView.ViewHolder {
 
     public final ImageView showImg;
     public final ImageView closeImg;
+    public final View imgParent;
 
     public SelectPicViewHolder(@NonNull View itemView) {
         super(itemView);
         showImg = itemView.findViewById(R.id.upload_img);
         closeImg = itemView.findViewById(R.id.upload_close);
+        imgParent = itemView.findViewById(R.id.img_parent);
     }
 }

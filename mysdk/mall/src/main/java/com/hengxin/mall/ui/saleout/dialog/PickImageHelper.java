@@ -15,8 +15,10 @@ import com.hengxin.basic.util.Log;
 import com.hengxin.basic.util.MessageShowUtils;
 import com.hengxin.mall.R;
 import com.hengxin.mall.base.BaseActivity;
+import com.hengxin.mall.model.UpLoadFileModel;
 import com.hengxin.mall.utils.EasyPermissions;
 
+import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;
 
 /**
@@ -109,19 +111,19 @@ public class PickImageHelper {
         if (observable != null) {
             disposable = observable.subscribe(upLoadFileModel -> {
                 uploadFileBack.hideLoading();
-                uploadFileBack.uploadSucess(fileName, upLoadFileModel);
+                uploadFileBack.uploadSuccess(fileName, upLoadFileModel);
                 Log.i("fflin: ", "uploadFile  success");
             }, new ApiErrorConsumer() {
                 @Override
                 public void onFail(int code, String message) {
                     uploadFileBack.hideLoading();
-                    uploadFileBack.uploadFaile(message);
+                    uploadFileBack.uploadFailed(message);
                     Log.i("fflin: ", "uploadFile  failed");
                 }
             });
         } else {
             uploadFileBack.hideLoading();
-            uploadFileBack.uploadFaile("");
+            uploadFileBack.uploadFailed("");
             Log.i("fflin: ", "uploadFile  failed");
         }
         return disposable;
@@ -132,7 +134,7 @@ public class PickImageHelper {
 
         void hideLoading();
 
-//        void uploadSucess(String fileName, UpLoadFileModel upLoadFileModel);
+        void uploadSucess(String fileName, UpLoadFileModel upLoadFileModel);
 
         void uploadFaile(String messageStr);
     }

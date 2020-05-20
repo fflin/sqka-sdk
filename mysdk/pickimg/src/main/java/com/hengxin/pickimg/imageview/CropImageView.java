@@ -15,6 +15,7 @@ import android.view.animation.TranslateAnimation;
 
 
 import com.hengxin.pickimg.utils.AttachmentStore;
+import com.hengxin.pickimg.utils.ThreadHelper;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -76,12 +77,16 @@ public class CropImageView extends MultiTouchZoomableImageView {
         if (cropped == null) {
             return null;
         }
-
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        cropped.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-        if (cropped != mBitmap) {
-            cropped.recycle();
-        }
+        ThreadHelper.runOnSubThread(new Runnable() {
+            @Override
+            public void run() {
+                cropped.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+                if (cropped != mBitmap) {
+                    cropped.recycle();
+                }
+            }
+        });
         byte[] data = stream.toByteArray();
         try {
             stream.close();
