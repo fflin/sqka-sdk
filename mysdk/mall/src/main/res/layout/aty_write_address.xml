@@ -16,6 +16,7 @@
         <EditText
             android:id="@+id/add_name"
             style="@style/write_address_right"
+            android:maxLength="10"
             android:hint="请输入收货人姓名（2-10字）" />
     </LinearLayout>
 
@@ -29,7 +30,7 @@
             />
 
         <EditText
-            android:id="@+id/write_order"
+            android:id="@+id/add_phone"
             style="@style/write_address_right"
             android:hint="请输入手机号码"
             android:inputType="phone"/>
@@ -96,21 +97,30 @@
                 android:id="@+id/write_tag_company"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="公司" />
+                android:text="公司"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:background="@drawable/bg_address_selector"/>
 
             <TextView
                 android:id="@+id/write_tag_home"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="家" />
+                android:text="家"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:background="@drawable/bg_address_selector"/>
 
             <TextView
                 android:id="@+id/write_tag_school"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="学校" />
+                android:text="学校"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:background="@drawable/bg_address_selector"/>
 
         </LinearLayout>
 
@@ -131,11 +141,12 @@
             android:layout_weight="7">
 
             <ImageView
+                android:id="@+id/add_is_default"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="15dp"
-                android:src="@drawable/write_add_open" />
+                android:src="@drawable/bg_add_default_selector" />
 
         </RelativeLayout>
     </LinearLayout>

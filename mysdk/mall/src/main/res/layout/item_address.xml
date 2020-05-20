@@ -46,13 +46,17 @@
                     android:layout_marginLeft="15dp"
                     android:src="@drawable/add_default" />
 
-                <ImageView
+                <TextView
                     android:id="@+id/add_tag2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="15dp"
-                    android:src="@drawable/add_default" />
+                    android:text="学校"
+                    android:paddingRight="5dp"
+                    android:paddingLeft="5dp"
+                    android:textColor="@color/red_theme"
+                    android:background="@drawable/bg_ask_sale_red"/>
 
 
             </LinearLayout>

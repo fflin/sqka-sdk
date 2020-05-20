@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.hengxin.basic.util.Log;
 import com.hengxin.mall.R;
 
 
@@ -28,6 +29,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             titleBack.setOnClickListener(v -> finish());
         }
         initData();
+        Log.i("fflin","当前activity = "+getClass().getSimpleName());
     }
 
     @Override
