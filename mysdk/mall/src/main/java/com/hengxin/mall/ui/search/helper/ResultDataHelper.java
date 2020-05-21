@@ -10,11 +10,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.hengxin.basic.util.ViewUtil;
 import com.hengxin.mall.R;
 import com.hengxin.mall.model.ConditionListModel;
 import com.hengxin.mall.ui.search.SearchResultConstant;
 import com.hengxin.mall.ui.search.inter.OnResultTopClick;
-import com.hengxin.basic.util.ViewUtil;
 
 import java.util.List;
 
@@ -30,27 +30,25 @@ public class ResultDataHelper {
 
     }
 
-    //销量等
+    //销量等  还少一个选中装态
     public void bindTopData(Context mContext, LinearLayout parent, List<ConditionListModel.SortList> sortList, OnResultTopClick onClick) {
         parent.removeAllViews();
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT,1.0f);
-        for (ConditionListModel.SortList bean: sortList) {
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1.0f);
+        for (int i = 0; i < sortList.size(); i++) {
+            ConditionListModel.SortList bean = sortList.get(i);
             String name = bean.name;
+            int postion = bean.postion;//暂存选中状态
             boolean hasSwitch = bean.has_switch;
-            TextView textView = buildTextView(mContext,name);
+            TextView textView = buildTextView(mContext, name, postion == i);
 
             if (hasSwitch) {
-                //使用weight的方式，在LinearLayout里设置drawableRight,图片与文字之间间距过大
-//                Drawable rightDrawable  = mContext.getResources().getDrawable(R.drawable.ic_sort_price_none);
-//                // 这一步必须要做,否则不会显示.
-//                rightDrawable.setBounds(0, 0, rightDrawable.getMinimumWidth(), rightDrawable.getMinimumHeight());
-//                textView.setCompoundDrawables(null,null,rightDrawable,null);
-//                textView.setCompoundDrawablesWithIntrinsicBounds(null, null, rightDrawable, null);
-
-
-                LinearLayout outLinear = buildOuterLinear(mContext,params);
+                LinearLayout outLinear = buildOuterLinear(mContext, params);
                 ImageView imageView = new ImageView(mContext);
-                imageView.setImageResource(R.drawable.ic_sort_price_none);
+                if (postion == i) {
+                    imageView.setImageResource(bean.def_order.equals(bean.desc) ? R.drawable.ic_sort_price_desc : R.drawable.ic_sort_price_asc);
+                } else {
+                    imageView.setImageResource(R.drawable.ic_sort_price_none);
+                }
 
                 outLinear.addView(textView);
                 outLinear.addView(imageView);
@@ -60,18 +58,6 @@ public class ResultDataHelper {
                     public void onClick(View v) {
                         v.setTag(bean);
                         onClick.onSortClick(v);
-                        updateView(outLinear);
-                    }
-
-                    private void updateView(LinearLayout outLinear) {
-                        int childCount = outLinear.getChildCount();
-                        if (childCount == 2) {
-                            TextView textView = (TextView) outLinear.getChildAt(0);
-                            textView.setSelected(true);
-                            ImageView imageView1 = (ImageView) outLinear.getChildAt(1);
-                            imageView1.setImageResource(R.drawable.ic_sort_price_asc);
-//                            imageView1.setImageResource(R.drawable.ic_sort_price_desc);
-                        }
                     }
                 });
             } else {
@@ -92,7 +78,7 @@ public class ResultDataHelper {
         switchImg.setImageResource(SearchResultConstant.alone == 1 ? R.drawable.list_btn_switchsigle : R.drawable.list_btn_switchdouble);
         switchImg.setMaxHeight(ViewUtil.dp2px(20));
         switchImg.setMaxWidth(ViewUtil.dp2px(20));
-        switchImg.setPadding(ViewUtil.dp2px(5),ViewUtil.dp2px(5),ViewUtil.dp2px(5),ViewUtil.dp2px(5));
+        switchImg.setPadding(ViewUtil.dp2px(5), ViewUtil.dp2px(5), ViewUtil.dp2px(5), ViewUtil.dp2px(5));
         parent.addView(switchImg);
         switchImg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,8 +89,8 @@ public class ResultDataHelper {
         });
 
         // 加个筛选
-        TextView filterTextView = buildTextView(mContext,"筛选");
-        LinearLayout linearLayout = buildOuterLinear(mContext,params);
+        TextView filterTextView = buildTextView(mContext, "筛选", false);
+        LinearLayout linearLayout = buildOuterLinear(mContext, params);
 
         ImageView imageView = new ImageView(mContext);
         imageView.setImageResource(R.drawable.filter);
@@ -120,13 +106,14 @@ public class ResultDataHelper {
         });
     }
 
-    private TextView buildTextView(Context context, String text) {
+    private TextView buildTextView(Context context, String text, boolean isSelect) {
         TextView textView = new TextView(context);
         textView.setText(text);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
         textView.setGravity(Gravity.CENTER);
         ColorStateList csl = context.getResources().getColorStateList(R.color.selector_color_sort);
         textView.setTextColor(csl);
+        textView.setSelected(isSelect);
         return textView;
     }
 

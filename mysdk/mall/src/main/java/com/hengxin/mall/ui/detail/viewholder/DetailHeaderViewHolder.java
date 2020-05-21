@@ -64,6 +64,7 @@ public class DetailHeaderViewHolder extends RecyclerView.ViewHolder {
 
     // 设置规格等
     private void setGoodsSpecify(Context context, DetailModel model) {
+        if (llSpecity.getChildCount() > 0) llSpecity.removeAllViews();
         for (int i = 0; i < 3; i++) {
             View specifyView = LayoutInflater.from(context).inflate(R.layout.detail_specify, null);
             View lineView = specifyView.findViewById(R.id.view_line);

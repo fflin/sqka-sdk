@@ -9,7 +9,7 @@ import com.hengxin.mall.ui.search.inter.OnFilterClickListener;
 /**
  * author : fflin
  * date   : 2020/5/8 14:51
- * desc   :
+ * desc   : 筛选
  * version: 1.0
  */
 public class SearchFilterFragment extends BaseFragment {

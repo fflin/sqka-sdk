@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.hengxin.basic.util.ToastUtils;
+import com.hengxin.basic.util.ViewUtil;
 import com.hengxin.mall.R;
 import com.hengxin.mall.base.BaseFragment;
 import com.hengxin.mall.manager.CrashBugGridLayoutManager;
@@ -23,7 +24,6 @@ import com.hengxin.mall.ui.search.helper.ResultDataHelper;
 import com.hengxin.mall.ui.search.inter.OnFilterClickListener;
 import com.hengxin.mall.ui.search.inter.OnHotWordsClick;
 import com.hengxin.mall.ui.search.inter.OnResultTopClick;
-import com.hengxin.basic.util.ViewUtil;
 import com.hengxin.mall.view.SpaceItemDecoration;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
@@ -205,9 +205,28 @@ public class SearchResultFragment extends BaseFragment implements SearchResultCo
         // has_switch true 低-高 asc  高-低  decs
         ConditionListModel.SortList bean = (ConditionListModel.SortList) view.getTag();
         if (bean != null) {
-            if (bean.has_switch) {
+            for (int i = 0; i < sortList.size(); i++) {
+                ConditionListModel.SortList b = sortList.get(i);
+                if (b.postion == i) {
+                    b.postion = -1;
+                }
+                if (b.equals(bean)) {
+                    bean.postion = i;
+                }
 
-            } else {
+                if (b.has_switch) {
+                    if (b.def_order.equals(b.asc)) {
+                        b.def_order = b.desc;
+                    } else {
+                        b.def_order = b.asc;
+                    }
+                    // 价格
+                    presenter.startToSearch(mKeyWords,pageNo,"0",bean.def_order);
+                }
+            }
+
+            if (!bean.has_switch) {
+                // 销量  综合
                 presenter.startToSearch(mKeyWords,pageNo,"0",bean.desc);
             }
         }
