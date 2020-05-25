@@ -136,6 +136,11 @@ public class MallHomeFragment extends BaseFragment implements OnCallBackDetail, 
 
     }
 
+    @Override
+    protected void onReloadClick() {
+        ToastUtils.show(mContext,"重试");
+    }
+
     private void requestNewFristHome() {
         if (AllDate.size() > 0) AllDate.clear();
         index = 1;

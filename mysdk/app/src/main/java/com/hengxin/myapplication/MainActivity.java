@@ -3,8 +3,11 @@ package com.hengxin.myapplication;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
+import android.widget.TextView;
 
 import com.hengxin.mall.init.MallInitHelper;
 import com.hengxin.mall.init.MallPageIndex;
@@ -24,6 +27,22 @@ public class MainActivity extends AppCompatActivity {
         Log.i("test0000","111  a = "+a.hashCode());
         a = "123";
         Log.i("test0000","111  a = "+a.hashCode());
+        TextView textView = findViewById(R.id.tv_test);
+//        displayText(textView);
+    }
+
+    private void displayText(TextView textView) {
+        Display display = getWindowManager().getDefaultDisplay();
+        DisplayMetrics dm = new DisplayMetrics();
+        display.getMetrics(dm);
+        int width = dm.widthPixels;
+//根据屏幕调整文字大小
+        textView.setLineSpacing(0f, 1.5f);
+//        textView.setTextSize(8*(float)width/320f);
+//设置TextView
+//        textView.setText("");
+
+        TextJustification.justify(textView,textView.getWidth());
     }
 
     public void toMallMainPage(View view) {

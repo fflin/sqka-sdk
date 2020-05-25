@@ -1,15 +1,12 @@
 package com.hengxin.mall.ui.order;
 
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.CompoundButton;
-import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import com.hengxin.basic.util.Log;
 import com.hengxin.mall.R;
 import com.hengxin.mall.base.BaseActivity;
 
@@ -32,7 +29,7 @@ public class MallOrderActivity extends BaseActivity {
         saleFragment = new MallOrderSaleFragment();
         fragmentManager = getSupportFragmentManager();
         transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.order_container, new MallOrderAllFragment());
+        transaction.replace(R.id.order_container, allFragment);
         transaction.commit();
     }
 

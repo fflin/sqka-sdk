@@ -43,4 +43,9 @@ public class MallOrderSaleFragment extends BaseFragment {
         indicator = mRootView.findViewById(R.id.order_indicator);
         viewPager = mRootView.findViewById(R.id.order_view_pager);
     }
+
+    @Override
+    protected void onReloadClick() {
+
+    }
 }

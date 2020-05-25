@@ -26,6 +26,7 @@ import com.hengxin.mall.ui.search.inter.OnHotWordsClick;
 import com.hengxin.mall.ui.search.inter.OnResultTopClick;
 import com.hengxin.mall.view.SpaceItemDecoration;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -115,10 +116,17 @@ public class SearchResultFragment extends BaseFragment implements SearchResultCo
         topRv.setAdapter(hotAdapter);
 
         resultLinearManager = new CrashBugGridLayoutManager(mContext, SearchResultConstant.alone);
+
+        smartRefreshLayout.setRefreshHeader(new ClassicsHeader(mContext));
         resultRv.addItemDecoration(new SpaceItemDecoration(ViewUtil.dp2px(5)));
         resultRv.setLayoutManager(resultLinearManager);
         resultAdapter = new SearchResultAdapter(mContext);
         resultRv.setAdapter(resultAdapter);
+    }
+
+    @Override
+    protected void onReloadClick() {
+        ToastUtils.show(mContext,"onReloadClick");
     }
 
     public void startToSearch(String inputText) {

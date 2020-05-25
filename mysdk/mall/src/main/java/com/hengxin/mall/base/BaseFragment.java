@@ -85,6 +85,8 @@ public abstract class BaseFragment extends Fragment {
      */
     protected abstract void initView(View mRootView);
 
+    protected abstract void onReloadClick();
+
     public boolean reLoadEnable() {
         boolean enable = false;
         if (!NetworkUtils.getNetworkType(getActivity()).equals(NetworkUtils.NET_TYPE.TYPE_NONE)) {
@@ -95,13 +97,22 @@ public abstract class BaseFragment extends Fragment {
         return enable;
     }
 
-    //显示加载出错的布局
+    //显示加载出错的布局  -- 缺点 每个布局xml里都要include一个error布局
     public void showLoadError(View view) {
         if (view != null) {
             view.findViewById(R.id.rl_net_error).setVisibility(View.VISIBLE);
             view.findViewById(R.id.rl_net_error).requestFocus();
+            view.findViewById(R.id.tv_net_reload).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onReloadClick();
+                    hideLoadError(view);
+                }
+            });
         }
     }
+
+
 
     //隐藏加载失败的布局
     public void hideLoadError(View view) {

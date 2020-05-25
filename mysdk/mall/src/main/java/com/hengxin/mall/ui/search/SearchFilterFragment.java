@@ -28,8 +28,13 @@ public class SearchFilterFragment extends BaseFragment {
 
     }
 
+    @Override
+    protected void onReloadClick() {
+
+    }
+
 
     public void setOnFilterClick(OnFilterClickListener listener) {
-        /*listener.onFilterClick("","橙子🍊");*/
+
     }
 }

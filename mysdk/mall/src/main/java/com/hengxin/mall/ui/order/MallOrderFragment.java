@@ -9,6 +9,7 @@ import android.view.View;
 import com.hengxin.basic.util.Log;
 import com.hengxin.mall.R;
 import com.hengxin.mall.base.BaseFragment;
+import com.hengxin.mall.base.BaseLazyFragment;
 import com.hengxin.mall.base.VLRAdapter;
 import com.hengxin.mall.manager.CrashBugLinearLayoutManager;
 import com.hengxin.mall.test.TestUtil;
@@ -23,7 +24,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
  * desc   : 订单recyclerView--测试数据写个合并订单
  * version: 1.0
  */
-public class MallOrderFragment extends BaseFragment {
+public class MallOrderFragment extends BaseLazyFragment {
 
     private SmartRefreshLayout refreshLayout;
     private RecyclerView orderRv;
@@ -48,12 +49,12 @@ public class MallOrderFragment extends BaseFragment {
     }
 
 
-    @Override
+//    @Override
     protected int setLayout() {
         return R.layout.fm_order_recycler;
     }
 
-    @Override
+//    @Override
     protected void initData() {
         if (getArguments() != null) {
             orderType = getArguments().getInt(INDEX_TAG);
@@ -61,9 +62,9 @@ public class MallOrderFragment extends BaseFragment {
         }
         Log.i("fflin","orderType  = "+orderType+"; orderTag = "+orderTag);
 
-        MallOrderItem item = new MallOrderItem(mContext, orderTag);
+        MallOrderItem item = new MallOrderItem(getContext(), orderTag);
         VLRAdapter adapter = new VLRAdapter(item);
-        orderRv.setLayoutManager(new CrashBugLinearLayoutManager(mContext));
+        orderRv.setLayoutManager(new CrashBugLinearLayoutManager(getContext()));
         orderRv.setAdapter(adapter);
 
         adapter.reLoadData(new TestUtil().getTestList());
@@ -77,9 +78,36 @@ public class MallOrderFragment extends BaseFragment {
 
     }
 
-    @Override
+//    @Override
     protected void initView(View mRootView) {
         refreshLayout = mRootView.findViewById(R.id.order_smart_layout);
         orderRv = mRootView.findViewById(R.id.order_recycler);
+    }
+
+//    @Override
+    protected void onReloadClick() {
+
+    }
+
+    @Override
+    protected void onFragmentFirstVisible() {
+        super.onFragmentFirstVisible();
+        initView(rootView);
+        initData();
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.fm_order_recycler;
+    }
+
+    @Override
+    public int getBindingVariable() {
+        return 0;
+    }
+
+    @Override
+    protected void onRetryBtnClick() {
+
     }
 }

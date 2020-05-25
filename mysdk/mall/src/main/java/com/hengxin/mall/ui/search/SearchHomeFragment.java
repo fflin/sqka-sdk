@@ -120,6 +120,10 @@ public class SearchHomeFragment extends BaseFragment implements SearchHomeContra
         hotParent = mRootView.findViewById(R.id.search_hot_parent);
     }
 
+    @Override
+    protected void onReloadClick() {
+
+    }
 
 
     @Override

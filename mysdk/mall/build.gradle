@@ -42,7 +42,7 @@ dependencies {
     implementation 'com.google.android:flexbox:1.0.0'
     implementation 'com.github.hackware1993:MagicIndicator:1.5.0'
     implementation project(path: ':pay')
-    implementation 'com.kingja.loadsir:loadsir:1.3.6'
+//    implementation 'com.kingja.loadsir:loadsir:1.3.6'
     implementation project(path: ':pickimg')
     implementation project(path: ':pickcity')
 

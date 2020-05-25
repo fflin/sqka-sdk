@@ -75,4 +75,9 @@ public class MallHomeClassifyFragment extends BaseFragment {
         this.mRootView = mRootView;
         flexboxLayout = mRootView.findViewById(R.id.flex_layout);
     }
+
+    @Override
+    protected void onReloadClick() {
+
+    }
 }

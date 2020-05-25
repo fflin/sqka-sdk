@@ -59,6 +59,9 @@ public class SearchResultPresenter extends BasePresenter<SearchResultContract.Vi
         map.put("page_no", String.valueOf(pageNo));
         map.put("has_coupon", "1");
         map.put("sort", sort);
+        if (pageNo == 1) {
+            mView.showLoading();
+        }
         mDisposable.add(mApiService.search(mApiHelper.getSignSecurity(mApiHelper.addBaseMap(map))).compose(RxUtils.transformResult()).subscribe(new Consumer<BaseResult<ConditionListModel>>() {
             @Override
             public void accept(BaseResult<ConditionListModel> result) {
