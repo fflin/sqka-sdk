@@ -2,17 +2,19 @@ package com.hengxin.mall.ui.home;
 
 import android.content.Context;
 import android.net.Uri;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.fragment.app.FragmentManager;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import com.bumptech.glide.Glide;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -363,7 +365,7 @@ public class TodaySelectionTypeRBaseItem extends RBaseItem {
 
     private class ImageTitleViewHolder extends RecyclerView.ViewHolder {
 
-        private final SimpleDraweeView page_image_title;
+        private final ImageView page_image_title;
         private TextView pageMore;
 
         public ImageTitleViewHolder(View convertView) {
@@ -374,7 +376,8 @@ public class TodaySelectionTypeRBaseItem extends RBaseItem {
 
         public void bindingDate(Object data) {
             final HomeModel.HomePageItem homePageItem = (HomeModel.HomePageItem) data;
-            FrcosUtils.setControllerListener(page_image_title, homePageItem.pic, screenWidth, false);
+//            FrcosUtils.setControllerListener(page_image_title, homePageItem.pic, screenWidth, false);
+            Glide.with(mContext).load(homePageItem.pic).into(page_image_title);
             page_image_title.setOnClickListener(v -> RouteUtils.isNewNative(homePageItem.open_type, mContext, homePageItem, callBackDetail));
 
             if (!TextUtils.isEmpty(homePageItem.tag_right)) {
@@ -518,13 +521,15 @@ public class TodaySelectionTypeRBaseItem extends RBaseItem {
             }
             flexboxLayout.setShowDivider(FlexboxLayout.SHOW_DIVIDER_MIDDLE);
             flexboxLayout.setDividerDrawable(ContextCompat.getDrawable(mContext, R.drawable.line_bg));
+            Log.i("fflin","homePageItem.list = "+homePageItem.list.size());
             for (HomeModel.HomePageItem item : homePageItem.list) {
-                SimpleDraweeView rootView = (SimpleDraweeView) LayoutInflater.from(getContext()).inflate(R.layout.page_flexbox_three_image_item, flexboxLayout, false);
+                ImageView rootView = (ImageView) LayoutInflater.from(getContext()).inflate(R.layout.page_flexbox_three_image_item, flexboxLayout, false);
                 rootView.setOnClickListener(v -> {
                     RouteUtils.isNewNative(item.open_type, mContext, item, callBackDetail);
                     //UMAnalyticUtils.onEvent2Param(getContext(), "Mall_category", item.title);
                 });
-                rootView.setImageURI(item.pic);
+                /*rootView.setImageURI(item.pic);*/
+                Glide.with(mContext).load(item.pic).into(rootView);
                 flexboxLayout.addView(rootView);
             }
         }
@@ -536,8 +541,11 @@ public class TodaySelectionTypeRBaseItem extends RBaseItem {
             }
             for (HomeModel.HomePageItem item : homePageItem.list) {
                 View rootView = LayoutInflater.from(getContext()).inflate(R.layout.page_flexbox_small_item, flexboxLayout, false);
-                SimpleDraweeView boxIv = rootView.findViewById(R.id.flex_box_itemIv);
-                setGifDraweeView(item.pic, boxIv);
+                /*SimpleDraweeView boxIv = rootView.findViewById(R.id.flex_box_itemIv);
+                setGifDraweeView(item.pic, boxIv);*/
+                ImageView imageView = rootView.findViewById(R.id.flex_box_itemIv);
+                Glide.with(mContext).load(item.pic).into(imageView);
+
 
                 TextView boxTv = rootView.findViewById(R.id.flex_box_itemTv);
                 boxTv.setText(item.title);

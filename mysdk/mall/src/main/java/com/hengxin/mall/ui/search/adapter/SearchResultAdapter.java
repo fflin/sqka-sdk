@@ -1,19 +1,15 @@
 package com.hengxin.mall.ui.search.adapter;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.GlideBuilder;
-import com.bumptech.glide.load.Key;
-import com.bumptech.glide.load.engine.Resource;
-import com.bumptech.glide.load.engine.cache.MemoryCache;
 import com.hengxin.mall.R;
 import com.hengxin.mall.model.CouponNewModel;
 import com.hengxin.mall.ui.search.SearchResultConstant;

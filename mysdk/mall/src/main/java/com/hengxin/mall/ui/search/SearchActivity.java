@@ -1,7 +1,7 @@
 package com.hengxin.mall.ui.search;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
+import androidx.fragment.app.Fragment;
+
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.hengxin.basic.RxBus;
-import com.hengxin.basic.util.Log;
 import com.hengxin.basic.util.ToastUtils;
 import com.hengxin.mall.R;
 import com.hengxin.mall.base.BaseActivity;

@@ -1,10 +1,12 @@
 package com.hengxin.mall.ui.detail.viewholder;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.hengxin.mall.R;
 import com.hengxin.mall.model.DetailModel;
 import com.hengxin.mall.view.WrapContentDraweeView;
@@ -17,7 +19,7 @@ import com.hengxin.mall.view.WrapContentDraweeView;
  */
 public class DetailInfoViewHolder extends RecyclerView.ViewHolder {
 
-    private WrapContentDraweeView draweeView;
+    private ImageView draweeView;
 
     public DetailInfoViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -26,6 +28,6 @@ public class DetailInfoViewHolder extends RecyclerView.ViewHolder {
 
     public void bindData(Context mContext, DetailModel model) {
         String image = model.picInfo;
-        draweeView.setImageURI(image);
+        Glide.with(mContext).load(image).into(draweeView);
     }
 }

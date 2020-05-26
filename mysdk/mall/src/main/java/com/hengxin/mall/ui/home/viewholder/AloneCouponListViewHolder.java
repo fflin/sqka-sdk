@@ -1,15 +1,14 @@
 package com.hengxin.mall.ui.home.viewholder;
 
 import android.content.Context;
-import android.net.Uri;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.facebook.drawee.view.SimpleDraweeView;
 import com.hengxin.mall.R;
 import com.hengxin.mall.inter.OnCallBackDetail;
 import com.hengxin.mall.model.CouponNewModel;

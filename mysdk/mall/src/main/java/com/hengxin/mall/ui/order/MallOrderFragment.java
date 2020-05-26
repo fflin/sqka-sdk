@@ -1,14 +1,13 @@
 package com.hengxin.mall.ui.order;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
 import com.hengxin.basic.util.Log;
 import com.hengxin.mall.R;
-import com.hengxin.mall.base.BaseFragment;
 import com.hengxin.mall.base.BaseLazyFragment;
 import com.hengxin.mall.base.VLRAdapter;
 import com.hengxin.mall.manager.CrashBugLinearLayoutManager;

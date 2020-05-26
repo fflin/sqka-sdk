@@ -1,8 +1,8 @@
 package com.hengxin.mall.ui.saleout.adapter;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +11,6 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.hengxin.mall.R;
-import com.hengxin.mall.model.SelectPicModel;
 import com.hengxin.mall.model.UpLoadFileModel;
 import com.hengxin.mall.ui.saleout.Constant;
 

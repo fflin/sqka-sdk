@@ -1,19 +1,20 @@
 package com.hengxin.pickimg;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.v4.content.FileProvider;
-import android.support.v7.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 import com.hengxin.pickimg.constant.Extras;
 import com.hengxin.pickimg.constant.RequestCode;
@@ -32,7 +33,7 @@ public class PickerAlbumActivity extends AppCompatActivity {
     public static int CropMaxLenght = 50;//裁剪大小 50kb
     public static int Cropheight = 1080;//默认屏幕宽度
     public static int Cropwidth = 1080;//默认屏幕高度 默认设置宽高
-    private android.support.v4.app.Fragment fragment;
+    private Fragment fragment;
     private View pemissText;
     private boolean inited;
     private static final String KEY_STATE = "state";

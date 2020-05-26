@@ -1,19 +1,15 @@
 package com.hengxin.mall.ui.settlement;
 
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.widget.TextView;
 
-import com.hengxin.basic.util.ToastUtils;
 import com.hengxin.mall.R;
 import com.hengxin.mall.base.BaseActivity;
 import com.hengxin.mall.base.VLRAdapter;
 import com.hengxin.mall.test.TestUtil;
 import com.hengxin.mall.ui.pay.PayChannelActivity;
 import com.hengxin.mall.ui.settlement.adapter.SettleListItem;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * author : fflin

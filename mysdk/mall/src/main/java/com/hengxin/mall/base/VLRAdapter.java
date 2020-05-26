@@ -1,6 +1,6 @@
 package com.hengxin.mall.base;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.ViewGroup;
 
 
@@ -8,7 +8,6 @@ import com.hengxin.basic.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 /**
  * Created by  on 2017/6/5.

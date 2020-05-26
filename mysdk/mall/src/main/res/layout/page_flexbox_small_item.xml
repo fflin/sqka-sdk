@@ -11,15 +11,12 @@
     fresco:layout_flexBasisPercent="20%"
     fresco:layout_flexGrow="1">
 
-    <com.facebook.drawee.view.SimpleDraweeView
+    <ImageView
         android:id="@+id/flex_box_itemIv"
         android:layout_width="30.0dip"
         android:layout_height="30.0dip"
         android:layout_gravity="center"
-        android:scaleType="fitCenter"
-        fresco:fadeDuration="100"
-        fresco:placeholderImage="@drawable/placeholder_square"
-        fresco:placeholderImageScaleType="centerInside" />
+        android:scaleType="fitCenter" />
 
     <TextView
         android:id="@+id/flex_box_itemTv"

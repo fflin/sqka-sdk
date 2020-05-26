@@ -1,25 +1,13 @@
 package com.hengxin.mall.ui.saleout.dialog;
 
-import android.Manifest;
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
+
+import androidx.appcompat.app.AlertDialog;
 import android.view.Gravity;
 import android.view.View;
 
-import com.hengxin.basic.api.ApiHelper;
-import com.hengxin.basic.base.ApiErrorConsumer;
-import com.hengxin.basic.util.Log;
-import com.hengxin.basic.util.MessageShowUtils;
 import com.hengxin.mall.R;
-import com.hengxin.mall.base.BaseActivity;
 import com.hengxin.mall.model.UpLoadFileModel;
-import com.hengxin.mall.utils.EasyPermissions;
-
-import io.reactivex.Observable;
-import io.reactivex.disposables.Disposable;
 
 /**
  * author: Y_Qing

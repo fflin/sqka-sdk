@@ -120,7 +120,7 @@
                     android:textColor="@color/text_black_444"
                     android:textSize="15sp" />
 
-                <android.support.v7.widget.RecyclerView
+                <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/ask_photo_rv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

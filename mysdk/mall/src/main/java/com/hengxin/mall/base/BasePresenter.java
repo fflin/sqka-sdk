@@ -1,12 +1,11 @@
 package com.hengxin.mall.base;
 
 import android.app.Activity;
-import android.arch.lifecycle.LifecycleOwner;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.hengxin.basic.api.ApiHelper;
-import com.hengxin.basic.util.Log;
 import com.hengxin.mall.net.IApiService;
 
 import io.reactivex.disposables.CompositeDisposable;
