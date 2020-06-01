@@ -121,6 +121,12 @@ public abstract class BaseFragment extends Fragment {
         }
     }
 
+    public void baseShowLoading(View view) {
+        if (view != null) {
+
+        }
+    }
+
     public void resetSmartRefreshStatu(SmartRefreshLayout smartRefreshLayout) {
         if (smartRefreshLayout == null) return;
 

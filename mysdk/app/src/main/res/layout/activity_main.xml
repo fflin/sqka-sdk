@@ -47,6 +47,7 @@
         android:layout_height="wrap_content"
         android:background="@color/gradient_start"
         android:textSize="15sp"
+        android:visibility="gone"
         android:text="2020-05-22 16:02:23.637 17930-18188/com.hengxin.myapplication I/HttpLoggingInterceptor: --> GET http://test.sqcr.yunyouduobao.com/api/open/tb/home/coupon_list?init=0 app_version=2.6.65 device_id=XdeK3NbYQmQDAMuZfbPB4bv%252B os=android os_version=HUAWEI_YAL-AL00_10%252829%2529 channel=apptest sign=fb42e4bf3d483b433f2d03d80052735d sort= page_no=1 app_name=rrh app_key=hr_rrh t=1590134543626 user_id= app_id=1 cid=10296 --调用位置：[ApiHelper$1.log(L:73)]"/>
 
 </LinearLayout>

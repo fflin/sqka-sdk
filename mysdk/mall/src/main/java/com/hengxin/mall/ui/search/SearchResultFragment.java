@@ -1,18 +1,21 @@
 package com.hengxin.mall.ui.search;
 
 import android.os.Bundle;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.hengxin.basic.RxBus;
 import com.hengxin.basic.util.ToastUtils;
 import com.hengxin.basic.util.ViewUtil;
 import com.hengxin.mall.R;
 import com.hengxin.mall.base.BaseFragment;
+import com.hengxin.mall.event.SearchFilterHideEvent;
 import com.hengxin.mall.manager.CrashBugGridLayoutManager;
 import com.hengxin.mall.manager.CrashBugLinearLayoutManager;
 import com.hengxin.mall.model.ConditionListModel;
@@ -21,7 +24,6 @@ import com.hengxin.mall.model.TagModel;
 import com.hengxin.mall.ui.search.adapter.SearchResultAdapter;
 import com.hengxin.mall.ui.search.adapter.SearchResultHotAdapter;
 import com.hengxin.mall.ui.search.helper.ResultDataHelper;
-import com.hengxin.mall.ui.search.inter.OnFilterClickListener;
 import com.hengxin.mall.ui.search.inter.OnHotWordsClick;
 import com.hengxin.mall.ui.search.inter.OnResultTopClick;
 import com.hengxin.mall.view.SpaceItemDecoration;
@@ -31,13 +33,16 @@ import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+
 /**
  * author : fflin
  * date   : 2020/5/6 18:16
  * desc   : 搜索结果页面 顶部加一块区域 一行存放销量等 一行展示热搜(横向rv)  https://suggest.taobao.com/sug?code=utf-8&q=%E8%BF%90%E5%8A%A8%E6%9C%8D%E9%A5%B0
  * version: 1.0
  */
-public class SearchResultFragment extends BaseFragment implements SearchResultContract.View, OnHotWordsClick, OnResultTopClick, OnFilterClickListener {
+public class SearchResultFragment extends BaseFragment implements SearchResultContract.View, OnHotWordsClick, OnResultTopClick {
 
     private SmartRefreshLayout smartRefreshLayout;
     private RecyclerView topRv, resultRv;
@@ -55,6 +60,7 @@ public class SearchResultFragment extends BaseFragment implements SearchResultCo
     private int pageNo = 1;
     private String initParam = "0";
     private List<ConditionListModel.SortList> sortList;
+    private Disposable filterEvent;
 
     public static SearchResultFragment instantiate(String keyword) {
         SearchResultFragment fragment = new SearchResultFragment();
@@ -80,7 +86,6 @@ public class SearchResultFragment extends BaseFragment implements SearchResultCo
         }
 
         filterFragment = (SearchFilterFragment) getChildFragmentManager().findFragmentById(R.id.filter_layout);
-        if (filterFragment != null) filterFragment.setOnFilterClick(this);
 
         Bundle bundle = getArguments();
         String searchKey = bundle.getString(searchArg);
@@ -97,6 +102,16 @@ public class SearchResultFragment extends BaseFragment implements SearchResultCo
         smartRefreshLayout.setOnLoadMoreListener(refreshLayout -> {
             pageNo++;
             startToSearch(mKeyWords);
+        });
+        filterEvent = RxBus.getInstance().register(SearchFilterHideEvent.class).subscribe(new Consumer<SearchFilterHideEvent>() {
+            @Override
+            public void accept(SearchFilterHideEvent model) throws Exception {
+                if (model != null) {
+                    //  重新请求接口
+
+                }
+                drawerLayout.closeDrawer(GravityCompat.END);
+            }
         });
     }
 
@@ -250,20 +265,20 @@ public class SearchResultFragment extends BaseFragment implements SearchResultCo
     @Override
     public void onFilterClick(View view) {
         // 筛选点击
-        if (drawerLayout.isDrawerOpen(Gravity.END)) {
-            drawerLayout.closeDrawer(Gravity.END);
+        if (drawerLayout.isDrawerOpen(GravityCompat.END)) {
+            drawerLayout.closeDrawer(GravityCompat.END);
         } else {
-            drawerLayout.openDrawer(Gravity.END);
+            drawerLayout.openDrawer(GravityCompat.END);
         }
 
     }
 
 
     @Override
-    public void onFilterClick(String price, String brand) {
-        if (drawerLayout.isDrawerOpen(Gravity.END)) {
-            drawerLayout.closeDrawer(Gravity.END);
+    public void onDestroy() {
+        super.onDestroy();
+        if (filterEvent != null) {
+            filterEvent.dispose();
         }
-        ToastUtils.show(mContext,"brand = "+brand);
     }
 }

@@ -2,10 +2,6 @@ package com.hengxin.mall.ui.home;
 
 import android.content.Context;
 import android.net.Uri;
-import androidx.fragment.app.FragmentManager;
-import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +9,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.facebook.drawee.backends.pipeline.Fresco;
@@ -20,21 +20,20 @@ import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.android.flexbox.FlexboxLayout;
 import com.hengxin.basic.util.Log;
-import com.hengxin.mall.model.HomePageType;
+import com.hengxin.basic.util.ViewUtil;
 import com.hengxin.mall.R;
 import com.hengxin.mall.base.RBaseItem;
 import com.hengxin.mall.base.VLRAdapter;
 import com.hengxin.mall.manager.FrscoImageLoader;
 import com.hengxin.mall.model.CouponNewModel;
 import com.hengxin.mall.model.HomeModel;
+import com.hengxin.mall.model.HomePageType;
 import com.hengxin.mall.ui.home.viewholder.ActivityViewHolder;
 import com.hengxin.mall.ui.home.viewholder.AloneCouponListViewHolder;
 import com.hengxin.mall.ui.home.viewholder.ClassifyViewHolder;
 import com.hengxin.mall.ui.home.viewholder.EmptyHolder;
 import com.hengxin.mall.ui.home.viewholder.GridViewHolder;
 import com.hengxin.mall.ui.home.viewholder.TwoColumnViewHolder;
-import com.hengxin.mall.utils.FrcosUtils;
-import com.hengxin.basic.util.ViewUtil;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 
@@ -521,7 +520,6 @@ public class TodaySelectionTypeRBaseItem extends RBaseItem {
             }
             flexboxLayout.setShowDivider(FlexboxLayout.SHOW_DIVIDER_MIDDLE);
             flexboxLayout.setDividerDrawable(ContextCompat.getDrawable(mContext, R.drawable.line_bg));
-            Log.i("fflin","homePageItem.list = "+homePageItem.list.size());
             for (HomeModel.HomePageItem item : homePageItem.list) {
                 ImageView rootView = (ImageView) LayoutInflater.from(getContext()).inflate(R.layout.page_flexbox_three_image_item, flexboxLayout, false);
                 rootView.setOnClickListener(v -> {

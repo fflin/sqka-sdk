@@ -2,7 +2,6 @@ package com.hengxin.mall.ui.home.viewholder;
 
 import android.app.Activity;
 import android.content.Context;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,15 +9,11 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.facebook.drawee.backends.pipeline.Fresco;
-import com.facebook.drawee.view.SimpleDraweeView;
-import com.hengxin.basic.util.Log;
 import com.hengxin.mall.R;
 import com.hengxin.mall.model.HomeModel;
-import com.hengxin.mall.utils.FrcosUtils;
-import com.hengxin.basic.util.ViewUtil;
 import com.hengxin.mall.view.RoundImageView;
 
 import java.util.ArrayList;

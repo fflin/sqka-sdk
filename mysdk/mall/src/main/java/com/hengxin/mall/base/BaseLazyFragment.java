@@ -193,9 +193,10 @@ public abstract class BaseLazyFragment extends Fragment {
         FragmentManager fragmentManager = getChildFragmentManager();
         List<Fragment> fragments = fragmentManager.getFragments();
         if (null != fragments) {
+            Log.i("fflin","fragments.size = "+fragments.size());
             for (Fragment fragment : fragments) {
-                if (fragment instanceof BaseLazyFragment && !fragment.isHidden()
-                        && fragment.getUserVisibleHint()) {
+                Log.i("fflin","fragment  "+fragment.getClass().getSimpleName());
+                if (fragment instanceof BaseLazyFragment && !fragment.isHidden() && fragment.getUserVisibleHint()) {
                     ((BaseLazyFragment) fragment).dispatchUserVisibleHint(visible);
                 }
             }

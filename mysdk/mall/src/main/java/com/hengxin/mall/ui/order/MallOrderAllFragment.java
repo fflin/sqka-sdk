@@ -1,11 +1,12 @@
 package com.hengxin.mall.ui.order;
 
-import androidx.viewpager.widget.ViewPager;
 import android.view.View;
+
+import androidx.viewpager.widget.ViewPager;
 
 import com.hengxin.basic.util.Log;
 import com.hengxin.mall.R;
-import com.hengxin.mall.base.BaseLazyFragment;
+import com.hengxin.mall.base.BaseFragment;
 
 import net.lucode.hackware.magicindicator.MagicIndicator;
 
@@ -18,17 +19,17 @@ import java.util.List;
  * desc   : 全部订单
  * version: 1.0
  */
-public class MallOrderAllFragment extends BaseLazyFragment {
+public class MallOrderAllFragment extends BaseFragment {
 
     private MagicIndicator indicator;
     private ViewPager viewPager;
 
-//    @Override
-//    protected int setLayout() {
-//        return R.layout.fm_mall_order_all;
-//    }
+    @Override
+    protected int setLayout() {
+        return R.layout.fm_mall_order_all;
+    }
 
-//    @Override
+    @Override
     protected void initData() {
         Log.i("fflin","----- all init ------");
         List<String> list = new ArrayList<>();
@@ -41,37 +42,14 @@ public class MallOrderAllFragment extends BaseLazyFragment {
         IndicatorHelper.getHelper().initIndicator(getContext(),getChildFragmentManager(),indicator,list,viewPager,OrderConstant.ALL_ORDER_TAG);
     }
 
-//    @Override
+    @Override
     protected void initView(View mRootView) {
         indicator = mRootView.findViewById(R.id.order_indicator);
         viewPager = mRootView.findViewById(R.id.order_view_pager);
     }
 
-//    @Override
-//    protected void onReloadClick() {
-//
-//    }
-
-
     @Override
-    protected void onFragmentFirstVisible() {
-        super.onFragmentFirstVisible();
-        initView(rootView);
-        initData();
-    }
-
-    @Override
-    public int getLayoutId() {
-        return R.layout.fm_mall_order_all;
-    }
-
-    @Override
-    public int getBindingVariable() {
-        return 0;
-    }
-
-    @Override
-    protected void onRetryBtnClick() {
+    protected void onReloadClick() {
 
     }
 }

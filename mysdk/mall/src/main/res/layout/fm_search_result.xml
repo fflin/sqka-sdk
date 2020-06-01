@@ -54,6 +54,6 @@
 
     </androidx.drawerlayout.widget.DrawerLayout>
 
-
+    <include layout="@layout/status_layout_loading"/>
 
 </LinearLayout>

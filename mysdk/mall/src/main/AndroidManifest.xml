@@ -5,5 +5,22 @@
     <application
         android:requestLegacyExternalStorage="true">
 
+
+        <activity android:name="com.hengxin.mall.ui.home.MallHomeActivity" />
+        <activity android:name="com.hengxin.mall.ui.detail.GoodsDetailActivity" />
+        <activity android:name="com.hengxin.mall.ui.settlement.SettleListActivity" />
+        <activity android:name="com.hengxin.mall.ui.pay.PayChannelActivity" />
+        <activity android:name="com.hengxin.mall.ui.order.MallOrderActivity" />
+        <activity android:name="com.hengxin.mall.test.TestActivity" />
+        <activity android:name="com.hengxin.mall.ui.order.detail.OrderDetailActivity" />
+        <activity android:name="com.hengxin.mall.ui.transport.TransportActivity" />
+        <activity android:name="com.hengxin.mall.ui.saleout.AskForSaleActivity" />
+        <activity android:name="com.hengxin.mall.ui.saleout.SaleOutDetailActivity" />
+        <activity android:name="com.hengxin.mall.ui.saleout.AskSuccActivity" />
+        <activity android:name="com.hengxin.mall.ui.consult.ConsultActivity" />
+        <activity android:name="com.hengxin.mall.ui.saleout.WriteTransportActivity" />
+        <activity android:name="com.hengxin.mall.ui.address.WriteAddressActivity" />
+        <activity android:name="com.hengxin.mall.ui.address.AddressListActivity" />
+        <activity android:name="com.hengxin.mall.ui.search.SearchActivity"/>
     </application>
 </manifest>
