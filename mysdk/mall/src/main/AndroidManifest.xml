@@ -6,21 +6,22 @@
         android:requestLegacyExternalStorage="true">
 
 
-        <activity android:name="com.hengxin.mall.ui.home.MallHomeActivity" />
-        <activity android:name="com.hengxin.mall.ui.detail.GoodsDetailActivity" />
-        <activity android:name="com.hengxin.mall.ui.settlement.SettleListActivity" />
-        <activity android:name="com.hengxin.mall.ui.pay.PayChannelActivity" />
-        <activity android:name="com.hengxin.mall.ui.order.MallOrderActivity" />
-        <activity android:name="com.hengxin.mall.test.TestActivity" />
-        <activity android:name="com.hengxin.mall.ui.order.detail.OrderDetailActivity" />
-        <activity android:name="com.hengxin.mall.ui.transport.TransportActivity" />
-        <activity android:name="com.hengxin.mall.ui.saleout.AskForSaleActivity" />
-        <activity android:name="com.hengxin.mall.ui.saleout.SaleOutDetailActivity" />
-        <activity android:name="com.hengxin.mall.ui.saleout.AskSuccActivity" />
-        <activity android:name="com.hengxin.mall.ui.consult.ConsultActivity" />
-        <activity android:name="com.hengxin.mall.ui.saleout.WriteTransportActivity" />
-        <activity android:name="com.hengxin.mall.ui.address.WriteAddressActivity" />
-        <activity android:name="com.hengxin.mall.ui.address.AddressListActivity" />
-        <activity android:name="com.hengxin.mall.ui.search.SearchActivity"/>
+        <activity android:name=".ui.home.MallHomeActivity" />
+        <activity android:name=".ui.detail.GoodsDetailActivity" />
+        <activity android:name=".ui.settlement.SettleListActivity" />
+        <activity android:name=".ui.pay.PayChannelActivity" />
+        <activity android:name=".ui.order.MallOrderActivity" />
+        <activity android:name=".test.TestActivity" />
+        <activity android:name=".ui.order.detail.OrderDetailActivity" />
+        <activity android:name=".ui.transport.TransportActivity" />
+        <activity android:name=".ui.saleout.AskForSaleActivity" />
+        <activity android:name=".ui.saleout.SaleOutDetailActivity" />
+        <activity android:name=".ui.saleout.AskSuccActivity" />
+        <activity android:name=".ui.consult.ConsultActivity" />
+        <activity android:name=".ui.saleout.WriteTransportActivity" />
+        <activity android:name=".ui.address.WriteAddressActivity" />
+        <activity android:name=".ui.address.AddressListActivity" />
+        <activity android:name=".ui.search.SearchActivity"/>
+        <activity android:name=".ui.car.ShoppingCarActivity"/>
     </application>
 </manifest>

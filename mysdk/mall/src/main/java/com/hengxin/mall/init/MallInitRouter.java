@@ -3,7 +3,7 @@ package com.hengxin.mall.init;
 import android.content.Context;
 import android.content.Intent;
 
-import com.hengxin.mall.test.TestActivity;
+import com.hengxin.mall.ui.car.ShoppingCarActivity;
 import com.hengxin.mall.ui.home.MallHomeActivity;
 import com.hengxin.mall.ui.order.detail.OrderDetailActivity;
 
@@ -30,7 +30,7 @@ public class MallInitRouter {
                 break;
 
             case 3:
-                Intent testIntent = new Intent(mContext, TestActivity.class);
+                Intent testIntent = new Intent(mContext, ShoppingCarActivity.class);
                 testIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mContext.startActivity(testIntent);
                 break;

@@ -2,6 +2,7 @@ package com.hengxin.mall.net;
 
 
 import com.hengxin.basic.base.BaseResult;
+import com.hengxin.mall.model.AuthHistoryModel;
 import com.hengxin.mall.model.TagModel;
 import com.hengxin.mall.model.UpLoadFileModel;
 import com.hengxin.pay.model.AliSignModel;
@@ -71,4 +72,9 @@ public interface IApiService {
     @POST("{path}/upload/file")
     Observable<BaseResult<UpLoadFileModel>> uploadFile(@Path(value = "path", encoded = true) String servicesHost, @Part MultipartBody.Part file);
 
+    /**
+     * 获取优惠券领取记录，无接口先使用这个接口获取购物车列表
+     */
+    @GET("{path}/api/auth/coupon/exchange_record")
+    Observable<BaseResult<AuthHistoryModel>> authHistory(@Path(value = "path", encoded = true) String servicesHost, @QueryMap Map<String, String> signSecurity);
 }
